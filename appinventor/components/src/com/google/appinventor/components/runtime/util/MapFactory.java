@@ -797,7 +797,7 @@ public final class MapFactory {
    *
    * @author ewpatton@mit.edu (Evan W. Patton)
    */
-  public interface MapFeatureContainer extends ComponentContainer<MapFeature> {
+  public interface MapFeatureContainer extends ComponentContainer, Iterable<MapFeature> {
 
     // Properties
 

@@ -121,11 +121,6 @@ public interface ProjectServiceAsync {
   void load(long projectId, String fileId, AsyncCallback<String> callback);
 
   /**
-   * @see ProjectService#loadDataFile(long, String)
-   */
-  void loadDataFile(long projectId, String fileId, AsyncCallback<List<List<String>>> callback);
-
-  /**
    * @see ProjectService#load2(long, String)
    */
   void load2(long projectId, String fileId, AsyncCallback<ChecksumedLoadFile> callback);
@@ -186,16 +181,6 @@ public interface ProjectServiceAsync {
    * @see ProjectService#addFile(long, String)
    */
   void addFile(long projectId, String fileId, AsyncCallback<Long> callback);
-  
-  /**
-   * @see ProjectService#copyScreen(long, String)
-   */
-  void copyScreen(long projectId, String targetFormFileId, String fileId, AsyncCallback<Long> callback);
-  
-  /**
-   * @see ProjectService#addLDForm(long, String)
-   */
-  void addLDForm(long projectId, String targetFormFileId, List<String> uriCollection, String conceptURI, AsyncCallback<Long> callback);
 
   /**
    * @see ProjectService#importMedia(String, long, String, boolean)

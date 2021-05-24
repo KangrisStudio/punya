@@ -25,20 +25,6 @@
        Definition for generating a Unique ID.
        ===================================================================== -->
 
-  <property name="release" value="false"/>
-
-  <condition property="client.module"
-             value="com.google.appinventor.YaClient"
-             else="com.google.appinventor.YaClient-dev">
-    <equals arg1="${release}" arg2="true" />
-  </condition>
-
-  <condition property="client.flags"
-             value="-optimize 9 -localWorkers 8"
-             else="-style pretty">
-    <equals arg1="${release}" arg2="true" />
-  </condition>
-
   <scriptdef name="generateguid" language="javascript">
     <attribute name="property" />
     <![CDATA[
@@ -259,7 +245,7 @@
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/json/json.jar" />
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/keyczar/keyczar-0.66-080111-java-1.6.jar" />
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/objectify-3.1/objectify-3.1.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/gson/gson-2.8.5.jar" />  <!-- for keyczar -->
+    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/gson/gson-2.1.jar" />  <!-- for keyczar -->
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/log4j/log4j-1.2.16.jar" />  <!-- for keyczar -->
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/commons-lang3/commons-lang3-3.10.jar" />
     <!-- GCS Libs -->
@@ -277,22 +263,6 @@
     <!-- gwt libs -->
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet.jar" />
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${gwt.sdk}/gwt-servlet-deps.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/gwt_jquery/gwt-jquery1.1.jar" />
-    <!-- jena libs -->
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/jcl-over-slf4j-1.6.4.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/jena-arq-2.10.0.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/jena-core-2.10.0.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/jena-iri-0.9.5.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/jena-larq-1.0.1-SNAPSHOT.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/lucene/lucene-core-3.6.2.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/httpclient/httpclient-4.2.3.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/httpclient/httpcore-4.2.4.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/slf4j-api-1.6.4.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/slf4j-log4j12-1.6.4.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/xercesImpl-2.10.0.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/xml-apis-1.4.01.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/httpclient-4.2.3.jar" />
-    <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/jena/httpcore-4.2.2.jar" />
     <!-- Protocol Buffers -->
     <copy todir="${build.war.dir}/WEB-INF/lib" file="${lib.dir}/protobuf/protobuf-java-3.0.0.jar" />
     <!-- OWASP -->
@@ -541,7 +511,7 @@
     <ai.javac encoding="utf-8"
               destdir="${build.war.dir}/WEB-INF/classes"
               srcdir="${src.dir};${build.dir}/components/ComponentTranslation/src"
-              source="1.8" target="1.8" nowarn="true"
+              source="1.7" target="1.7" nowarn="true"
               debug="true" debuglevel="lines,vars,source">
       <include name="${appinventor.pkg}/client/**/*.java" />
       <include name="${appinventor.pkg}/shared/**/*.java" />
@@ -551,14 +521,12 @@
         <pathelement location="${build.dir}/components/CommonConstants.jar" />
         <pathelement location="${build.dir}/components/CommonConstants-gwt.jar" />
         <!-- external libs -->
-        <pathelement location="${lib.dir}/charba/charba-2.5-sources.jar" />
         <pathelement location="${lib.dir}/guava/guava-20.0.jar" />
         <pathelement location="${lib.dir}/guava/error_prone_annotations-2.0.12.jar" />
         <pathelement location="${lib.dir}/guava/j2objc-annotations-1.1.jar" />
         <pathelement location="${lib.dir}/findbugs/jsr305.jar" />
         <pathelement location="${lib.dir}/gwt_dragdrop/gwt-dnd-3.2.3.jar" />
         <pathelement location="${lib.dir}/gwt_incubator/gwt-incubator-20101117-r1766.jar" />
-        <pathelement location="${lib.dir}/gwt_jquery/gwt-jquery1.1.jar" />
         <pathelement location="${lib.dir}/gwt_query/gwtquery-1.5-beta1.jar" />
         <!-- gwt libs -->
         <pathelement location="${gwt.sdk}/gwt-user.jar"/>
@@ -613,9 +581,7 @@
         <pathelement location="${lib.dir}/guava/j2objc-annotations-1.1.jar" />
         <pathelement location="${lib.dir}/gwt_dragdrop/gwt-dnd-3.2.3.jar" />
         <pathelement location="${lib.dir}/gwt_incubator/gwt-incubator-20101117-r1766.jar" />
-        <pathelement location="${lib.dir}/gwt_jquery/gwt-jquery1.1.jar" />
         <pathelement location="${lib.dir}/gwt_query/gwtquery-1.5-beta1.jar" />
-        <pathelement location="${lib.dir}/charba/charba-2.5.jar" />
         <!-- gwt libs -->
         <pathelement location="${gwt.sdk}/gwt-dev.jar"/>
         <pathelement location="${gwt.sdk}/gwt-user.jar"/>
@@ -628,8 +594,8 @@
       <jvmarg value="-Dfile.encoding=UTF-8" />
       <arg line="-war"/>
       <arg value="${build.war.dir}"/>
-      <arg line="-logLevel INFO -extra ${build.extra.dir} ${client.flags}"/>
-      <arg value="${client.module}"/>
+      <arg line="-logLevel INFO -extra ${build.extra.dir} -style pretty"/>
+      <arg value="com.google.appinventor.YaClient"/>
     </java>
   </target>
 
@@ -655,7 +621,6 @@
         <pathelement location="${lib.dir}/gwt_dragdrop/gwt-dnd-3.2.3.jar" />
         <pathelement location="${lib.dir}/gwt_incubator/gwt-incubator-20101117-r1766.jar" />
         <pathelement location="${lib.dir}/gwt_query/gwtquery-1.5-beta1.jar" />
-        <pathelement location="${lib.dir}/gwt_jquery/gwt-jquery1.1.jar" />
         <!-- gwt libs -->
         <pathelement location="${gwt.sdk}/gwt-codeserver.jar" />
         <pathelement location="${gwt.sdk}/gwt-dev.jar" />
@@ -665,7 +630,7 @@
       </classpath>
       <jvmarg value="-Xmx1G" />
       <arg line="-style PRETTY -logLevel INFO" />
-      <arg value="com.google.appinventor.YaClient-dev" />
+      <arg value="com.google.appinventor.YaClient" />
       <arg value="-bindAddress"/>
       <arg value="0.0.0.0"/>
     </java>
@@ -696,7 +661,6 @@
     <pathelement location="${lib.dir}/guava/guava-gwt-20.0.jar" />
     <pathelement location="${lib.dir}/json/json.jar" />
     <pathelement location="${lib.dir}/junit/junit-4.8.2.jar" />
-    <pathelement location="${lib.dir}/charba/charba-2.5.jar" />
     <pathelement location="${gwt.sdk}/gwt-user.jar"/>
     <pathelement location="${gwt.sdk}/gwt-dev.jar"/>
     <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar"/>

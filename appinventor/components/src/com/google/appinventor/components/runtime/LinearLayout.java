@@ -6,9 +6,6 @@
 
 package com.google.appinventor.components.runtime;
 
-import android.util.Log;
-import android.widget.*;
-import android.widget.FrameLayout;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.common.ComponentConstants;
 
@@ -106,17 +103,14 @@ public final class LinearLayout implements Layout {
 
   public ViewGroup getLayoutManager() {
     return layoutManager;
-}
+  }
 
   public void add(AndroidViewComponent component) {
     layoutManager.addView(component.getView(), new android.widget.LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,  // width
+        ViewGroup.LayoutParams.WRAP_CONTENT,  // width
         ViewGroup.LayoutParams.WRAP_CONTENT,  // height
         0f));                                 // weight
-
   }
-
-
 
   public void setHorizontalGravity(int gravity) {
     layoutManager.setHorizontalGravity(gravity);

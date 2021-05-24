@@ -52,13 +52,10 @@ import java.util.Map;
     MEDIA("Media"),
     ANIMATION("Drawing and Animation"),
     MAPS("Maps"),
-    CHARTS("Charts"),
     SENSORS("Sensors"),
     SOCIAL("Social"),
     STORAGE("Storage"),
     CONNECTIVITY("Connectivity"),
-    CLOUDSTORAGE("Cloud Storage"),
-    LINKEDDATA("Linked Data"),
     LEGOMINDSTORMS("LEGO\u00AE MINDSTORMS\u00AE"),
     EXPERIMENTAL("Experimental"),
     EXTENSION("Extension"),
@@ -76,22 +73,21 @@ import java.util.Map;
       DOC_MAP.put("Media", "media");
       DOC_MAP.put("Drawing and Animation", "animation");
       DOC_MAP.put("Maps", "maps");
-      DOC_MAP.put("Charts", "charts");
       DOC_MAP.put("Sensors", "sensors");
       DOC_MAP.put("Social", "social");
       DOC_MAP.put("Storage", "storage");
       DOC_MAP.put("Connectivity", "connectivity");
       DOC_MAP.put("LEGO\u00AE MINDSTORMS\u00AE", "legomindstorms");
-      DOC_MAP.put("Semantic Web", "semanticweb");
-      DOC_MAP.put("Linked Data", "linkeddata");
       DOC_MAP.put("Experimental", "experimental");
-      //DOC_MAP.put("Extension", "extension");
+      DOC_MAP.put("Extension", "extension");
     }
 
+
     private String name;
-    ComponentCategory(String categoryName) {
-      name = categoryName;
-    }
+
+  private ComponentCategory(String categoryName) {
+    name = categoryName;
+  }
 
   /**
    * Returns the display name of this category, as used on the Designer palette, such

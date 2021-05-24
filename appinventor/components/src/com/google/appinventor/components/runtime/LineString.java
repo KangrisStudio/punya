@@ -148,7 +148,7 @@ public class LineString extends MapFeatureBase implements MapLineString {
    * @param points String containing a sequence of points for the LineString.
    */
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_TEXTAREA)
-  @SimpleProperty(category = PropertyCategory.APPEARANCE)
+  @SimpleProperty
   public void PointsFromString(String points) {
     final String functionName = "PointsFromString";
     try {

@@ -220,15 +220,4 @@ public final class Switch extends ToggleBase<CompoundButton> {
     super.Changed();
   }
 
-  // START LinkedData
-
-  public Object Value() {
-    return On();
-  }
-
-  public void Value(String value) {
-    On(Boolean.parseBoolean(value));
-  }
-
-  // END LinkedData
 }

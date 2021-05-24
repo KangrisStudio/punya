@@ -1,42 +1,21 @@
 // -*- mode: java; c-basic-offset: 2; -*-
 // Copyright 2009-2011 Google, All Rights reserved
-// Copyright 2011-2012 MIT, All rights reserved
-// Released under the MIT License https://raw.github.com/mit-cml/app-inventor/master/mitlicense.txt
+// Copyright 2011-2014 MIT, All rights reserved
+// Released under the Apache License, Version 2.0
+// http://www.apache.org/licenses/LICENSE-2.0
 
 package com.google.appinventor.components.runtime;
 
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-
-import com.google.appinventor.components.annotations.DesignerComponent;
-import com.google.appinventor.components.annotations.DesignerProperty;
-import com.google.appinventor.components.annotations.PropertyCategory;
-import com.google.appinventor.components.annotations.SimpleEvent;
-import com.google.appinventor.components.annotations.SimpleFunction;
-import com.google.appinventor.components.annotations.SimpleObject;
-import com.google.appinventor.components.annotations.SimpleProperty;
-import com.google.appinventor.components.annotations.UsesLibraries;
-import com.google.appinventor.components.annotations.UsesPermissions;
+import com.google.appinventor.components.annotations.*;
 import com.google.appinventor.components.common.ComponentCategory;
 import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.common.YaVersion;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A sensor component that can measure the proximity of an object (in cm) relative to the view
@@ -61,12 +40,8 @@ import java.util.Set;
         iconName = "images/proximitysensor.png")
 @SimpleObject
 public class ProximitySensor extends AndroidNonvisibleComponent
-    implements OnStopListener, OnResumeListener, SensorComponent, OnPauseListener,
-        SensorEventListener, Deleteable, RealTimeDataSource<String, Float> {
-
-  //default settings for schedule 
-  private static final int SCHEDULE_INTERVAL = 300; //read proximity sensor every 300 seconds (5 minutes)
-  private static final int SCHEDULE_DURATION = 15; //scan for 15 seconds everytime
+        implements OnStopListener, OnResumeListener, SensorComponent, OnPauseListener,
+        SensorEventListener, Deleteable {
 
     private Sensor proximitySensor;
 
@@ -78,10 +53,6 @@ public class ProximitySensor extends AndroidNonvisibleComponent
 
     // Indicates if the sensor should be running when screen is off (on pause)
     private boolean keepRunningWhenOnPause;
-
-    // Set of observers
-    private final Set<DataSink<ObservableDataSource<String, Float>>> dataSourceObservers
-        = new HashSet<>();
 
     /**
      * Creates a new ProximitySensor component.
@@ -243,11 +214,6 @@ public class ProximitySensor extends AndroidNonvisibleComponent
     @SimpleEvent(description = "Triggered when distance (in cm) of the object to the device changes. ")
     public void ProximityChanged(float distance) {
         this.distance = distance;
-
-        // Notify Data Observers of the changed distance (with null key, since
-        // the key does not matter, since only one value is returned)
-        notifyDataObservers("distance", distance);
-
         EventDispatcher.dispatchEvent(this, "ProximityChanged", this.distance);
     }
 
@@ -262,24 +228,6 @@ public class ProximitySensor extends AndroidNonvisibleComponent
         return distance;
     }
 
-  /**
-   * Returns the default interval between each scan for this probe.
-   */
-  @SimpleProperty(description = "The default interval (in seconds) between each scan for this probe")
-  @Deprecated
-  public float DefaultInterval() {
-    return SCHEDULE_INTERVAL;
-  }
-	
-  /**
-   * Returns the default duration of each scan for this probe.
-   */
-  @SimpleProperty(description = "The default duration (in seconds) of each scan for this probe")
-  @Deprecated
-  public float DefaultDuration() {
-    return SCHEDULE_DURATION;
-  }	
-
     /**
      * Called when the accuracy of the registered sensor has changed
      * @param sensor Sensor
@@ -288,39 +236,5 @@ public class ProximitySensor extends AndroidNonvisibleComponent
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void addDataObserver(DataSink<ObservableDataSource<String, Float>> dataComponent) {
-        dataSourceObservers.add(dataComponent);
-    }
-
-    @Override
-    public void removeDataObserver(DataSink<ObservableDataSource<String, Float>> dataComponent) {
-        dataSourceObservers.remove(dataComponent);
-    }
-
-    @Override
-    public void notifyDataObservers(String key, Object value) {
-        // Notify each Chart Data observer component of the Data value change
-        for (DataSink<ObservableDataSource<String, Float>> dataComponent : dataSourceObservers) {
-            dataComponent.onReceiveValue(this, key, value);
-        }
-    }
-
-    /**
-     * Returns a data value corresponding to the proximity.
-     * distance - distance value
-     *
-     * @param key identifier of the value
-     * @return    Value corresponding to the key, or 0 if key is undefined.
-     */
-    @Override
-    public Float getDataValue(String key) {
-        if (key.equals("distance")) {
-            return distance;
-        } else {
-            return 0f;
-        }
     }
 }

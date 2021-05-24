@@ -68,7 +68,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -892,11 +891,6 @@ public final class Canvas extends AndroidViewComponent implements ComponentConta
   @Override
   public void setChildHeight(AndroidViewComponent component, int height) {
     throw new UnsupportedOperationException("Canvas.setChildHeight() called");
-  }
-
-  @Override
-  public Iterator<AndroidViewComponent> iterator() {
-    return new ArrayList<AndroidViewComponent>().iterator();
   }
 
   // Methods executed when a child sprite has changed its location or appearance

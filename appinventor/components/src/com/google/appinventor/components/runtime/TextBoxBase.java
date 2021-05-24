@@ -35,7 +35,7 @@ import android.widget.EditText;
 
 @SimpleObject
 public abstract class TextBoxBase extends AndroidViewComponent
-    implements OnFocusChangeListener, LDComponent {
+    implements OnFocusChangeListener {
 
   protected final EditText view;
 
@@ -59,9 +59,6 @@ public abstract class TextBoxBase extends AndroidViewComponent
 
   // Backing for text color
   private int textColor;
-
-  // If true, then text box is used for generating a subject uri.
-  private boolean isSubject;
 
   // This is our handle on Android's nice 3-d default textbox.
   private Drawable defaultTextBoxDrawable;
@@ -494,95 +491,4 @@ public abstract class TextBoxBase extends AndroidViewComponent
       LostFocus();
     }
   }
-
-  // START LinkedData
-
-  private String propertyUri;
-  /**
-   * 
-   */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_PROPERTY_URI,
-      defaultValue = "")
-  @SimpleProperty(category = PropertyCategory.LINKED_DATA,
-      description = "<p>Property URI specifies the relationship between a "
-          + "Linked Data Form containing a TextBox, Password, etc. and the "
-          + "component. Common properties include the name properties in the "
-          + "Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, "
-          + "foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), "
-          + "or descriptions (e.g. rdfs:comment, dc:description).</p>")
-  public void PropertyURI(String uri) {
-    this.propertyUri = uri;
-  }
-
-  /**
-   * 
-   */
-  @SimpleProperty
-  public String PropertyURI() {
-    return propertyUri;
-  }
-
-  private String conceptUri = "";
-  /**
-   * ConceptURI getter method.
-   *
-   * @return  concept uri
-   */
-  @SimpleProperty(
-      category = PropertyCategory.LINKED_DATA,
-      description = "<p>Object Type changes how the linked data components "
-          + "interpret the value of the text. If left blank, the system will "
-          + "attempt to intelligently identify the type based on features such "
-          + "as whether the text is a sequence of numbers or begins with "
-          + "&quot;http://&quot;. If no type is specified and one cannot be "
-          + "determined, the string will remain untyped.</p>"
-          + "<p>Recommended values include:</p>"
-          + "<ul>"
-          + "<li>xsd:dateTime - for dates and times</li>"
-          + "<li>xsd:decimal - for decimals (e.g. 3.57)</li>"
-          + "<li>xsd:integer - for integers (e.g. 137)</li>"
-          + "<li>xsd:gYear - for years (e.g. 2001)</li>"
-          + "</ul>")
-  public String ObjectType() {
-    return conceptUri;
-  }
-
-  /**
-   * Concept URI property setter method.
-   *
-   * @param uri concept uri
-   */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_CONCEPT_URI,
-          defaultValue = "")
-  @SimpleProperty
-  public void ObjectType(String uri) {
-    this.conceptUri = uri;
-  }
-
-  public Object Value() {
-    return Text();
-  }
-
-  public void Value(String value) {
-    Text(value);
-  }
-
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN,
-      defaultValue = "False")
-  @SimpleProperty
-  public void SubjectIdentifier(boolean isSubject) {
-    this.isSubject = isSubject;
-  }
-
-  @SimpleProperty(category = PropertyCategory.LINKED_DATA,
-      description = "<p>If the text box is contained in a Linked Data Form and "
-          + "Subject Identifier is checked, then the value of the text box "
-          + "will be used to construct a new Uniform Resource Identifier (URI) "
-          + "when the form is submitted.</p>")
-  @Override
-  public boolean SubjectIdentifier() {
-    return isSubject;
-  }
-
-  // END LinkedData
 }

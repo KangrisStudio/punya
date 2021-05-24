@@ -10,7 +10,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -31,7 +30,6 @@ import com.google.appinventor.components.runtime.util.NougatUtil;
 import com.google.appinventor.components.runtime.util.QUtil;
 import java.io.File;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * ![Camera icon](images/camera.png)
@@ -63,7 +61,6 @@ public class Camera extends AndroidNonvisibleComponent
   private static final String CAMERA_OUTPUT = MediaStore.EXTRA_OUTPUT;
   private final ComponentContainer container;
   private Uri imageFile;
-  private String localStorageFolder;
 
   /* Used to identify the call to startActivityForResult. Will be passed back
   into the resultReturned() callback method. */
@@ -79,12 +76,13 @@ public class Camera extends AndroidNonvisibleComponent
   /**
    * Creates a Camera component.
    *
+   * Camera has a boolean option to request the forward-facing camera via an intent extra.
+   *
    * @param container container, component will be placed in
    */
   public Camera(ComponentContainer container) {
     super(container.$form());
     this.container = container;
-    this.localStorageFolder = Environment.getExternalStorageDirectory() + "/Pictures/";
 
     // Default property values
     UseFront(false);
@@ -98,7 +96,7 @@ public class Camera extends AndroidNonvisibleComponent
   @Deprecated
   @SimpleProperty(category = PropertyCategory.BEHAVIOR)
   public boolean UseFront() {
-    return false;
+    return useFront;
   }
 
   /**
@@ -114,6 +112,7 @@ public class Camera extends AndroidNonvisibleComponent
     + "If the device does not have a front-facing camera, this option will be ignored "
     + "and the camera will open normally.")
   public void UseFront(boolean front) {
+    useFront = front;
   }
 
   /**
@@ -167,6 +166,13 @@ public class Camera extends AndroidNonvisibleComponent
       }
       Intent intent = new Intent(CAMERA_INTENT);
       intent.putExtra(CAMERA_OUTPUT, imageUri);
+
+      // NOTE: This uses an undocumented, testing feature (CAMERA_FACING).
+      // It may not work in the future.
+      if (useFront) {
+        intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
+      }
+
       container.$context().startActivityForResult(intent, requestCode);
     } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
       form.dispatchErrorOccurredEvent(this, "TakePicture",
@@ -205,12 +211,6 @@ public class Camera extends AndroidNonvisibleComponent
       deleteFile(imageFile);
     }
   }
-  
-  @SimpleFunction(description = "Delete local image")
-  public void deleteImage(String image) {
-    Uri imageUri = Uri.parse(image);
-    deleteFile(imageUri);
-  }
 
   /**
    * Scan the newly added picture to be displayed in a default media content provider
@@ -246,16 +246,5 @@ public class Camera extends AndroidNonvisibleComponent
   @SimpleEvent
   public void AfterPicture(String image) {
     EventDispatcher.dispatchEvent(this, "AfterPicture", image);
-  }
-
-  /*
-   * Indicate the folder(directory) in which the photo is stored locally
-   */
-
-  @SimpleProperty(description = "Return the folder(directory) in which we store the photos locally"
-    , category = PropertyCategory.BEHAVIOR )
-  public String LocalStorageFolder(){
-    return this.localStorageFolder;
-
   }
 }

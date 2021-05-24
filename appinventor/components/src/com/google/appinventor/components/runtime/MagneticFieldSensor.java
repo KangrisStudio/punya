@@ -18,7 +18,6 @@ import com.google.appinventor.components.annotations.SimpleEvent;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.annotations.SimpleProperty;
 import com.google.appinventor.components.common.ComponentCategory;
-import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.common.YaVersion;
 
 
@@ -69,7 +68,7 @@ public class MagneticFieldSensor extends AndroidNonvisibleComponent implements S
     return enabled;
   }
 
-  @DesignerProperty(defaultValue = "True", editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN)
+  @DesignerProperty(defaultValue = "True", editorType = "boolean")
   @SimpleProperty
   public void Enabled(boolean localEnabled) {
     if (enabled != localEnabled) {

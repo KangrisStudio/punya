@@ -511,11 +511,10 @@ Blockly.WorkspaceSvg.prototype.verifyAllBlocks = function() {
  * Saves the workspace as an XML file and returns the contents as a
  * string.
  *
- * @param {boolean} prettify Specify true if the resulting workspace should be pretty-printed.
  * @returns {string} XML serialization of the workspace's blocks.
  */
-Blockly.WorkspaceSvg.prototype.saveBlocksFile = function(prettify) {
-  return Blockly.SaveFile.get(prettify, this);
+Blockly.WorkspaceSvg.prototype.saveBlocksFile = function() {
+  return Blockly.SaveFile.get(this);
 };
 
 /**
@@ -1156,7 +1155,7 @@ Blockly.WorkspaceSvg.prototype.buildComponentMap = function(warnings, errors, fo
     if (!block.category) {
       continue;
     }
-    if (block.type == 'procedures_defnoreturn' || block.type == 'procedures_defreturn' || block.type == 'global_declaration' || block.type == 'logic_namespace_decl') {
+    if (block.type == 'procedures_defnoreturn' || block.type == 'procedures_defreturn' || block.type == 'global_declaration') {
       map.globals.push(block);
       // TODO: eventually deal with variable declarations, once we have them
     } else if (block.category == 'Component') {

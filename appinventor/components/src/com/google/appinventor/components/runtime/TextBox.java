@@ -113,7 +113,6 @@ public final class TextBox extends TextBoxBase {
     super(container, new EditText(container.$context()));
     NumbersOnly(false);
     MultiLine(false);
-    SubjectIdentifier(false);
     ReadOnly(false);
 
     // We need to set the IME options here.  Otherwise, Android's default
@@ -244,17 +243,4 @@ public final class TextBox extends TextBoxBase {
   // active, and that may be the best simple thing.  If we implement show keyboard,
   // note that showSoftInputFromWindow seems to open the keyboard only if it
   // has been previously opened and closed.
-
-  // START LinkedData
-
-  @Override
-  public Object Value() {
-    String text = Text();
-    if (acceptsNumbersOnly && text.trim().isEmpty()) {
-      text = "0";
-    }
-    return text;
   }
-
-  // END LinkedData
-}

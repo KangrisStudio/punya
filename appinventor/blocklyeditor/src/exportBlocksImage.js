@@ -38,13 +38,7 @@ goog.require('goog.Timer');
         console.warn("Cannot include styles from other hosts: "+sheets[i].href);
         continue;
       }
-      var rules = null;
-      try {
-        rules = sheets[i].cssRules;
-      } catch (e) {
-        console.warn('Skipping a potentially injected stylesheet', e);
-        continue;
-      }
+      var rules = sheets[i].cssRules;
       if (rules != null) {
         for (var j = 0; j < rules.length; j++) {
           var rule = rules[j];

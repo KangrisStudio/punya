@@ -1243,7 +1243,4 @@
 	"Blockly.Msg.LANG_TEXT_REPLACE_ALL_MAPPINGS_HELPURL_LONGEST_STRING_FIRST": "/reference/blocks/text.html#replaceallmappingslongeststring",
 	"Blockly.Msg.LANG_MATH_NUMBER_RADIX_HELPURL": "/reference/blocks/math.html#number-radix",
 	"Blockly.Msg.LANG_CONTROLS_FOREACH_DICT_HELPURL": "/reference/blocks/control.html#foreachdict",
-
-	"Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL": "/reference/components/charts.html#Chart",
-	"Blockly.Msg.LANG_COMPONENT_BLOCK_CHARTDATA2D_HELPURL": "/reference/components/charts.html#ChartData2D"
 }

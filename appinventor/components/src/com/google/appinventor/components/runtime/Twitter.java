@@ -19,7 +19,6 @@ import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
-import twitter4j.MediaEntity;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import android.content.Context;
@@ -140,9 +139,6 @@ public final class Twitter extends AndroidNonvisibleComponent implements
   private final int requestCode;
   private final ComponentContainer container;
   private final Handler handler;
-  
-  // Logging
-  private final String TAG = "Twitter";
 
   // TODO(sharon): twitter4j apparently has an asynchronous interface
   // (AsynchTwitter).
@@ -527,18 +523,6 @@ public final class Twitter extends AndroidNonvisibleComponent implements
   }
 
   /**
-   * Get the image URL back after TweetwithImage uploads it to TwitPic.
-   */
-  @SimpleEvent(description = "This event is raised when the a twitter message with a picture "
-      + "has been uploaded via <code>TweetWithImage</code>. "
-      + "the uploaded image URL is in the <code>url</code> variable. ")
-  public void ImageUploaded(final String url) {
-    EventDispatcher.dispatchEvent(this, "ImageUploaded", url);
-    return;
-  }
-
-  /**
-   * Tweet with Image, Uploaded to Twitter
    * This sends a tweet as the logged-in user with the specified Text and a path to the image to be
    * uploaded, which will be trimmed if it exceeds 160 characters. If an image is not found or
    * invalid, the update will not be sent.
@@ -561,40 +545,30 @@ public final class Twitter extends AndroidNonvisibleComponent implements
     }
 
     AsynchUtil.runAsynchronously(new Runnable() {
-      String imageUrl;
       public void run() {
         try {
           String cleanImagePath = imagePath;
           // Clean up the file path if necessary
           if (cleanImagePath.startsWith("file://")) {
             cleanImagePath = imagePath.replace("file://", "");
-            Log.d(TAG, "The clean image path is "+ cleanImagePath);
           }
           File imageFilePath = new File(cleanImagePath);
           if (imageFilePath.exists()) {
-        	Log.d(TAG, "The clean image does exist");
             StatusUpdate theTweet = new StatusUpdate(status);
             theTweet.setMedia(imageFilePath);
-            Status st = twitter.updateStatus(theTweet);
-            MediaEntity [] entities = st.getMediaEntities();
-            imageUrl = entities[0].getMediaURLHttps();
-            handler.post(new Runnable() {
-            	@Override
-            	public void run() {
-            		ImageUploaded(imageUrl);
-            	}
-           }); 
+            twitter.updateStatus(theTweet);
           }
           else {
             form.dispatchErrorOccurredEvent(Twitter.this, "TweetWithImage",
-            ErrorMessages.ERROR_TWITTER_INVALID_IMAGE_PATH);
-          } 
+                ErrorMessages.ERROR_TWITTER_INVALID_IMAGE_PATH);
+          }
         } catch (TwitterException e) {
           form.dispatchErrorOccurredEvent(Twitter.this, "TweetWithImage",
               ErrorMessages.ERROR_TWITTER_SET_STATUS_FAILED, e.getMessage());
-        } 
+        }
       }
     });
+
   }
 
   /**

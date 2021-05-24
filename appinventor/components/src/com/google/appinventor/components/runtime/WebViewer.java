@@ -475,8 +475,7 @@ public final class WebViewer extends AndroidViewComponent {
       defaultValue = "False")
   @SimpleProperty(userVisible = false,
       description = "Whether or not to give the application permission to use the Javascript geolocation API. " +
-          "This property is available only in the designer.",
-      category = PropertyCategory.BEHAVIOR)
+          "This property is available only in the designer.")
   public void UsesLocation(boolean uses) {
     // We don't actually do anything here (the work is in the MockWebViewer)
   }
@@ -505,7 +504,7 @@ public final class WebViewer extends AndroidViewComponent {
 
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN,
       defaultValue = "True")
-  @SimpleProperty(userVisible = true, category = PropertyCategory.BEHAVIOR)
+  @SimpleProperty(userVisible = true)
   public void PromptforPermission(boolean prompt) {
     this.prompt = prompt;
   }

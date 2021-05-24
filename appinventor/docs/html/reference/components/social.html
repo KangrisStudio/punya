@@ -133,12 +133,9 @@
 <ul>
   <li><a href="#ContactPicker">ContactPicker</a></li>
   <li><a href="#EmailPicker">EmailPicker</a></li>
-  <li><a href="#GoogleCloudMessaging">GoogleCloudMessaging</a></li>
-  <li><a href="#PebbleSmartWatch">PebbleSmartWatch</a></li>
   <li><a href="#PhoneCall">PhoneCall</a></li>
   <li><a href="#PhoneNumberPicker">PhoneNumberPicker</a></li>
   <li><a href="#Sharing">Sharing</a></li>
-  <li><a href="#Survey">Survey</a></li>
   <li><a href="#Texting">Texting</a></li>
   <li><a href="#Twitter">Twitter</a></li>
 </ul>
@@ -312,16 +309,6 @@
  of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
   <dt id="EmailPicker.Hint" class="text"><em>Hint</em></dt>
   <dd><code class="highlighter-rouge">EmailPicker</code> hint for the user.</dd>
-  <dt id="EmailPicker.ObjectType" class="text"><em>ObjectType</em></dt>
-  <dd>Concept URI property setter method.</dd>
-  <dt id="EmailPicker.PropertyURI" class="text"><em>PropertyURI</em></dt>
-  <dd>
-    <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-  </dd>
-  <dt id="EmailPicker.SubjectIdentifier" class="boolean"><em>SubjectIdentifier</em></dt>
-  <dd>
-    <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
-  </dd>
   <dt id="EmailPicker.Text" class="text"><em>Text</em></dt>
   <dd>The text in the <code class="highlighter-rouge">EmailPicker</code>, which can be set by the programmer in the Designer or Blocks Editor,
  or it can be entered by the user (unless the <a href="#EmailPicker.Enabled"><code class="highlighter-rouge">Enabled</code></a> property is false).</dd>
@@ -359,76 +346,6 @@
 <dl class="methods">
   <dt id="EmailPicker.RequestFocus" class="method"><i></i> RequestFocus()</dt>
   <dd>Request focus to current <code class="highlighter-rouge">EmailPicker</code>.</dd>
-</dl>
-
-<h2 id="GoogleCloudMessaging">GoogleCloudMessaging</h2>
-
-<p>Component for GoogleCloudMessaging</p>
-
-<h3 id="GoogleCloudMessaging-Properties">Properties</h3>
-
-<dl class="properties">
-  <dt id="GoogleCloudMessaging.PhoneNumber" class="text wo"><em>PhoneNumber</em></dt>
-  <dd>Property for PhoneNumber</dd>
-  <dt id="GoogleCloudMessaging.RegId" class="text ro bo"><em>RegId</em></dt>
-  <dd>Property for RegId</dd>
-  <dt id="GoogleCloudMessaging.ReturnMessage" class="text ro bo"><em>ReturnMessage</em></dt>
-  <dd>Property for ReturnMessage</dd>
-  <dt id="GoogleCloudMessaging.SenderID" class="text"><em>SenderID</em></dt>
-  <dd>Property for SenderID</dd>
-  <dt id="GoogleCloudMessaging.ServerURL" class="text"><em>ServerURL</em></dt>
-  <dd>Property for ServerURL</dd>
-  <dt id="GoogleCloudMessaging.phoneNumber" class="text ro bo"><em>phoneNumber</em></dt>
-  <dd>Property for phoneNumber</dd>
-</dl>
-
-<h3 id="GoogleCloudMessaging-Events">Events</h3>
-
-<dl class="events">
-  <dt id="GoogleCloudMessaging.GCMInfoReceived">GCMInfoReceived()</dt>
-  <dd>Indicates that the GCM info has been received.</dd>
-  <dt id="GoogleCloudMessaging.GotResponseFromServer">GotResponseFromServer(<em class="text">url</em>,<em class="number">responseCode</em>,<em class="text">responseType</em>,<em class="text">responseContent</em>)</dt>
-  <dd>Event indicating that a SendMessageToServer call has finished.</dd>
-  <dt id="GoogleCloudMessaging.RegInfoReceived">RegInfoReceived()</dt>
-  <dd>Indicates when the server registration has been successful.</dd>
-</dl>
-
-<h3 id="GoogleCloudMessaging-Methods">Methods</h3>
-
-<dl class="methods">
-  <dt id="GoogleCloudMessaging.CreateNotification" class="method"><i></i> CreateNotification(<em class="text">title</em>,<em class="text">text</em>,<em class="boolean">enabledSound</em>,<em class="boolean">enabledVibrate</em>,<em class="text">packageName</em>,<em class="text">className</em>,<em class="text">extraKey</em>,<em class="text">extraVal</em>)</dt>
-  <dd>Create a notication with message to wake up another activity when tap on the notification</dd>
-  <dt id="GoogleCloudMessaging.Enabled" class="method"><i></i> Enabled(<em class="boolean">enable</em>)</dt>
-  <dd>Enable Google Cloud Messaging to receive push notification</dd>
-  <dt id="GoogleCloudMessaging.Register" class="method"><i></i> Register()</dt>
-  <dd>Authenticate to Google Cloud Messaging</dd>
-  <dt id="GoogleCloudMessaging.SendMessageToServer" class="method"><i></i> SendMessageToServer(<em class="text">text</em>)</dt>
-  <dd>Performs an HTTP POST request using the GCM Server url property and the specified text.</dd>
-  <dt id="GoogleCloudMessaging.UnRegister" class="method"><i></i> UnRegister()</dt>
-  <dd>Remove authentication for this app instance</dd>
-  <dt id="GoogleCloudMessaging.isRegistered" class="method returns boolean"><i></i> isRegistered()</dt>
-  <dd>Method for isRegistered</dd>
-  <dt id="GoogleCloudMessaging.isServiceReady" class="method returns boolean"><i></i> isServiceReady()</dt>
-  <dd>Method for isServiceReady</dd>
-</dl>
-
-<h2 id="PebbleSmartWatch">PebbleSmartWatch</h2>
-
-<p>Component for PebbleSmartWatch</p>
-
-<h3 id="PebbleSmartWatch-Properties">Properties</h3>
-
-<p class="properties">None</p>
-
-<h3 id="PebbleSmartWatch-Events">Events</h3>
-
-<p class="events">None</p>
-
-<h3 id="PebbleSmartWatch-Methods">Methods</h3>
-
-<dl class="methods">
-  <dt id="PebbleSmartWatch.SendMessageToPebble" class="method"><i></i> SendMessageToPebble(<em class="number">iconId</em>,<em class="boolean">vibrate</em>,<em class="text">message</em>)</dt>
-  <dd>Send a text message to the pebble.</dd>
 </dl>
 
 <h2 id="PhoneCall">PhoneCall</h2>
@@ -653,59 +570,6 @@
   <dd>Shares a message through any capable application installed on the phone by displaying a list of the available apps and allowing the user to choose one from the list. The selected app will open with the message inserted on it.</dd>
 </dl>
 
-<h2 id="Survey">Survey</h2>
-
-<p>Component for displaying surveys
- This component makes use of Android WebView to display survey question. AI Developer could
- customize survey question and survey types. After the questions are answered, 
- they will be saved into local database and upload to remote server (Trust Framework).
- For simplicity, there’s only one question in one survey component</p>
-
-<h3 id="Survey-Properties">Properties</h3>
-
-<dl class="properties">
-  <dt id="Survey.DBName" class="text ro bo"><em>DBName</em></dt>
-  <dd>Property for DBName</dd>
-  <dt id="Survey.ExportFolderPath" class="text ro bo"><em>ExportFolderPath</em></dt>
-  <dd>Get the export path for survey results</dd>
-  <dt id="Survey.Height" class="number bo"><em>Height</em></dt>
-  <dd>Specifies the <code class="highlighter-rouge">Survey</code>’s vertical height, measured in pixels.</dd>
-  <dt id="Survey.HeightPercent" class="number wo bo"><em>HeightPercent</em></dt>
-  <dd>Specifies the <code class="highlighter-rouge">Survey</code>’s vertical height as a percentage
- of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
-  <dt id="Survey.SetQuestion" class="text wo bo"><em>SetQuestion</em></dt>
-  <dd>Property for SetQuestion</dd>
-  <dt id="Survey.SetStyle" class="number wo"><em>SetStyle</em></dt>
-  <dd>Sets the style of the survey</dd>
-  <dt id="Survey.SetSurveyGroup" class="text wo bo"><em>SetSurveyGroup</em></dt>
-  <dd>Property for SetSurveyGroup</dd>
-  <dt id="Survey.Visible" class="boolean"><em>Visible</em></dt>
-  <dd>Specifies whether the <code class="highlighter-rouge">Survey</code> should be visible on the screen.  Value is <code class="logic block highlighter-rouge">true</code>
- if the <code class="highlighter-rouge">Survey</code> is showing and <code class="logic block highlighter-rouge">false</code> if hidden.</dd>
-  <dt id="Survey.Width" class="number bo"><em>Width</em></dt>
-  <dd>Specifies the horizontal width of the <code class="highlighter-rouge">Survey</code>, measured in pixels.</dd>
-  <dt id="Survey.WidthPercent" class="number wo bo"><em>WidthPercent</em></dt>
-  <dd>Specifies the horizontal width of the <code class="highlighter-rouge">Survey</code> as a percentage
- of the <a href="userinterface.html#Screen.Width"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Width</code></a>.</dd>
-</dl>
-
-<h3 id="Survey-Events">Events</h3>
-
-<p class="events">None</p>
-
-<h3 id="Survey-Methods">Methods</h3>
-
-<dl class="methods">
-  <dt id="Survey.DeleteSurveyDB" class="method"><i></i> DeleteSurveyDB()</dt>
-  <dd>This will clean up the survey database on the smartphone</dd>
-  <dt id="Survey.Export" class="method"><i></i> Export(<em class="text">format</em>)</dt>
-  <dd>Export Survey results database as CSV files or JSON files.Input “csv” or “json” for exporting format.</dd>
-  <dt id="Survey.LoadSurvey" class="method"><i></i> LoadSurvey()</dt>
-  <dd>Set survey style, set question beforecall LoadSurvey</dd>
-  <dt id="Survey.SetOptions" class="method"><i></i> SetOptions(<em class="list">options</em>)</dt>
-  <dd>For survey style MultipleChoice, ChooseList, CheckBox and ScalePassuse this to pass in options for survey answers. Note for Scale, only three options should be passed in and in the order of “min”, “max”, “default” value of the scale</dd>
-</dl>
-
 <h2 id="Texting">Texting</h2>
 
 <p><img src="images/texting.png" alt="Texting component icon" /></p>
@@ -911,8 +775,6 @@
  been retrieved. The <code class="variable block highlighter-rouge">timeline</code> parameter and the <a href="#Twitter.FriendTimeline"><code class="highlighter-rouge">FriendTimeline</code></a>
  property will contain a list of lists, where each sub-list contains a status update of the
  form (username message).</dd>
-  <dt id="Twitter.ImageUploaded">ImageUploaded(<em class="text">url</em>)</dt>
-  <dd>Get the image URL back after TweetwithImage uploads it to TwitPic.</dd>
   <dt id="Twitter.IsAuthorized">IsAuthorized()</dt>
   <dd>This event is raised after the program calls <a href="#Twitter.Authorize"><code class="highlighter-rouge">Authorize</code></a> if the authorization was
  successful. It is also called after a call to <a href="#Twitter.CheckAuthorized"><code class="highlighter-rouge">CheckAuthorized</code></a> if we already have a
@@ -983,8 +845,7 @@
  been raised, indicating that the user has successfully logged in to Twitter.</p>
   </dd>
   <dt id="Twitter.TweetWithImage" class="method"><i></i> TweetWithImage(<em class="text">status</em>,<em class="text">imagePath</em>)</dt>
-  <dd>Tweet with Image, Uploaded to Twitter
- This sends a tweet as the logged-in user with the specified Text and a path to the image to be
+  <dd>This sends a tweet as the logged-in user with the specified Text and a path to the image to be
  uploaded, which will be trimmed if it exceeds 160 characters. If an image is not found or
  invalid, the update will not be sent.
 

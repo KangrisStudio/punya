@@ -21,6 +21,7 @@
 
   <target name="tests"
           depends="BuildServerTests">
+
   </target>
 
   <!-- =====================================================================
@@ -47,7 +48,7 @@
        the jars needed to compile the build server classes.
        ===================================================================== -->
   <target name="BuildServer"
-          depends="init,CopyToRunLibDir,components_AndroidRuntime,components_Barcode">
+          depends="init,CopyToRunLibDir,components_AndroidRuntime">
     <property name="BuildServer-class.dir" location="${class.dir}/BuildServer" />
     <mkdir dir="${BuildServer-class.dir}" />
 
@@ -63,7 +64,7 @@
     <copy todir="${classes.files.dir}" flatten="true">
       <fileset dir="${src.dir}/${buildserver.pkg}/resources" includes="*"/>
       <fileset dir="${build.dir}/components"
-               includes="AndroidRuntime.jar,Barcode.jar,simple_components.txt,simple_components_build_info.json,simple_components.json"/>
+               includes="AndroidRuntime.jar,simple_components.txt,simple_components_build_info.json,simple_components.json"/>
       <!-- Map assets for build server -->
       <fileset dir="${lib.dir}/leaflet" includes="leaflet.js,leaflet.css" />
       <fileset dir="${lib.dir}/leaflet/assets" includes="*"/>
@@ -175,7 +176,7 @@
   <target name="CheckPlayApp"
           depends="GenPlayAppSrcZip,BuildServer">
     <property name="ext" value="apk"/>
-    <uptodate property="PlayApp.uptodate" targetfile="${public.build.dir}/MIT Punya Companion.${ext}">
+    <uptodate property="PlayApp.uptodate" targetfile="${public.build.dir}/MIT AI2 Companion.${ext}">
       <srcfiles file="${local.build.dir}/aiplayapp.zip"/>
       <srcfiles dir="${run.lib.dir}" includes="*.jar"/>
     </uptodate>
@@ -199,7 +200,7 @@
       <sysproperty key="file.encoding" value="UTF-8" />
       <jvmarg value="-Djava.awt.headless=true" />
       <arg value="--childProcessRamMb" />
-      <arg value="4096" />
+      <arg value="2048" />
       <arg value="--inputZipFile" />
       <arg value="${local.build.dir}/aiplayapp.zip" />
       <arg value="--userName" />
@@ -239,7 +240,7 @@
       <sysproperty key="file.encoding" value="UTF-8" />
       <jvmarg value="-Djava.awt.headless=true" />
       <arg value="--childProcessRamMb" />
-      <arg value="4096" />
+      <arg value="2048" />
       <arg value="--inputZipFile" />
       <arg value="${local.build.dir}/aiplayapp.zip" />
       <arg value="--userName" />
@@ -277,7 +278,7 @@
       <sysproperty key="file.encoding" value="UTF-8" />
       <jvmarg value="-Djava.awt.headless=true" />
       <arg value="--childProcessRamMb" />
-      <arg value="4096" />
+      <arg value="2048" />
       <arg value="--inputZipFile" />
       <arg value="${local.build.dir}/aiplayapp.zip" />
       <arg value="--userName" />
@@ -303,7 +304,7 @@
   <target name="installplay"
           depends="PlayApp">
     <exec executable="adb" failonerror="false">
-      <arg line="uninstall edu.mit.appinventor.punya.aicompanion3" />
+      <arg line="uninstall edu.mit.appinventor.aicompanion3" />
     </exec>
     <exec executable="adb" failonerror="true">
       <arg line='install "${public.build.dir}/MIT AI2 Companion.apk"' />

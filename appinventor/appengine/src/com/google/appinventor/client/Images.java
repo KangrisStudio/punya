@@ -7,7 +7,6 @@
 package com.google.appinventor.client;
 
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.resources.client.ClientBundle.Source;
 import com.google.gwt.user.client.ui.Tree.Resources;
 
 /**
@@ -64,76 +63,10 @@ public interface Images extends Resources {
   ImageResource close();
 
   /**
-   * Phone status bar for Android Holo shown above the form in the visual designer
+   * Phone status bar shown above the form in the visual designer
    */
   @Source("com/google/appinventor/images/phonebar.png")
   ImageResource phonebar();
-
-  /**
-   * Phone status bar for the Android Material form in the visual designer
-   */
-  @Source("com/google/appinventor/images/phonebarAndroidMaterial.png")
-  ImageResource phonebarAndroidMaterial();
-
-  /**
-   * Phone status bar for iPhone containing white left side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPhoneLeftWhiteFB.png")
-  ImageResource phonebariPhoneLeftWhite();
-
-  /**
-   * Phone status bar for iPhone containing white right side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPhoneRightWhite.png")
-  ImageResource phonebariPhoneRightWhite();
-
-  /**
-   * Phone status bar for iPhone containing black left side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPhoneLeftBlack.png")
-  ImageResource phonebariPhoneLeftBlack();
-
-  /**
-   * Phone status bar for iPhone containing black right side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPhoneRightBlack.png")
-  ImageResource phonebariPhoneRightBlack();
-
-  /**
-   * Phone status bar for iPad containing black left side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPadBlackFB.png")
-  ImageResource phonebariPadLeftBlack();
-
-  /**
-   * Phone status bar for iPad containing black right side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPadRightBlack.png")
-  ImageResource phonebariPadRightBlack();
-
-  /**
-   * Phone status bar for iPad containing white left side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPadLeftWhiteFB.png")
-  ImageResource phonebariPadLeftWhite();
-
-  /**
-   * Phone status bar for iPad containing white right side icons in the visual designer
-   */
-  @Source("com/google/appinventor/images/iPadRightWhite.png")
-  ImageResource phonebariPadRightWhite();
-
-  /**
-   * Phone status bar containing white book icon for the iOS form in the visual designer
-   */
-  @Source("com/google/appinventor/images/iOSBookmarkWhite.png")
-  ImageResource bookIconWhite();
-
-  /**
-   * Phone status bar containing black book icon for the iOS form in the visual designer
-   */
-  @Source("com/google/appinventor/images/iOSBookmarkBlack.png")
-  ImageResource bookIconBlack();
 
   /**
    * Spinning/wait graphic to indicate long-running operations.
@@ -287,9 +220,7 @@ public interface Images extends Resources {
    */
   @Source("com/google/appinventor/images/orientationsensor.png")
   ImageResource orientationsensor();
-  
 
-  
   /**
    * Designer palette item: player component
    */
@@ -483,12 +414,6 @@ public interface Images extends Resources {
   ImageResource firebaseDB();
 
   /**
-   * Designer palette item: GraphQL component
-   */
-  @Source("com/google/appinventor/images/graphQL.png")
-  ImageResource graphQL();
-
-  /**
    * Designer palette item: TextToSpeech component
    */
   @Source("com/google/appinventor/images/textToSpeech.png")
@@ -511,24 +436,13 @@ public interface Images extends Resources {
    */
   @Source("com/google/appinventor/images/pedometer.png")
   ImageResource pedometerComponent();
-  
+
   /**
    * Designer pallete item: PhoneStatus Component
    */
   @Source("com/google/appinventor/images/phoneip.png")
   ImageResource phonestatusComponent();
-  /**
-   * Designer palette item: TelephonyInfo Component
-   */
-  @Source("com/google/appinventor/images/info.png")
-  ImageResource telephonyInfo();
-  
-  /**
-   * Designer palette item: GogoleCloudMessaging Component
-   */
-  @Source("com/google/appinventor/images/googleCloudMessaging.png")
-  ImageResource googleCloudMessaging();
-  
+
   /**
    * Designer palette item: Lego Mindstorms NXT components
    */
@@ -632,169 +546,6 @@ public interface Images extends Resources {
    */
   @Source("com/google/appinventor/images/procedures.png")
   ImageResource procedures();
-  
-  
-  /**
-  * Designer palette item: Google Map component
-  */
-  @Source("com/google/appinventor/images/gmap.png")
-  ImageResource googlemap();
-
-  /**
-  * Designer item: GoogleMap component in designer
-  *
-  */
-  @Source("com/google/appinventor/images/gmapBig.png")
-  ImageResource googleMapBig();
-  
-  /**
-  * Designer palette item: Graph component
-  */
-  @Source("com/google/appinventor/images/graph.png")
-  ImageResource graph();
-
-  /**
-  * Designer item: Graph component in designer
-  *
-  */
-  @Source("com/google/appinventor/images/graphBig.png")
-  ImageResource graphBig();
-  
-
-  /**
-   * Designer palette item: WifiSensor component
-   */
-  @Source("com/google/appinventor/images/wifiProbe.png")
-  ImageResource wifiSensor();
-
-  /**
-   * Designer palette item: socialProximitysensor component
-   */
-  @Source("com/google/appinventor/images/socialProximitysensor.png")
-  ImageResource socialProximitysensor();
-  
-  /**
-   * Designer palette item: ActivityProbeSensor component 
-   */
-  @Source("com/google/appinventor/images/activityProbe.png")
-  ImageResource activityProbeSensor();
-  
-  /**
-   * Designer palette item: BatterySensor component
-   */
-  @Source("com/google/appinventor/images/batterySensor.png")
-  ImageResource batterySensor();
-  
-  /**
-   * Designer palette item: CallLogHistory component
-   */
-  @Source("com/google/appinventor/images/calllogProbe.png")
-  ImageResource calllogHistory();
-  
-  /**
-   * Designer palette item: CellTowerProbeSensor component
-   */
-  @Source("com/google/appinventor/images/cellTowerProbe.png")
-  ImageResource cellTowerProbeSensor();
-  
-  /**
-   * Designer palette item: LightSensor component
-   */
-  @Source("com/google/appinventor/images/lightsensorProbe.png")
-  ImageResource lightSensor();
-  
-  /**
-   * Designer palette item: LocationProbe component
-   */
-  @Source("com/google/appinventor/images/locationProbe.png")
-  ImageResource locationProbeSensor();
-  
-  /**
-   * Designer palette item: PedometerSensor component
-   */
-  @Source("com/google/appinventor/images/pedometerSensor.png")
-  ImageResource pedometerSensor();
-  
-  /**
-   * Designer palette item: RunningApplications component
-   */
-  @Source("com/google/appinventor/images/runningAppsProbe.png")
-  ImageResource runningApps();
-  
-  /**
-   * Designer palette item: ScreenStatus component
-   */
-  @Source("com/google/appinventor/images/screenProbe.png")
-  ImageResource screenStatus();
-  
-  /**
-   * Designer palette item: SmsHistory component
-   */
-  @Source("com/google/appinventor/images/smsProbe.png")
-  ImageResource smsHistory();
-  
-  
-  /**
-   * Designer palette item: Timer component
-   */
-  @Source("com/google/appinventor/images/timer.png")
-  ImageResource timer();
-  
-
-  /**
-   * Designer item: Dropbox component in designer
-   * 
-   */
-  @Source("com/google/appinventor/images/dropbox.png")
-  ImageResource dropbox();
-  
-  /**
-   * Designer palette item: Survey component
-   */
-  @Source("com/google/appinventor/images/survey.png")
-  ImageResource survey();
-  
-  
-  /**
-   * Designer item: Survey component in designer
-   */
-
-  @Source("com/google/appinventor/images/surveybig.png")
-  ImageResource surveybig();
-  
-  /**
-   * Designer item: GoogleDrive component in designer
-   * 
-   */
-  @Source("com/google/appinventor/images/googledrive.png")
-  ImageResource googledrive();
-  
-  /**
-   * Designer palette item: Semantic Web Component
-   */
-  @Source("com/google/appinventor/images/semanticWeb.png")
-  ImageResource semanticWeb();
-
-  /**
-   * Designer palette item: Semantic Forms Layout
-   */
-  @Source("com/google/appinventor/images/semanticForm.png")
-  ImageResource semanticForm();
-
-  /**
-   * Designer item: ContactInfo component in designer
-   * 
-   */
-  @Source("com/google/appinventor/images/people.png")
-  ImageResource contactInfo();
-  
-  /**
-   * Designer item: Pebble component in designer
-   * 
-   */
-  @Source("com/google/appinventor/images/pebble.png")
-  ImageResource pebbleSmartWatch();
-
   /**
     * Designer palette item: MediaStore
     */
@@ -884,9 +635,6 @@ public interface Images extends Resources {
    */
   @Source("com/google/appinventor/images/arduino.png")
   ImageResource arduino();
-
-  @Source("com/google/appinventor/images/reasoner.png")
-  ImageResource reasoner();
   
   /**
    * Media icon: image
@@ -919,22 +667,10 @@ public interface Images extends Resources {
   ImageResource navigationComponent();
 
   /**
-  * RdfNotepad Logo
+  * Wilson Logo 
   */
-  @Source("com/google/appinventor/images/rdfnotepad.png")
-  ImageResource rdfNotepad();
-
-  /**
-   * SleepApnea Logo
-   */
-  @Source("com/google/appinventor/images/rules.png")
-  ImageResource sleepApnea();
-
-  /**
-   * LDP-CoAP logo
-   */
-  @Source("com/google/appinventor/images/ldpCoap.png")
-  ImageResource ldpCoap();
+  @Source("com/google/appinventor/images/wilson.png")
+  ImageResource wilson();
 
   /**
   * Talk to Me Logo
@@ -947,30 +683,6 @@ public interface Images extends Resources {
   */
   @Source("com/google/appinventor/images/YRLogo.png")
   ImageResource YRLogo();
-
-  /**
-   * Designer palette item: LDP-CoAP Client component
-   */
-  @Source("com/google/appinventor/images/ldpcoapclient.png")
-  ImageResource ldpCoapClient();
-
-  /**
-   * Designer palette item: Chart
-   */
-  @Source("com/google/appinventor/images/chart.png")
-  ImageResource chart();
-
-  /**
-   * Designer palette item: ChartData2D
-   */
-  @Source("com/google/appinventor/images/chartData.png")
-  ImageResource chartData2D();
-
-  /**
-   * Designer palette item: DataFile
-   */
-  @Source("com/google/appinventor/images/dataFile.png")
-  ImageResource dataFile();
 
   /**
    * Download app icon

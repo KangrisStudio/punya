@@ -45,7 +45,6 @@ import com.google.common.collect.Sets;
 import java.io.IOException;
 import java.io.Writer;
 
-import java.lang.annotation.AnnotationTypeMismatchException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -636,10 +635,6 @@ public abstract class ComponentProcessor extends AbstractProcessor {
         return WRITE_ONLY;
       }
     }
-
-    protected PropertyCategory getCategory() {
-      return propertyCategory;
-    }
   }
 
   /**
@@ -792,11 +787,7 @@ public abstract class ComponentProcessor extends AbstractProcessor {
             elementUtils.getDocComment(element),
             elementUtils.getDocComment(element),
             "Component", false, elementUtils.isDeprecated(element));
-      String type = element.asType().toString();
-      if (type.contains("<")) {
-        type = type.split("<")[0];
-      }
-      this.type = type;
+      type = element.asType().toString();
       displayName = getDisplayNameForComponentType(name);
       permissions = Sets.newHashSet();
       conditionalPermissions = Maps.newTreeMap();
@@ -874,13 +865,7 @@ public abstract class ComponentProcessor extends AbstractProcessor {
           }
 
           category = designerComponentAnnotation.category().getName();
-          if (category.isEmpty()) {
-            throw new IllegalArgumentException(name);
-          }
           categoryString = designerComponentAnnotation.category().toString();
-          if (categoryString.isEmpty()) {
-            throw new IllegalArgumentException(name);
-          }
           version = designerComponentAnnotation.version();
           showOnPalette = designerComponentAnnotation.showOnPalette();
           nonVisible = designerComponentAnnotation.nonVisible();
@@ -1139,10 +1124,6 @@ public abstract class ComponentProcessor extends AbstractProcessor {
 
     // If we already processed this component, return early.
     String longComponentName = ((TypeElement) element).getQualifiedName().toString();
-    // Remove generic information if present
-    if (longComponentName.contains("<")) {
-      longComponentName = longComponentName.split("<")[0];
-    }
     if (components.containsKey(longComponentName)) {
       return;
     }
@@ -2080,10 +2061,6 @@ public abstract class ComponentProcessor extends AbstractProcessor {
     }
 
     // Check if it's a component.
-    if (type.contains("<")) {
-      // Remove generic information
-      type = type.split("<")[0];
-    }
     if (componentTypes.contains(type)) {
       return "component";
     }

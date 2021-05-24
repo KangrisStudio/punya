@@ -67,17 +67,13 @@ Blockly.SaveFile.load = function(preUpgradeFormJson, blocksContent) {
  * get is called prior to writing out. Original ai2 apps had no versions in them
  *   so now we write out every time
  *
- * @param {boolean} prettify Specify true if the workspace should be pretty printed.
- * @param {?Blockly.WorkspaceSvg} opt_workspace The workspace to serialize. If none is given,
- *     Blockly.mainWorkspace will be serialized.
- * @return {string} XML serialization of the workspace
 */
-Blockly.SaveFile.get = function(prettify, opt_workspace) {
+Blockly.SaveFile.get = function(opt_workspace) {
   var workspace = opt_workspace || Blockly.mainWorkspace;
   var xml = Blockly.Xml.workspaceToDom(workspace, false);
   var element = goog.dom.createElement('yacodeblocks');
   element.setAttribute('ya-version',top.YA_VERSION);
   element.setAttribute('language-version',top.BLOCKS_VERSION);
   xml.appendChild(element);
-  return prettify ? Blockly.Xml.domToPrettyText(xml) : Blockly.Xml.domToText(xml);
+  return Blockly.Xml.domToPrettyText(xml);
 };

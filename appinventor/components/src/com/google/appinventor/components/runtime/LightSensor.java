@@ -3,6 +3,7 @@
 // Released under the Apache License, Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 
+
 package com.google.appinventor.components.runtime;
 
 import com.google.appinventor.components.annotations.DesignerComponent;
@@ -34,11 +35,6 @@ import android.hardware.SensorManager;
 @SimpleObject
 public class LightSensor extends BufferedSingleValueSensor {
   private static final int BUFFER_SIZE = 10;
-  private volatile long timestamp;
-
-  //default settings for schedule
-  private final int SCHEDULE_INTERVAL = 1800; //read illuminances every 1800 seconds (30 minutes)
-  private final int SCHEDULE_DURATION = 15; //scan for 15 seconds everytime
 
   /**
    * Creates a new LightSensor component.
@@ -51,7 +47,6 @@ public class LightSensor extends BufferedSingleValueSensor {
 
   @Override
   protected void onValueChanged(float value) {
-    timestamp = System.currentTimeMillis();
     LightChanged(value);
   }
   
@@ -86,31 +81,5 @@ public class LightSensor extends BufferedSingleValueSensor {
   @SimpleProperty(description = "The average of the 10 most recent light levels measured, in lux.")
    public float AverageLux() {
     return getAverageValue();
-  }
-
-  /**
-   * Returns the timestamp of latest reading.
-   */
-  @SimpleProperty(description = "The timestamp of this sensor event.")
-  public float Timestamp() {
-    return timestamp;
-  }
-	
-  /**
-   * Returns the default interval between each scan for this probe.
-   */
-  @SimpleProperty(description = "The default interval (in seconds) between each scan for this probe")
-  @Deprecated
-  public float DefaultInterval() {
-    return SCHEDULE_INTERVAL;
-  }
-	
-  /**
-   * Returns the default duration of each scan for this probe
-   */
-  @SimpleProperty(description = "The default duration (in seconds) of each scan for this probe")
-  @Deprecated
-  public float DefaultDuration() {
-    return SCHEDULE_DURATION;
   }
 }

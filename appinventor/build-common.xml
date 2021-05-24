@@ -64,7 +64,7 @@
   <property name="class.dir" location="${local.build.dir}/classes" />
 
   <!-- reports.dir is the directory for testing reports created by junitreport. This
-       directory is different for each project.
+       directory is different for each project. 
        -->
   <property name="reports.dir" location="${basedir}/reports"/>
 
@@ -154,7 +154,7 @@
         which libaries are needed to compile the tests, and one called
         ${aij-testingtarget}.path as the libraries needed to run the
         tests.
-
+   
           aij-dir: the package and subdirectory containing the tests,
         e.g.  ${appinventor.pkg}/server
 
@@ -170,7 +170,6 @@
   <macrodef name="ai.dojunit">
     <attribute name="aij-testingtarget" />
     <attribute name="aij-dir" />
-    <attribute name="aij-forkmode" default="once" />
     <attribute name="aij-prod" default="false" />
     <!-- The following element is used to workaround a bug in older JDKs that prevents
          Robolectric's annotations from being read by javac -->
@@ -208,7 +207,7 @@
       <junit printsummary="yes"
              fork="true"
              dir="${basedir}"
-             forkmode="@{aij-forkmode}"
+             forkmode="once"
              haltonfailure="no"
              maxmemory="925m"
              showoutput="no">
@@ -225,7 +224,6 @@
         <batchtest todir="${reports.dir}/raw/" unless="test_name">
           <fileset dir="${tests.dir}">
             <include name="@{aij-dir}/**/*Test.java" />
-            <exclude name="@{aij-dir}/**/Abstract*Test.java" />
           </fileset>
         </batchtest>
       </junit>
@@ -286,7 +284,7 @@
        blocklyeditor_BlocklyCompile builds:
        - build/blockly-all.js
        ==================================================================== -->
-
+  
   <target name="blocklyeditor_BlocklyCompile">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/blocklyeditor"
          target="BlocklyCompile"/>
@@ -306,7 +304,7 @@
        - build/common/CommonUtils.jar
        - build/common/CommonUtils-gwt.jar
        ==================================================================== -->
-
+  
   <target name="common_CommonUtils">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/common"
          target="CommonUtils"/>
@@ -317,7 +315,7 @@
        - build/common/CommonVersion.jar
        - build/common/CommonVersion-gwt.jar
        ==================================================================== -->
-
+  
   <target name="common_CommonVersion">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/common"
          target="CommonVersion"/>
@@ -327,30 +325,20 @@
        common_CommonTestUtils builds:
        - build/common/CommonTestUtils.jar
        ==================================================================== -->
-
+  
   <target name="common_CommonTestUtils">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/common"
          target="CommonTestUtils"/>
   </target>
-
+  
   <!-- ====================================================================
        components_AndroidRuntime builds:
        - build/components/AndroidRuntime.jar
        ==================================================================== -->
-
+  
   <target name="components_AndroidRuntime">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/components"
          target="AndroidRuntime"/>
-  </target>
-
-  <!-- ====================================================================
-       components_Barcode builds:
-       - build/components/Barcode.jar
-       ==================================================================== -->
-  
-  <target name="components_Barcode">
-    <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/components"
-         target="Barcode"/>
   </target>
 
   <!-- ====================================================================
@@ -358,7 +346,7 @@
        - build/components/CommonConstants.jar
        - build/components/CommonConstants-gwt.jar
        ==================================================================== -->
-
+  
   <target name="components_CommonConstants">
     <ant inheritAll="false" useNativeBasedir="true" dir="${appinventor.dir}/components"
          target="CommonConstants"/>

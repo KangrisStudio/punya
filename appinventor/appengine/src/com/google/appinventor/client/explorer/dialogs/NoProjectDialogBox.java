@@ -46,11 +46,11 @@ public class NoProjectDialogBox extends DialogBox {
   @UiField
   Button closeDialogBox;
   @UiField
-  Button goToApp1;
+  Button goToPurr;
   @UiField
-  Button goToApp2;
+  Button goToTalk;
   @UiField
-  Button goToApp3;
+  Button goToYR;
   @UiField
   Button noDialogNewProject;
 
@@ -73,22 +73,22 @@ public class NoProjectDialogBox extends DialogBox {
     this.hide();
   }
 
-  @UiHandler("goToApp1")
+  @UiHandler("goToPurr")
   void handleGoToPurr(ClickEvent e) {
     this.hide();
-    new TemplateUploadWizard().createProjectFromExistingZip("RdfNotepad", new NewTutorialProject());
+    new TemplateUploadWizard().createProjectFromExistingZip("HelloPurr", new NewTutorialProject());
   }
 
-  @UiHandler("goToApp2")
+  @UiHandler("goToTalk")
   void handleGoToTalk(ClickEvent e) {
     this.hide();
-    new TemplateUploadWizard().createProjectFromExistingZip("SleepApnea", new NewTutorialProject());
+    TemplateUploadWizard.openProjectFromTemplate("http://appinventor.mit.edu/yrtoolkit/yr/aiaFiles/talk_to_me/TalkToMe.asc", new NewTutorialProject());
   }
 
-  @UiHandler("goToApp3")
+  @UiHandler("goToYR")
   void handleGoToYR(ClickEvent e) {
     this.hide();
-    new TemplateUploadWizard().createProjectFromExistingZip("LdpCoapTutorial", new NewTutorialProject());
+    TemplateUploadWizard.openProjectFromTemplate("http://appinventor.mit.edu/yrtoolkit/yr/aiaFiles/hello_bonjour/translate_tutorial.asc", new NewTutorialProject());
   }
 
   @UiHandler("noDialogNewProject")

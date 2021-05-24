@@ -21,7 +21,6 @@ abstract class MockToggleBase<T extends Widget> extends MockWrapper {
 
   // Set toggle widget in child classes
   protected T toggleWidget;
-  protected boolean enabled;
 
   public MockToggleBase(SimpleEditor editor, String type, ImageResource icon) {
     super(editor, type, icon);
@@ -38,17 +37,6 @@ abstract class MockToggleBase<T extends Widget> extends MockWrapper {
     changeProperty(PROPERTY_NAME_TEXT, MESSAGES.textPropertyValue(getName()));
   }
 
-  @Override
-  int getHeightHint() {
-    int hint = super.getHeightHint();
-    if (hint == MockVisibleComponent.LENGTH_PREFERRED) {
-      float height = Float.parseFloat(getPropertyValue(MockVisibleComponent.PROPERTY_NAME_FONTSIZE));
-      return Math.round(height);
-    } else {
-      return hint;
-    }
-  }
-
   /*
    * Sets the toggle's BackgroundColor property to a new value.
    */
@@ -63,7 +51,6 @@ abstract class MockToggleBase<T extends Widget> extends MockWrapper {
    * Sets the toggle's Enabled property to a new value.
    */
   private void setEnabledProperty(String text) {
-    enabled = Boolean.parseBoolean(text);
     MockComponentsUtil.setEnabled(this, text);
   }
 
@@ -81,6 +68,17 @@ abstract class MockToggleBase<T extends Widget> extends MockWrapper {
   private void setFontItalicProperty(String text) {
     MockComponentsUtil.setWidgetFontItalic(toggleWidget, text);
     updatePreferredSize();
+  }
+
+  @Override
+  int getHeightHint() {
+    int hint = super.getHeightHint();
+    if (hint == MockVisibleComponent.LENGTH_PREFERRED) {
+      float height = Float.parseFloat(getPropertyValue(MockVisibleComponent.PROPERTY_NAME_FONTSIZE));
+      return Math.round(height);
+    } else {
+      return hint;
+    }
   }
 
   /*

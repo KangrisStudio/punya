@@ -146,7 +146,6 @@ public final class ErrorMessages {
   public static final int ERROR_NO_READ_CONTACTS_PERMISSION = 1116; // Note Gap in numbers
   // Camcorder errors
   public static final int ERROR_CAMCORDER_NO_CLIP_RETURNED = 1201;
-    
   // VideoPlayer errors
   public static final int ERROR_VIDEOPLAYER_FULLSCREEN_UNAVAILBLE = 1301;
   public static final int ERROR_VIDEOPLAYER_FULLSCREEN_CANT_EXIT = 1302;
@@ -169,40 +168,7 @@ public final class ErrorMessages {
   public static final int ERROR_REPL_SECURITY_ERROR = 1801;
   // AccelerometerSensor Errors
   public static final int ERROR_BAD_VALUE_FOR_ACCELEROMETER_SENSITIVITY = 1901;
-  
-  // Please start the next group of error numbers at 2001.
-  
-  // below is error messages only for fuming_wei sensor and cloud compoents
-  // Dropbox errors 
-  public static final int ERROR_DROPBOX_BLANK_APP_KEY_OR_SECRET = 11810;
-  public static final int ERROR_DROPBOX_EXCEPTION = 11811;
-  public static final int ERROR_DROPBOX_UNLINKED = 11812;
-  public static final int ERROR_DROPBOX_FILESIZE = 11813;
-  public static final int ERROR_DROPBOX_PARTIALFILE = 1814;
-  public static final int ERROR_DROPBOX_SERVER_INSUFFICIENT_STORAGE = 11815;
-  public static final int ERROR_DROPBOX_IO = 11816;
-  public static final int ERROR_DROPBOX_FILENOTFOUND = 11817;
-  public static final int ERROR_DROPBOX_NO_TWO_RUNNING_TASKS = 11818;
-  
-  // CallLog/smslog errors
-  public static final int ERROR_DATE_FORMAT = 11840;
 
-
-  public static final int ERROR_GOOGLEDRIVE_EXCEPTION = 11901;
-  public static final int ERROR_GOOGLEDRIVE_IO_EXCEPTION = 11902;
-  public static final int ERROR_GOOGLEDRIVE_INVALID_CREDENTIALS = 11903;
-  public static final int ERROR_GOOGLEDRIVE_NOT_GRANT_PERMISSION = 11904;
-  public static final int ERROR_GOOGLEDRIVE_APP_CONFIG_ERROR = 11905;
-  public static final int ERROR_GOOGLEDRIVE_APP_BLACKLIST = 11906;
-  public static final int ERROR_GOOGLEDRIVE_HTTP_RESPONSE = 11907;
-  public static final int ERROR_GOOGLEDRIVE_NEEDLOGIN = 11908;
-  
-  public static final int ERROR_SENSORDB_NOTAVAILABLE = 12001;
-  public static final int ERROR_SENSORDB_NOTACTIVE = 12002;
- 
-
-  // Please start the next group of error numbers at 2010.
- 
   //Sharing Errors
   public static final int ERROR_FILE_NOT_FOUND_FOR_SHARING = 2001;
 
@@ -313,35 +279,8 @@ public final class ErrorMessages {
   public static final int ERROR_ROUTING_SERVICE_ERROR = 4003;
   public static final int ERROR_NO_ROUTE_FOUND = 4004;
 
-  //ChartData Errors
-  public static final int ERROR_INVALID_CHART_ENTRY_VALUES = 4101;
-  public static final int ERROR_NULL_CHART_ENTRY_VALUES = 4102;
-  public static final int ERROR_INSUFFICIENT_CHART_ENTRY_VALUES = 4103;
-  public static final int ERROR_INVALID_CHART_DATA_COLOR = 4104;
 
-  public static final int ERROR_GOOGLE_MAP_NOT_INSTALLED = 12010;
-  public static final int ERROR_GOOGLE_PLAY_NOT_INSTALLED = 12011;
-  public static final int ERROR_GOOGLE_MAP_INVALID_INPUT = 12012;
-  public static final int ERROR_GOOGLE_MAP_MARKER_NOT_EXIST = 12013;
-  public static final int ERROR_GOOGLE_MAP_JSON_FORMAT_DECODE_FAILED = 12014;
-  public static final int ERROR_GOOGLE_MAP_CIRCLE_NOT_EXIST = 12015;
-  public static final int ERROR_GOOGLE_PLAY_SERVICE_UPDATE_REQUIRED = 12016;
-  public static final int ERROR_GOOGLE_PLAY_DISABLED = 12017;
-  public static final int ERROR_GOOGLE_PLAY_INVALID = 12018;
-
-  // for Google Cloud Messaging
-  public static final int ERROR_GCM_APPSERVER_INVALID = 2019;
-  public static final int ERROR_GCM_NO_REGID_FOR_MESSAGE = 2020;
-
-  // for reasoning
-  public static final int ERROR_REASONER_FAILED = 12100;
-  public static final int ERROR_REASONER_NO_MODEL = 12101;
-
-  // GraphQL errors
-  public static final int ERROR_GQL_INVALID_HTTP_HEADERS = 13601;
-  public static final int ERROR_GQL_UNABLE_TO_POST = 13602;
-
-  // Start the next group of errors at 4200
+  // Start the next group of errors at 4100
 
   // Mapping of error numbers to error message format strings.
   private static final Map<Integer, String> errorMessages;
@@ -588,13 +527,11 @@ public final class ErrorMessages {
         "The software used in this app cannot extract contacts from this type of phone.");
     errorMessages.put(ERROR_PHONE_UNSUPPORTED_SEARCH_IN_CONTACT_PICKING,
         "To pick contacts, pick them directly, without using search.");
-      
     // Camcorder errors
     errorMessages.put(ERROR_NO_READ_CONTACTS_PERMISSION,
         "READ_CONTACTS Permission was denied.");
     errorMessages.put(ERROR_CAMCORDER_NO_CLIP_RETURNED,
-    	"The camcorder did not return a clip.");
-
+        "The camcorder did not return a clip.");
     // VideoPlayer errors
     errorMessages.put(ERROR_VIDEOPLAYER_FULLSCREEN_UNAVAILBLE,
         "Cannot start fullscreen mode.");
@@ -630,58 +567,6 @@ public final class ErrorMessages {
     errorMessages.put(ERROR_BAD_VALUE_FOR_ACCELEROMETER_SENSITIVITY,
        "The value -- %s -- provided for AccelerometerSensor's sensitivity was bad. " +
        "The only legal values are 1, 2, or 3.");
- 
-    //CallLogs history errors
-    errorMessages.put(ERROR_DATE_FORMAT,
-      "The date string has wrong format, please refer to the documentation of the setting method again.");
-    
-    errorMessages.put(ERROR_DROPBOX_BLANK_APP_KEY_OR_SECRET, 
-        "The AppKey and AppSecret properties must be set in order to authorize access " +
-        "for Dropbox. Please obtain a App Key and App Secret specific to your app from " +
-        "https://www.dropbox.com/developers/apps");
-    
-    errorMessages.put(ERROR_DROPBOX_EXCEPTION,
-    "Dropbox error: %s");
-    
-    errorMessages.put(ERROR_DROPBOX_FILESIZE, "This file is too big to upload, at most " +
-        "150 MB.");
-    errorMessages.put(ERROR_DROPBOX_UNLINKED , "This app wasn't authenticated properly");
-    errorMessages.put(ERROR_DROPBOX_IO, "Network error while uploading the file.");
-    
-    errorMessages.put(ERROR_DROPBOX_PARTIALFILE, "The operation was canceled by Dropbox");
-    
-    errorMessages.put(ERROR_DROPBOX_SERVER_INSUFFICIENT_STORAGE, "Your dropbox usage is over quota.");
-    
-    errorMessages.put(ERROR_DROPBOX_FILENOTFOUND, "The file to upload was not found.");
-    errorMessages.put(ERROR_DROPBOX_NO_TWO_RUNNING_TASKS, "Need to stop previous scheduled task first, " +
-        "by calling <code>StopScheduleUpload</code>.");
-    
-    errorMessages.put(ERROR_GOOGLEDRIVE_IO_EXCEPTION, "Forget to turn on your internet connection?");
-    errorMessages.put(ERROR_GOOGLEDRIVE_EXCEPTION, "Something wrong with Google Drive");
-    errorMessages.put(ERROR_GOOGLEDRIVE_INVALID_CREDENTIALS, "Invalid Credentials for this app");
-    errorMessages.put(ERROR_GOOGLEDRIVE_NOT_GRANT_PERMISSION, "The authenticated user has not granted the app access to the file");
-    errorMessages.put(ERROR_GOOGLEDRIVE_APP_BLACKLIST, "The app is blacklisted as a Google Drive app");
-    errorMessages.put(ERROR_GOOGLEDRIVE_APP_CONFIG_ERROR, "Configuration error on app permission");
-    errorMessages.put(ERROR_GOOGLEDRIVE_NEEDLOGIN, "Need to Authorize the app first?");
-    
-    errorMessages.put(ERROR_GOOGLE_PLAY_NOT_INSTALLED, "Google Play is not installed/available on this phone");
-    errorMessages.put(ERROR_GOOGLE_PLAY_SERVICE_UPDATE_REQUIRED, "Google Play Service needs update to newest version");
-    errorMessages.put(ERROR_GOOGLE_MAP_NOT_INSTALLED, "Google Map is not installed on this phone");
-    errorMessages.put(ERROR_GOOGLE_MAP_INVALID_INPUT, "Invalid input: %s");
-    errorMessages.put(ERROR_GOOGLE_MAP_MARKER_NOT_EXIST, "Marker with id: %s does not exist");
-    errorMessages.put(ERROR_GOOGLE_MAP_JSON_FORMAT_DECODE_FAILED,
-      "Unable to decode the JSON text: %s");
-    errorMessages.put(ERROR_GOOGLE_MAP_CIRCLE_NOT_EXIST, "Circle with id: %s does not exist");
-    errorMessages.put(ERROR_GOOGLE_PLAY_DISABLED, "The installed version of Google Play services " +
-      "has been disabled on this device.");
-    errorMessages.put(ERROR_GOOGLE_PLAY_INVALID, "The version of the Google Play services installed " +
-       "on this device is not authentic.");
-         
-    errorMessages.put(ERROR_SENSORDB_NOTACTIVE, "Sensor: %s is not active");
-    errorMessages.put(ERROR_SENSORDB_NOTAVAILABLE, "Sensor: %s is not available");
-    errorMessages.put(ERROR_GCM_APPSERVER_INVALID, "Cannot connect to GCM app server");
-    
- 
     //Sharing errors
     errorMessages.put(ERROR_FILE_NOT_FOUND_FOR_SHARING,
         "The File %s could not be found on your device.");
@@ -806,23 +691,6 @@ public final class ErrorMessages {
         "Unable to request directions. Reason: %s");
     errorMessages.put(ERROR_ROUTING_SERVICE_ERROR, "Routing service failed with status %d %s");
     errorMessages.put(ERROR_NO_ROUTE_FOUND, "No route returned by the routing service.");
-
-    //ChartData Errors
-    errorMessages.put(ERROR_INVALID_CHART_ENTRY_VALUES, "Invalid Chart Entry Value(s): %1$s, %2$s");
-    errorMessages.put(ERROR_NULL_CHART_ENTRY_VALUES, "Undefined value was present in Chart Entry");
-    errorMessages.put(ERROR_INSUFFICIENT_CHART_ENTRY_VALUES, "Chart entry did not contain enough values; " +
-        "Expected %1$d, but was %2$d");
-    errorMessages.put(ERROR_INVALID_CHART_DATA_COLOR, "Invalid Chart Data color parameter specified: %1$s");
-
-    // Reasoning
-    errorMessages.put(ERROR_REASONER_FAILED, "Reasoning failed due to error: %s");
-    errorMessages.put(ERROR_REASONER_NO_MODEL, "No Model specified for reasoning.");
-
-    // GraphQL errors
-    errorMessages.put(ERROR_GQL_INVALID_HTTP_HEADERS,
-        "Invalid HTTP header format. Must be a JSON string of name and value(s).");
-    errorMessages.put(ERROR_GQL_UNABLE_TO_POST,
-        "Unable to POST query. Got exception %s");
   }
 
   private ErrorMessages() {

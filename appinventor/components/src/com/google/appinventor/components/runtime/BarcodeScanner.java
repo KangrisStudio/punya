@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
+
 import com.google.appinventor.components.annotations.DesignerComponent;
 import com.google.appinventor.components.annotations.DesignerProperty;
 import com.google.appinventor.components.annotations.PropertyCategory;
@@ -59,7 +60,6 @@ public class BarcodeScanner extends AndroidNonvisibleComponent
   private boolean useExternalScanner = true;
   private final ComponentContainer container;
   private boolean havePermission = false; // Do we have CAMERA permission?
-
 
   /* Used to identify the call to startActivityForResult. Will be passed back into the
   resultReturned() callback method. */

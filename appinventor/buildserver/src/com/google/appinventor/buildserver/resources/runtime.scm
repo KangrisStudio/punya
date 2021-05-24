@@ -103,7 +103,6 @@
          (SimplePropertyUtil:copyComponentProperties existing-component component-to-add))))))
 
 (define-alias SimpleForm <com.google.appinventor.components.runtime.Form>)
-(define-alias RdfUtil <com.google.appinventor.components.runtime.util.RdfUtil>)
 
 (define (call-Initialize-of-components . component-names)
   ;; Do any inherent/implied initializations
@@ -985,9 +984,6 @@
 (define-alias JavaCollection <java.util.Collection>)
 (define-alias JavaIterator <java.util.Iterator>)
 (define-alias JavaMap <java.util.Map>)
-
-(define-alias GraphQL <com.google.appinventor.components.runtime.GraphQL>)
-(define-alias GqlLiteral <com.google.appinventor.components.runtime.GraphQL$GqlLiteral>)
 
 ;;; This is what CodeBlocks sends to Yail to represent the value of an uninitialized variable
 ;;; Perhaps we should arrange things so that codeblocks never sends this.
@@ -2602,12 +2598,6 @@ Dictionary implementation.
 ;;;;Text implementation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define (sparql-quote str)
-  (if (string? str)
-    (if (string-contains str "\"")
-      (string-append "\"\"\"" str "\"\"\"")
-      (string-append "\"" str "\""))
-    str))
 
 (define (make-disjunct x)
   (cond ((null? (cdr x)) (Pattern:quote (car x)))
@@ -2796,12 +2786,6 @@ Dictionary implementation.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; End of Color implementation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define (expand-qname qname)
-  (RdfUtil:expandQName qname))
-
-(define (define-namespace prefix uri)
-  (RdfUtil:defineNamespace prefix uri))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Multiple screens

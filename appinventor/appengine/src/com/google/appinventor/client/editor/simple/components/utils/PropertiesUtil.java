@@ -16,11 +16,8 @@ import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroid
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidAssetSelectorPropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidBooleanPropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidButtonShapeChoicePropertyEditor;
-import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartLineTypeChoicePropertyEditor;
-import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartPointShapeChoicePropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidColorChoicePropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidComponentSelectorPropertyEditor;
-import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidDataColumnSelectorProperty;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidDefaultURLPropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidFloatRangePropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidFontTypefaceChoicePropertyEditor;
@@ -46,7 +43,6 @@ import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroid
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidThemeChoicePropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidToastLengthChoicePropertyEditor;
 import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidVerticalAlignmentChoicePropertyEditor;
-import com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartTypeChoicePropertyEditor;
 import com.google.appinventor.client.properties.BadPropertyEditorException;
 import com.google.appinventor.client.properties.Property;
 import com.google.appinventor.client.widgets.properties.ChoicePropertyEditor;
@@ -55,7 +51,6 @@ import com.google.appinventor.client.widgets.properties.EditableProperties;
 import com.google.appinventor.client.widgets.properties.EditableProperty;
 import com.google.appinventor.client.widgets.properties.FloatPropertyEditor;
 import com.google.appinventor.client.widgets.properties.IntegerPropertyEditor;
-import com.google.appinventor.client.widgets.properties.SemanticWebPropertyEditor;
 import com.google.appinventor.client.widgets.properties.SubsetJSONPropertyEditor;
 import com.google.appinventor.client.widgets.properties.LanguageChoicePropertyEditor;
 import com.google.appinventor.client.widgets.properties.NonNegativeFloatPropertyEditor;
@@ -69,7 +64,6 @@ import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.shared.simple.ComponentDatabaseInterface;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -86,21 +80,6 @@ import java.util.List;
  * @author hal@mit.edu (Hal Abelson)
  */
 public class PropertiesUtil {
-  // Construct a HashSet of acceptable Chart Data Source components
-  private static final HashSet<String> CHART_DATA_SOURCES = new HashSet<String>() {{
-    add("DataFile");
-    add("TinyDB");
-    add("CloudDB");
-    add("AccelerometerSensor");
-    add("BluetoothClient");
-    add("Web");
-    add("GyroscopeSensor");
-    add("OrientationSensor");
-    add("ProximitySensor");
-    add("Pedometer");
-    add("LocationSensor");
-  }};
-
 
   /**
    * Prevent instantiation.
@@ -121,8 +100,6 @@ public class PropertiesUtil {
     for (ComponentDatabaseInterface.PropertyDefinition property : propertyDefintions) {
       mockComponent.addProperty(property.getName(), property.getDefaultValue(),
           ComponentsTranslation.getPropertyName(property.getCaption()),
-          ComponentsTranslation.getPropertyName(property.getCategory()),
-          ComponentsTranslation.getPropertyName(property.getDescription()),
           property.getEditorType(), property.getEditorArgs(),
           PropertiesUtil.createPropertyEditor(property.getEditorType(), property.getDefaultValue(), editor, property.getEditorArgs()));
       /*OdeLog.log("Property Caption: " + property.getCaption() + ", "
@@ -302,22 +279,6 @@ public class PropertiesUtil {
       String type = editorType.substring(PropertyTypeConstants.PROPERTY_TYPE_COMPONENT.length() + 2);
       type = type.substring(type.lastIndexOf('.') + 1);
       return new YoungAndroidComponentSelectorPropertyEditor(editor, Collections.singleton(type));
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CONCEPT_URI)) {
-      return new SemanticWebPropertyEditor(SemanticWebPropertyEditor.SemanticWebSearchType.CONCEPT_URI);
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_PROPERTY_URI)) {
-      return new SemanticWebPropertyEditor(SemanticWebPropertyEditor.SemanticWebSearchType.PROPERTY_URI);
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CHART_TYPE)) {
-      return new YoungAndroidChartTypeChoicePropertyEditor();
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_DATA_FILE_COLUMN)) {
-      return new YoungAndroidDataColumnSelectorProperty(editor);
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CHART_DATA_SOURCE)) {
-      return new YoungAndroidComponentSelectorPropertyEditor(editor, CHART_DATA_SOURCES);
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CHART_PIE_RADIUS)) {
-      return new YoungAndroidIntegerRangePropertyEditor(0, 100);
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CHART_POINT_SHAPE)) {
-      return new YoungAndroidChartPointShapeChoicePropertyEditor();
-    } else if (editorType.equals(PropertyTypeConstants.PROPERTY_TYPE_CHART_LINE_TYPE)) {
-      return new YoungAndroidChartLineTypeChoicePropertyEditor();
     } else {
       return new TextPropertyEditor();
     }

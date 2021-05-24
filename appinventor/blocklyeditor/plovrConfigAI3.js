@@ -6,6 +6,32 @@
     //blockly.js must come first
     '../lib/blockly/core/blockly.js',
 
+    //msg/js/*.js has to come next (for constants)
+    '../lib/blockly/msg/js/ko.js',
+    '../lib/blockly/msg/js/es.js',
+    '../lib/blockly/msg/js/zh-hant.js',
+    '../lib/blockly/msg/js/zh-hans.js',
+    '../lib/blockly/msg/js/fr.js',
+    '../lib/blockly/msg/js/it.js',
+    '../lib/blockly/msg/js/ru.js',
+    '../lib/blockly/msg/js/sv.js',
+    '../lib/blockly/msg/js/nl.js',
+    '../lib/blockly/msg/js/pt-br.js',
+    '../lib/blockly/msg/js/pt.js',
+    '../lib/blockly/msg/js/en.js',
+    './src/msg/ko_kr/_messages.js',
+    './src/msg/es_es/_messages.js',
+    './src/msg/zh_tw/_messages.js',
+    './src/msg/zh_cn/_messages.js',
+    './src/msg/fr_fr/_messages.js',
+    './src/msg/it_it/_messages.js',
+    './src/msg/ru/_messages.js',
+    './src/msg/sv/_messages.js',
+    './src/msg/pt_br/_messages.js',
+    './src/msg/pt/_messages.js',
+    './src/msg/nl/_messages.js',
+    './src/msg/en/_messages.js',
+
     // Lyn's instrumentation code
     "./src/instrument.js",
 
@@ -64,7 +90,6 @@
     '../lib/blockly/core/zoom_controls.js',
 
     //finally, include any of our own .js file in any order
-    "./src/msg.js",
     "./src/events.js",
     "./src/blocklyeditor.js",
     './src/typeblock.js',
@@ -104,12 +129,9 @@
     "./src/field_procedurename.js",
     "./src/nameSet.js",
     "./src/substitution.js",
+    "./src/language_switch.js",
     "./src/warning.js",
     "./src/toolboxController.js",
-    "./src/field.js",
-    "./src/rendered_connection.js",
-    "./src/input.js",
-    "./src/field_event_flydown.js",
 
     // Dialog Utiltiy
     "./src/util.js",
@@ -129,7 +151,6 @@
     './src/blocks/lexical-variables.js',
     './src/blocks/colors.js',
     './src/blocks/components.js',
-    './src/blocks/dictionaries.js',
 
     //generator files
     "./src/generators/yail.js",
@@ -142,25 +163,22 @@
     "./src/generators/yail/colors.js",
     "./src/generators/yail/variables.js",
     "./src/generators/yail/procedures.js",
-    "./src/generators/yail/dictionaries.js",
 
     // Repl
-    "./src/replmgr.js",
-
-    // extras
-    "./src/extras.js"
+    "./src/replmgr.js"
     ],
 
   // This must be specified because datetimesymbols.js from the Closure Library
   // will be included, so when test-raw.html loads each input in RAW mode,
   // it is important that the proper charset be used.
   "output-charset": "UTF-8",
-  "mode": "RAW",
-//  "mode": "SIMPLE",
-//  "mode" : "WHITESPACE_ONLY",
+    "output-wrapper": "module.exports = (function() { %output% Blockly.goog=goog; Blockly.AI=AI; Blockly.Css.inject(true, './assets'); return Blockly;}).call(window)",
+  // "mode": "RAW",
+  "mode": "SIMPLE",
+  // "mode" : "WHITESPACE_ONLY",
   "experimental-compiler-options": {
     "languageIn": "ECMASCRIPT5"
   },
   "closure-library" : "../lib/closure-library/closure/goog",
-  "output-file": "../build/blocklyeditor/blockly-all.js"
+  "output-file": "../build/blocklyeditor/blockly-compiled.js"
 }

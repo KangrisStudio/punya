@@ -14,10 +14,8 @@ public enum PropertyCategory {
   // TODO(user): i18n category names
   BEHAVIOR("Behavior"),
   APPEARANCE("Appearance"),
-  LINKED_DATA("Linked Data"),
   DEPRECATED("Deprecated"),
-  UNSET("Unspecified"),
-  APPLICATION("Application");
+  UNSET("Unspecified");
 
   private String name;
 

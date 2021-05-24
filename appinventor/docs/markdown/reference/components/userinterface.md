@@ -23,7 +23,6 @@ Table of Contents:
 * [Switch](#Switch)
 * [TextBox](#TextBox)
 * [TimePicker](#TimePicker)
-* [Timer](#Timer)
 * [WebViewer](#WebViewer)
 
 ## Button  {#Button}
@@ -181,9 +180,6 @@ None
 {:id="CheckBox.HeightPercent" .number .wo .bo} *HeightPercent*
 : Specifies the `CheckBox`'s vertical height as a percentage
  of the [`Screen`'s `Height`](userinterface.html#Screen.Height).
-
-{:id="CheckBox.PropertyURI" .text} *PropertyURI*
-: <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
 
 {:id="CheckBox.Text" .text} *Text*
 : Specifies the text displayed by the `CheckBox`.
@@ -686,9 +682,6 @@ This is a visible component that allows to place a list of text elements in your
 {:id="ListView.Selection" .text} *Selection*
 : Returns the text in the `ListView` at the position of [`SelectionIndex`](#ListView.SelectionIndex).
 
-{:id="ListView.SelectionBinding" .dictionary .ro .bo} *SelectionBinding*
-: Returns the binding corresponding to the selection in the ListView.
-
 {:id="ListView.SelectionColor" .color} *SelectionColor*
 : The color of the item when it is selected.
 
@@ -730,9 +723,8 @@ This is a visible component that allows to place a list of text elements in your
 ### Methods  {#ListView-Methods}
 
 {:.methods}
+None
 
-{:id="ListView.LoadFromBindings" class="method"} <i/> LoadFromBindings(*bindings*{:.list},*showVariable*{:.text})
-: Takes a set of query results, and displays values for the given variable name.",
 
 ## Notifier  {#Notifier}
 
@@ -882,17 +874,8 @@ Users enter passwords in a password text box component, which hides the text tha
 {:id="PasswordTextBox.Hint" .text} *Hint*
 : `PasswordTextBox` hint for the user.
 
-{:id="PasswordTextBox.ObjectType" .text} *ObjectType*
-: Concept URI property setter method.
-
 {:id="PasswordTextBox.PasswordVisible" .boolean .bo} *PasswordVisible*
 : Specifies whether the password is hidden (default) or shown.
-
-{:id="PasswordTextBox.PropertyURI" .text} *PropertyURI*
-: <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-
-{:id="PasswordTextBox.SubjectIdentifier" .boolean} *SubjectIdentifier*
-: <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
 
 {:id="PasswordTextBox.Text" .text} *Text*
 : The text in the `PasswordTextBox`, which can be set by the programmer in the Designer or Blocks Editor,
@@ -1326,9 +1309,6 @@ A `Spinner` component that displays a dialog with a list of elements. These elem
 {:id="Switch.On" .boolean} *On*
 : True if the switch is in the On state, false otherwise.
 
-{:id="Switch.PropertyURI" .text} *PropertyURI*
-: <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-
 {:id="Switch.Text" .text} *Text*
 : Specifies the text displayed by the `Switch`.
 
@@ -1454,17 +1434,8 @@ Users enter text in a text box component.
  if `NumbersOnly` is true, you can set the text to anything at all using the
  [`Text`](#TextBox.Text) property.
 
-{:id="TextBox.ObjectType" .text} *ObjectType*
-: Concept URI property setter method.
-
-{:id="TextBox.PropertyURI" .text} *PropertyURI*
-: <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-
 {:id="TextBox.ReadOnly" .boolean} *ReadOnly*
 : Whether the TextBox is read-only. By default, this is `true`{:.logic.block}.
-
-{:id="TextBox.SubjectIdentifier" .boolean} *SubjectIdentifier*
-: <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
 
 {:id="TextBox.Text" .text} *Text*
 : The text in the `TextBox`, which can be set by the programmer in the Designer or Blocks Editor,
@@ -1640,79 +1611,6 @@ A button that, when clicked on, opens a dialog to allow the user to select a tim
 : Allows the instant to set the hour and minute to be displayed when the `TimePicker` opens.
  Instants are used in [`Clock`](sensors.html#Clock), [`DatePicker`](#DatePicker), and [`TimePicker`](#TimePicker)
  components.
-
-## Timer  {#Timer}
-
-Timer provides a timer to schedule actions. Everything is represented in
- milliseconds.
-
-
-
-### Properties  {#Timer-Properties}
-
-{:.properties}
-
-{:id="Timer.GetTimerTimezone" .text .ro .bo} *GetTimerTimezone*
-: Get string representation of a timer's timezone.
-
-{:id="Timer.NextTimeTriggered" .number .ro .bo} *NextTimeTriggered*
-: NextTimeTriggered property getter method.
-
-{:id="Timer.Repeating" .boolean} *Repeating*
-: Repeating property setter method: instructs when to set the Alarm in
- Repeating mode
-
-{:id="Timer.TimeLeftBeforeTriggered" .number .ro .bo} *TimeLeftBeforeTriggered*
-: timeleftBeforeTriggered property getter method.
-
-{:id="Timer.TimerEnabled" .boolean .ro .bo} *TimerEnabled*
-: Enabled property getter method.
-
-{:id="Timer.TimerInterval" .number} *TimerInterval*
-: Interval property setter method: resets the interval between repeating timer
- events.
-
-{:id="Timer.WakeUp" .boolean} *WakeUp*
-: WakeUp property setter method: instructs when to wake up the device if
- sleeping
-
-### Events  {#Timer-Events}
-
-{:.events}
-
-{:id="Timer.TimerTriggered"} TimerTriggered()
-: Indicates that we receive the timer trigger
-
-### Methods  {#Timer-Methods}
-
-{:.methods}
-
-{:id="Timer.CreateNotification" class="method"} <i/> CreateNotification(*title*{:.text},*text*{:.text},*enabledSound*{:.boolean},*enabledVibrate*{:.boolean},*packageName*{:.text},*className*{:.text},*extraKey*{:.text},*extraVal*{:.text})
-: Create a notication with message to wake up another activity when tap on the notification
-
-{:id="Timer.FinishForm" class="method"} <i/> FinishForm()
-: Try to kill myself, force the From.onDestroyed() gets called
-
-{:id="Timer.NextDateTimeTriggered" class="method returns text"} <i/> NextDateTimeTriggered()
-: NexttimeTriggered property getter (in human-readable) form
-
-{:id="Timer.ResetTimer" class="method"} <i/> ResetTimer()
-: Reset the configuration of the timer to default interval=30, repeating = false, wakeup = true
-
-{:id="Timer.SetRepeatedDailyTimer" class="method"} <i/> SetRepeatedDailyTimer(*hour*{:.number},*minute*{:.number})
-: Set the Timer to be triggered at specified hour and minute and repeat daily
-
-{:id="Timer.SetRepeatedWeeklyTimer" class="method"} <i/> SetRepeatedWeeklyTimer(*weekday*{:.number},*hour*{:.number},*minute*{:.number})
-: Set the Timer to be triggered at the specified weekday, hour and time, and repeat weekly. e.g Sunday = 1 and Monday =2.
-
-{:id="Timer.SetTimerTimezone" class="method"} <i/> SetTimerTimezone(*timezoneId*{:.text})
-: Set timer's timezone.
-
-{:id="Timer.TimerEnabled" class="method"} <i/> TimerEnabled(*enabled*{:.boolean})
-: Enabled property setter method: starts or stops the timer.
-
-{:id="Timer.setTimer" class="method"} <i/> setTimer(*year*{:.number},*month*{:.number},*date*{:.number},*hourOfDay*{:.number},*minute*{:.number})
-: Set to be triggered at a specific weekday in the future. e.g. for Jan 30 2012 23:55, year=2012, month=1, date=30, hourOfDay=23, minute=55.
 
 ## WebViewer  {#WebViewer}
 

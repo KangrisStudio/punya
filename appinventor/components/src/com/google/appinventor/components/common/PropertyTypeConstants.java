@@ -70,12 +70,6 @@ public class PropertyTypeConstants {
   public static final String PROPERTY_TYPE_COMPONENT = "component";
 
   /**
-   * Concept URI field for Semantic Web components.
-   * @see com.google.appinventor.client.widgets.properties.SemanticWebPropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CONCEPT_URI = "concept_uri";
-
-  /**
    * Floating-point values.
    * @see com.google.appinventor.client.widgets.properties.FloatPropertyEditor
    */
@@ -212,12 +206,6 @@ public class PropertyTypeConstants {
   public static final String PROPERTY_TYPE_NON_NEGATIVE_INTEGER = "non_negative_integer";
 
   /**
-   * Property URI field for Semantic Web components.
-   * @see com.google.appinventor.client.widgets.properties.SemanticWebPropertyEditor
-   */
-  public static final String PROPERTY_TYPE_PROPERTY_URI = "property_uri";
-
-  /**
    * Choices of screen orientations offered by {@link
    * com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidScreenOrientationChoicePropertyEditor}.
    */
@@ -294,30 +282,6 @@ public class PropertyTypeConstants {
    * com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidTextReceivingPropertyEditor}.
    */
   public static final String PROPERTY_TYPE_TEXT_RECEIVING = "text_receiving";
-  
-  /**
-   * Choices of Survey Style options. {@link
-   * com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidSurveyStylePropertyEditor}.
-
-   */
-  public static final String PROPERTY_TYPE_SURVEY_STYLE = "survey_style";
-  
-  
-
-  /**
-   * Uri for semantic web resources.
-   */
-  public static final String PROPERTY_TYPE_URI = "uri";
-
-  /**
-   * Base URI for creating semantic web resources.
-   */
-  public static final String PROPERTY_TYPE_BASEURI = "baseuri";
-
-  /**
-   * Base URI for creating semantic web resources with auto-generating timestamp.
-   */
-  public static final String PROPERTY_TYPE_BASEURI_AUTOGEN = "baseuri_autogen";
 
   /**
    * Choices of text-to-speech countries. {@link
@@ -363,47 +327,4 @@ public class PropertyTypeConstants {
    * com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidNavigationMethodChoicePropertyEditor}
    */
   public static final String PROPERTY_TYPE_NAVIGATION_METHOD = "navigation_method";
-
-  /**
-   * Chart types.
-   * @see
-   * com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartTypeChoicePropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CHART_TYPE = "chart_type";
-
-  /**
-   * DataFile columns
-   * @see
-   *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidDataFileSelectorPropertyEditor
-   */
-  public static final String PROPERTY_TYPE_DATA_FILE_COLUMN = "data_file_column";
-
-  /**
-   * ChartData Data Source component
-   * @see
-   *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidComponentSelectorPropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CHART_DATA_SOURCE = "chart_data_source";
-
-  /**
-   * Chart Pie Chart radius
-   * @see
-   *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidIntegerRangePropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CHART_PIE_RADIUS = "chart_pie_radius";
-
-  /**
-   * Chart Point Shape for Scatter Chart
-   * @see
-   *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartPointShapeChoicePropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CHART_POINT_SHAPE = "chart_point_shape";
-
-  /**
-   * Chart Line Type for Line Chart
-   * @see
-   *  com.google.appinventor.client.editor.youngandroid.properties.YoungAndroidChartLineTypeChoicePropertyEditor
-   */
-  public static final String PROPERTY_TYPE_CHART_LINE_TYPE = "chart_line_type";
-
 }

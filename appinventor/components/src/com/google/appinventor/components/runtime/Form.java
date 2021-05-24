@@ -56,7 +56,6 @@ import com.google.appinventor.components.annotations.SimpleEvent;
 import com.google.appinventor.components.annotations.SimpleFunction;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.annotations.SimpleProperty;
-import com.google.appinventor.components.annotations.UsesLibraries;
 import com.google.appinventor.components.annotations.UsesPermissions;
 import com.google.appinventor.components.common.ComponentCategory;
 import com.google.appinventor.components.common.ComponentConstants;
@@ -100,7 +99,6 @@ import java.util.Set;
 import org.json.JSONException;
 
 
-
 /**
  * Top-level component containing all other components in the program.
  *
@@ -127,7 +125,7 @@ import org.json.JSONException;
 @UsesPermissions({INTERNET, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE})
 public class Form extends AppInventorCompatActivity
     implements Component, ComponentContainer, HandlesEventDispatching,
-        OnGlobalLayoutListener {
+    OnGlobalLayoutListener {
 
   private static final String LOG_TAG = "Form";
 
@@ -185,9 +183,6 @@ public class Form extends AppInventorCompatActivity
 
   // Layout
   private LinearLayout viewLayout;
-
-  // List of components used to support Iterator interface
-  private List<AndroidViewComponent> components;
 
   // translates App Inventor alignment codes to Android gravity
   private AlignmentUtil alignmentSetter;
@@ -250,29 +245,8 @@ public class Form extends AppInventorCompatActivity
   // the name of the secondary screen. It is saved so that it can be passed to the OtherScreenClosed
   // event.
   private String nextFormName;
+
   private FullScreenVideoUtil fullScreenVideoUtil;
-  
-  //This is the constant value that will be passed in as the key in the intent's putExtra to find
-  //the component that the Form will pass the intent's extra value to 
-  //The convention for naming a extra value that requires the Form to pass along can be: 
-  //APP_INVENTOR_XYZ (XYZ = component's name)
-  //The value for component XYZ will be retrieved through form.getXYZStartValues()
-  private static final String ARGUMENT_SURVEY = "APP_INVENTOR_SURVEY";
-  //Set to the optional String-valued Extra passed in via an Intent on startup.(for Survey component only)
-  private String startupValueForSurvey = "";
-  
-  //This is the constant value that will be passed in as the key in the intent's putExtra to find
-  //the component that the Form will pass the intent's extra value to 
-  //The convention for naming a extra value that requires the Form to pass along can be: 
-  //APP_INVENTOR_XYZ (XYZ = component's name)
-  //The value for component XYZ will be retrieved through form.getXYZStartValues()
-  private static final String ARGUMENT_GCM = "APP_INVENTOR_GCM";
-  //Set to the optional String-valued Extra passed in via an Intent on startup.(for GCM component only)
-  private String startupValueForGCM = ""; 
-  private Bundle onCreateBundle = null;
-
-  private long lastBackPressTime;
-
 
   private int formWidth;
   private int formHeight;
@@ -285,7 +259,7 @@ public class Form extends AppInventorCompatActivity
 
   // It should be changed from 100000 to 65535 if the functionality to extend
   // FragmentActivity is added in future.
-  public static final int MAX_PERMISSION_NONCE = 65535;
+  public static final int MAX_PERMISSION_NONCE = 100000;
 
   public static class PercentStorageRecord {
     public enum Dim {
@@ -324,8 +298,6 @@ public class Form extends AppInventorCompatActivity
   public void onCreate(Bundle icicle) {
     // Called when the activity is first created
     super.onCreate(icicle);
-    Log.i(LOG_TAG, "saveBundle" + icicle);
-    onCreateBundle = icicle; // icicle, (savedInstance == null) if it's not the result of changing orientation
 
     // Figure out the name of this form.
     String className = getClass().getName();
@@ -341,7 +313,6 @@ public class Form extends AppInventorCompatActivity
     compatScalingFactor = ScreenDensityUtil.computeCompatibleScaling(this);
     Log.i(LOG_TAG, "compatScalingFactor = " + compatScalingFactor);
     viewLayout = new LinearLayout(this, ComponentConstants.LAYOUT_ORIENTATION_VERTICAL);
-    components = new ArrayList<AndroidViewComponent>();
     alignmentSetter = new AlignmentUtil(viewLayout);
 
     progress = null;
@@ -437,52 +408,12 @@ public class Form extends AppInventorCompatActivity
 
     fullScreenVideoUtil = new FullScreenVideoUtil(this, androidUIHandler);
 
-
-    
-    /*
-     * Add by Fuming.
-     * We can save extras values that are intended for the Survey component, 
-     * and later the component can read the value through container$form 
-     * TODO: need to think about how to pass intent to a component through notification.
-     * Something like the activity starter: the extra_key will be the component name 
-     * the extra_value to pass in will be a json string. 
-     * 
-     * TODO: We could think of a more general approach that could work for arbitrary AI component that needs
-     * intent data at start up.
-     * 
-     */
-    
-    if (startIntent != null && startIntent.hasExtra(ARGUMENT_SURVEY)){
-    	Log.i(LOG_TAG, "surveyIntentValue:"+startIntent.getStringExtra(ARGUMENT_SURVEY));
-    	startupValueForSurvey = startIntent.getStringExtra(ARGUMENT_SURVEY); 
-    }
-    
-
-    /*
-     * Add by Weihua Li.
-     * We can save extras values that are intended for the GCM component, 
-     * and later the component can read the value through container$form 
-     * TODO: need to think about how to pass intent to a component through notification.
-     * Something like the activity starter: the extra_key will be the component name 
-     * the extra_value to pass in will be a json string. 
-     * 
-     * TODO: We could think of a more general approach that could work for arbitrary AI component that needs
-     * intent data at start up.
-     * 
-     */
-    
-    if (startIntent != null && startIntent.hasExtra(ARGUMENT_GCM)){
-        Log.i(LOG_TAG, "GCMIntentValue:"+startIntent.getStringExtra(ARGUMENT_GCM));
-        startupValueForGCM = startIntent.getStringExtra(ARGUMENT_GCM); 
-    }
-
     // Set soft keyboard to not cover the focused UI element, e.g., when you are typing
     // into a textbox near the bottom of the screen.
     WindowManager.LayoutParams params = getWindow().getAttributes();
     int softInputMode = params.softInputMode;
     getWindow().setSoftInputMode(
         softInputMode | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
 
     // Add application components to the form
     $define();
@@ -493,38 +424,6 @@ public class Form extends AppInventorCompatActivity
     // before initialization finishes. Instead the compiler suppresses the invocation of the
     // event and leaves it up to the library implementation.
     Initialize();
-  }
-  
-  /**
-  * Getting Bundle (savedInstance) in the onCreate method (this is needed for
-  * Google Map Component to avoid recreating two map layers when changing orientation)
-  * @return
-  */
-  public Bundle getOnCreateBundle(){
-      return onCreateBundle;
-  }
-  
-  /*
-   * 1) This method is to pass the start value that a Form gets when it is created by some other app using
-   * activityStarter or Fuming's create notification (using Android Intent)
-   * 2) The alternative to pass the intent's extra values could use listeners such as resgisterForXXX in 
-   * Form.java. ,  
-   */
-  public String getSurveyStartValues(){
-
-	  return startupValueForSurvey;
-
-  }
-
-  
-  /*
-   * 1) This method is to pass the start value that a Form gets when it is created by some other app using
-   * activityStarter or Wei's create notification (using Android Intent)
-   * 2) The alternative to pass the intent's extra values could use listeners such as resgisterForXXX in 
-   * Form.java. ,  
-   */
-  public String getGCMStartValues(){
-      return startupValueForGCM;
   }
 
   /**
@@ -699,11 +598,11 @@ public class Form extends AppInventorCompatActivity
         resultString = data.getStringExtra(RESULT_NAME);
       } else {
         resultString = "";
-      }  
+      }
       Object decodedResult = decodeJSONStringForForm(resultString, "other screen closed");
       // nextFormName was set when this screen opened the secondary screen
-      OtherScreenClosed(nextFormName, decodedResult); 
-    } else { 
+      OtherScreenClosed(nextFormName, decodedResult);
+    } else {
       // Another component (such as a ListPicker, ActivityStarter, etc) is expecting this result.
       ActivityResultListener component = activityResultMap.get(requestCode);
       if (component != null) {
@@ -718,7 +617,7 @@ public class Form extends AppInventorCompatActivity
       }
     }
   }
-  
+
   // functionName is a string to include in the error message that will be shown
   // if the JSON decoding fails
   private  static Object decodeJSONStringForForm(String jsonString, String functionName) {
@@ -1613,7 +1512,7 @@ public class Form extends AppInventorCompatActivity
 
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN,
       defaultValue = "False")
-  @SimpleProperty(userVisible = false, category = PropertyCategory.APPEARANCE)
+  @SimpleProperty(userVisible = false)
   public void ActionBar(boolean enabled) {
     if (SdkLevel.getLevel() < SdkLevel.LEVEL_HONEYCOMB) {
       // ActionBar is available on SDK 11 or higher
@@ -1798,11 +1697,11 @@ public class Form extends AppInventorCompatActivity
    */
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_ASSET,
       defaultValue = "")
-  @SimpleProperty(userVisible = false, category = PropertyCategory.APPLICATION)
+  @SimpleProperty(userVisible = false)
   public void Icon(String name) {
     // We don't actually need to do anything.
   }
-  
+
   /**
    * An integer value which must be incremented each time a new Android Application Package File
    * (APK) is created for the Google Play Store.
@@ -1813,12 +1712,11 @@ public class Form extends AppInventorCompatActivity
     defaultValue = "1")
   @SimpleProperty(userVisible = false,
     description = "An integer value which must be incremented each time a new Android "
-    +  "Application Package File (APK) is created for the Google Play Store.",
-    category = PropertyCategory.APPLICATION)
+    +  "Application Package File (APK) is created for the Google Play Store.")
   public void VersionCode(int vCode) {
     // We don't actually need to do anything.
   }
-  
+
   /**
    * A string which can be changed to allow Google Play Store users to distinguish between
    * different versions of the App.
@@ -1829,12 +1727,11 @@ public class Form extends AppInventorCompatActivity
     defaultValue = "1.0")
   @SimpleProperty(userVisible = false,
     description = "A string which can be changed to allow Google Play "
-    + "Store users to distinguish between different versions of the App.",
-    category = PropertyCategory.APPLICATION)
+    + "Store users to distinguish between different versions of the App.")
   public void VersionName(String vName) {
     // We don't actually need to do anything.
   }
-  
+
   /**
    * If set to responsive (the default), screen layouts will use the actual resolution of the
    * device. See the [documentation on responsive design](../other/responsiveDesign.html) in App
@@ -1847,12 +1744,11 @@ public class Form extends AppInventorCompatActivity
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_SIZING,
       defaultValue = "Responsive", alwaysSend = true)
   @SimpleProperty(userVisible = false,
-      // This desc won't apprear as a tooltip, since there's no block, but we'll keep it with the source.
-      description = "If set to fixed,  screen layouts will be created for a single fixed-size screen and autoscaled. " +
-          "If set to responsive, screen layouts will use the actual resolution of the device.  " +
-          "See the documentation on responsive design in App Inventor for more information. " +
-          "This property appears on Screen1 only and controls the sizing for all screens in the app.",
-      category = PropertyCategory.APPLICATION)
+  // This desc won't apprear as a tooltip, since there's no block, but we'll keep it with the source.
+  description = "If set to fixed,  screen layouts will be created for a single fixed-size screen and autoscaled. " +
+      "If set to responsive, screen layouts will use the actual resolution of the device.  " +
+      "See the documentation on responsive design in App Inventor for more information. " +
+      "This property appears on Screen1 only and controls the sizing for all screens in the app.")
   public void Sizing(String value) {
     // This is used by the project and build server.
     // We also use it to adjust sizes
@@ -1928,9 +1824,8 @@ public class Form extends AppInventorCompatActivity
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
       defaultValue = "")
   @SimpleProperty(userVisible = false,
-      description = "This is the display name of the installed application in the phone." +
-          "If the AppName is blank, it will be set to the name of the project when the project is built.",
-      category = PropertyCategory.APPLICATION)
+  description = "This is the display name of the installed application in the phone." +
+      "If the AppName is blank, it will be set to the name of the project when the project is built.")
   public void AppName(String aName) {
     // We don't actually need to do anything.
   }
@@ -2003,8 +1898,7 @@ public class Form extends AppInventorCompatActivity
    */
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_THEME,
       defaultValue = ComponentConstants.DEFAULT_THEME)
-  @SimpleProperty(userVisible = false, description = "Sets the theme used by the application.",
-      category = PropertyCategory.APPLICATION)
+  @SimpleProperty(userVisible = false, description = "Sets the theme used by the application.")
   public void Theme(String theme) {
     if (SdkLevel.getLevel() < SdkLevel.LEVEL_HONEYCOMB) {
       backgroundColor = Component.COLOR_WHITE;
@@ -2066,8 +1960,7 @@ public class Form extends AppInventorCompatActivity
     defaultValue = "")
   @SimpleProperty(userVisible = false,
     description = "A URL to use to populate the Tutorial Sidebar while "
-    + "editing a project. Used as a teaching aid.",
-    category = PropertyCategory.APPLICATION)
+    + "editing a project. Used as a teaching aid.")
   public void TutorialURL(String url) {
     // We don't actually do anything This property is stored in the
     // project properties file
@@ -2078,8 +1971,7 @@ public class Form extends AppInventorCompatActivity
   @SimpleProperty(userVisible = false,
     description = "A JSON string representing the subset for the screen. Authors of template apps "
       + "can use this to control what components, designer properties, and blocks are available "
-      + "in the project.",
-    category = PropertyCategory.APPLICATION)
+      + "in the project.")
   public void BlocksToolkit(String json) {
     // We don't actually do anything. This property is stored in the
     // project properties file
@@ -2166,6 +2058,7 @@ public class Form extends AppInventorCompatActivity
     try {
       Log.i(LOG_TAG, "startNewForm starting activity:" + activityIntent);
       startActivityForResult(activityIntent, SWITCH_FORM_REQUEST_CODE);
+      AnimationUtil.ApplyOpenScreenAnimation(this, openAnimType);
     } catch (ActivityNotFoundException e) {
       dispatchErrorOccurredEvent(this, functionName,
           ErrorMessages.ERROR_SCREEN_NOT_FOUND, nextFormName);
@@ -2189,7 +2082,7 @@ public class Form extends AppInventorCompatActivity
     }
     return jsonResult;
   }
-  
+
   @SimpleEvent(description = "Event raised when another screen has closed and control has " +
       "returned to this screen.")
   public void OtherScreenClosed(String otherScreenName, Object result) {
@@ -2221,7 +2114,6 @@ public class Form extends AppInventorCompatActivity
   @Override
   public void $add(AndroidViewComponent component) {
     viewLayout.add(component);
-    components.add(component);
   }
 
   public float deviceDensity(){
@@ -2254,7 +2146,6 @@ public class Form extends AppInventorCompatActivity
     component.setLastWidth(width);
 
     // A form is a vertical layout.
-    Log.i("Form", "Set child view Width:" + component.getView().toString());
     ViewUtil.setChildWidthForVerticalLayout(component.getView(), width);
   }
 
@@ -2278,7 +2169,6 @@ public class Form extends AppInventorCompatActivity
     component.setLastHeight(height);
 
     // A form is a vertical layout.
-    Log.i("Form", "Set child view height:" + component.getView().toString());
     ViewUtil.setChildHeightForVerticalLayout(component.getView(), height);
   }
 
@@ -2320,12 +2210,12 @@ public class Form extends AppInventorCompatActivity
   public static Object getStartValue() {
     if (activeForm != null) {
       return decodeJSONStringForForm(activeForm.startupValue, "get start value");
-    } else { 
+    } else {
       throw new IllegalStateException("activeForm is null");
     }
   }
-  
- 
+
+
   /**
    * Closes the current screen, as opposed to finishApplication, which
    * exits the entire application.
@@ -2367,12 +2257,13 @@ public class Form extends AppInventorCompatActivity
     }
   }
 
-  
+
   protected void closeForm(Intent resultIntent) {
     if (resultIntent != null) {
       setResult(Activity.RESULT_OK, resultIntent);
     }
     finish();
+    AnimationUtil.ApplyCloseScreenAnimation(this, closeAnimType);
   }
 
   // This is called from runtime.scm when a "close application" block is executed.
@@ -2608,7 +2499,7 @@ public class Form extends AppInventorCompatActivity
       throw e.getTargetException();
     }
   }
-  
+
   /**
    * Perform some action related to fullscreen video display.
    * @param action
@@ -2644,11 +2535,6 @@ public class Form extends AppInventorCompatActivity
    */
   public synchronized Bundle fullScreenVideoAction(int action, VideoPlayer source, Object data) {
     return fullScreenVideoUtil.performAction(action, source, data);
-  }
-
-  @Override
-  public Iterator<AndroidViewComponent> iterator() {
-    return components.iterator();
   }
 
   private void setBackground(View bgview) {

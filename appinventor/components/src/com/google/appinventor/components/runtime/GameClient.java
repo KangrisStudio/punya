@@ -316,7 +316,7 @@ public class GameClient extends AndroidNonvisibleComponent
   @DesignerProperty(
       editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
       defaultValue = "http://appinvgameserver.appspot.com")
-  @SimpleProperty(userVisible = false, category = PropertyCategory.BEHAVIOR)
+  @SimpleProperty(userVisible = false)
   public void ServiceURL(String url){
     if (url.endsWith("/")) {
       this.serviceUrl = url.substring(0, url.length() - 1);

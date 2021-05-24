@@ -58,10 +58,6 @@ public interface FileExporter {
     boolean includeScreenShots,
     boolean fatalError, boolean forGallery) throws IOException;
 
-  ProjectSourceZip exportProjectSourceScreenZip(String userId, long projectId,
-	  @Nullable String zipName) throws IOException;
-
-
   /**
    * Exports projects selected by the user as a zip of zips.
    *

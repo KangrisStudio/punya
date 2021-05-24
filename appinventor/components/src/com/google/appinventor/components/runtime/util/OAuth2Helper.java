@@ -1,9 +1,9 @@
 package com.google.appinventor.components.runtime.util;
 
-import com.google.api.client.googleapis.extensions.android.accounts.GoogleAccountManager;
 import java.io.IOException;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.extensions.android2.auth.GoogleAccountManager;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -68,7 +68,7 @@ import android.util.Log;
  * Comments in the code provide the details.
  *   
  */
-public class OAuth2Helper{  
+public class OAuth2Helper {  
 
   public static final String TAG = "OAuthHelper";
   public static final String PREF_AUTH_TOKEN      = "authToken";
@@ -156,7 +156,6 @@ public class OAuth2Helper{
     // another one using the refresh token.
 
     accountManager.invalidateAuthToken(credential.getAccessToken());
-
     AccountManager.get(activity).invalidateAuthToken(authTokenType, null);
 
     // Try to get the user's account by account name. Might return null
@@ -218,7 +217,6 @@ public class OAuth2Helper{
     editor2.commit();
   }
   
-  
   /**
    * Clients can retrieve error messages statically.
    * @return errorMessage
@@ -227,7 +225,4 @@ public class OAuth2Helper{
     Log.i(TAG, "getErrorMessage = " + errorMessage);
     return errorMessage;
   }
-  
-  
-  
 }

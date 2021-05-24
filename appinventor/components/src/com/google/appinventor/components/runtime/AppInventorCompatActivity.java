@@ -5,6 +5,7 @@
 
 package com.google.appinventor.components.runtime;
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import androidx.appcompat.app.AppCompatCallback;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.ActionMode.Callback;
-import androidx.fragment.app.FragmentActivity;
 import com.google.appinventor.components.common.ComponentConstants;
 import com.google.appinventor.components.runtime.util.PaintUtil;
 import com.google.appinventor.components.runtime.util.SdkLevel;
@@ -37,7 +37,7 @@ import com.google.appinventor.components.runtime.util.theme.ThemeHelper;
  * correct theme.
  * @author ewpatton@mit.edu (Evan W. Patton)
  */
-public class AppInventorCompatActivity extends FragmentActivity implements AppCompatCallback {
+public class AppInventorCompatActivity extends Activity implements AppCompatCallback {
 
   public enum Theme {
     PACKAGED,

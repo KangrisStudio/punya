@@ -26,37 +26,34 @@ public final class YoungAndroidSettings extends Settings {
     super(SettingsConstants.PROJECT_YOUNG_ANDROID_SETTINGS);
 
     addProperty(new EditableProperty(this, SettingsConstants.YOUNG_ANDROID_SETTINGS_ICON,
-        "", null, EditableProperty.TYPE_INVISIBLE, null, null));
+        "", EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_SHOW_HIDDEN_COMPONENTS,
-        "False", null, EditableProperty.TYPE_INVISIBLE, null, null));
+        "False", EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_SCREEN_CHECKBOX_STATE_MAP,
         "", EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_PHONE_TABLET,
-        "False", null, EditableProperty.TYPE_INVISIBLE, null, null));
+        "False", EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_VERSION_CODE, "1", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_VERSION_CODE, "1",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_VERSION_NAME, "1.0", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_VERSION_NAME, "1.0",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_USES_LOCATION, "false", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_USES_LOCATION, "false",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_MAPS_KEY, "", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_APP_NAME, "",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_APP_NAME, "", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_SIZING, "Fixed",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_SIZING, "Fixed", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
-    addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_SHOW_LISTS_AS_JSON, "false", null,
-        EditableProperty.TYPE_INVISIBLE, null, null));
+        SettingsConstants.YOUNG_ANDROID_SETTINGS_SHOW_LISTS_AS_JSON, "false",
+        EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_TUTORIAL_URL, "",
         EditableProperty.TYPE_INVISIBLE));
@@ -68,9 +65,6 @@ public final class YoungAndroidSettings extends Settings {
         EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_THEME, "AppTheme.Light.DarkActionBar",
-        EditableProperty.TYPE_INVISIBLE));
-    addProperty(new EditableProperty(this,
-        SettingsConstants.YOUNG_ANDROID_SETTINGS_PHONE_PREVIEW, "Classic",
         EditableProperty.TYPE_INVISIBLE));
     addProperty(new EditableProperty(this,
         SettingsConstants.YOUNG_ANDROID_SETTINGS_PRIMARY_COLOR, "&HFFA5CF47",

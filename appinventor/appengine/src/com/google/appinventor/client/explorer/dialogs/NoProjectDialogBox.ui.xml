@@ -93,21 +93,23 @@
       <div class="ode-noDialogExampleDiv">
         <div class='ode-noDialogUpperDiv'>
           <h4 class="ode-noDialogExampleTitle">
-            <ui:msg key="rdfNotepadTitle"
-                    description="Title of the RdfNotepad app">Rdf Notepad</ui:msg>
+            <ui:msg key="helloPurrTitle"
+                    description="Title of the Hello Purr app">Hello Purr</ui:msg>
           </h4>
           <div class="ode-noDialogExampleImage">
-            <g:Image resource="{res.rdfNotepad}" altText="RdfNotepad Logo" />
+            <g:Image resource="{res.wilson}" altText="Wilson Logo" />
           </div>
           <p class="ode-noDialogExampleAbout">
-            <ui:msg key="rdfNotebookDescription" description="Description of the RdfNotebook app">
-              Rdf Notebook is an introductory app to learn about Linked Data and how MIT Punya
-              can help you build your own semantically-enabled apps.
+            <ui:msg key="helloPurrDescription" description="Description of the Hello Purr app">
+              HelloPurr is a simple app that you can build in a very short time.
+              You create a button that has a picture of a cat on it, and then
+              program the button so that when it is clicked a "meow" sound
+              plays.
             </ui:msg>
           </p>
         </div>
 
-        <g:Button ui:field='goToApp1' styleName='{style.ode-tutorialButton}'>
+        <g:Button ui:field='goToPurr' styleName='{style.ode-tutorialButton}'>
           <ui:msg key="startTutorialButton"
                   description="Text of the button to open a tutorial">Go to Tutorial</ui:msg>
         </g:Button>
@@ -116,22 +118,22 @@
       <div class="ode-noDialogExampleDiv">
         <div class='ode-noDialogUpperDiv'>
           <h4 class="ode-noDialogExampleTitle">
-            <ui:msg key="sleepApneaTitle"
-                    description="Title of the Sleep Apnea app">Sleep Apnea Decision Support</ui:msg>
+            <ui:msg key="talkToMeTitle"
+                    description="Title of the Talk to Me app">Talk to Me</ui:msg>
           </h4>
           <div class="ode-noDialogExampleImage">
-            <g:Image resource="{res.sleepApnea}" altText="Sleep Apnea Logo" />
+            <g:Image resource="{res.talkToMeLogo}" altText="Talk to Me Logo" />
           </div>
 
           <p class="ode-noDialogExampleAbout">
-            <ui:msg key="sleepApneaDescription" description="Description of the Sleep Apnea app">
-              In this tutorial, learn how to construct rules to evaluate data by building an app
-              to evaluate the Canadian Guidelines for Sleep Apnea.
+            <ui:msg key="talkToMeDescription" description="Description of the Talk to Me app">
+            Text to Speech is surprisingly fun. Find out for yourself with this
+            starter app that talks.
             </ui:msg>
           </p>
         </div>
 
-        <g:Button ui:field='goToApp2' styleName='{style.ode-tutorialButton}'>
+        <g:Button ui:field='goToTalk' styleName='{style.ode-tutorialButton}'>
           <ui:msg key="startTutorialButton">Go to Tutorial</ui:msg>
         </g:Button>
       </div>
@@ -139,21 +141,25 @@
       <div class="ode-noDialogExampleDiv">
         <div class='ode-noDialogUpperDiv'>
           <h4 class="ode-noDialogExampleTitle">
-            <ui:msg key="ldpCoapAppTitle"
-                    description="Title of the LdpCoap App">LDP-CoAP Tutorial</ui:msg>
+            <ui:msg key="translateAppTitle"
+                    description="Title of the Translate App">Translate App</ui:msg>
           </h4>
           <div class="ode-noDialogExampleImage">
-            <g:Image resource="{res.ldpCoap}" altText="LdpCoap Logo" />
+            <g:Image resource="{res.YRLogo}" altText="YR Media Logo" />
           </div>
           <p class="ode-noDialogExampleAbout">
-            <ui:msg key="ldpCoapDescription" description="Description of the LdpCoap app">
-              Learn how to integrate Internet of Things sensors with Linked Data using the
-              Linked Data Platform Constrained Application Protocol (LDP-CoAP).
+            <ui:msg key="translateAppDescription" description="Description of the Translate app">
+              Quickly translate English to Spanish (and other languages too!)
+              You're challenged with creating an app that could act as an aid
+              for immigrant parents who need a little extra help in
+              English-speaking situations. Inspired by YR Media story
+              <a href="https://yr.media/news/what-its-like-to-be-a-translator/" target="_blank"
+                 ui:ph="yrMediaLink">What It's Like to be a Translator</a>.
             </ui:msg>
           </p>
         </div>
 
-        <g:Button ui:field='goToApp3' styleName='{style.ode-tutorialButton}'>
+        <g:Button ui:field='goToYR' styleName='{style.ode-tutorialButton}'>
           <ui:msg key="startTutorialButton">Go to Tutorial</ui:msg>
         </g:Button>
       </div>

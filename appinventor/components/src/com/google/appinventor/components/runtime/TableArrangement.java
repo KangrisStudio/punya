@@ -6,11 +6,6 @@
 
 package com.google.appinventor.components.runtime;
 
-import com.google.appinventor.components.annotations.PropertyCategory;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.google.appinventor.components.annotations.DesignerComponent;
 import com.google.appinventor.components.annotations.DesignerProperty;
 import com.google.appinventor.components.annotations.SimpleObject;
@@ -58,7 +53,6 @@ public class TableArrangement extends AndroidViewComponent
 
   // Layout
   private final TableLayout viewLayout;
-  private final List<AndroidViewComponent> components;
 
   /**
    * Creates a new TableArrangement component.
@@ -70,7 +64,6 @@ public class TableArrangement extends AndroidViewComponent
     context = container.$context();
 
     viewLayout = new TableLayout(context, 2, 2);
-    components = new ArrayList<AndroidViewComponent>();
 
     container.$add(this);
   }
@@ -92,7 +85,7 @@ public class TableArrangement extends AndroidViewComponent
    */
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_NON_NEGATIVE_INTEGER,
       defaultValue = "2")
-  @SimpleProperty(userVisible = false, category = PropertyCategory.APPEARANCE)
+  @SimpleProperty(userVisible = false)
   public void Columns(int numColumns) {
     viewLayout.setNumColumns(numColumns);
   }
@@ -114,7 +107,7 @@ public class TableArrangement extends AndroidViewComponent
    */
   @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_NON_NEGATIVE_INTEGER,
       defaultValue = "2")
-  @SimpleProperty(userVisible = false, category = PropertyCategory.APPEARANCE)
+  @SimpleProperty(userVisible = false)
   public void Rows(int numRows) {
     viewLayout.setNumRows(numRows);
   }
@@ -134,7 +127,6 @@ public class TableArrangement extends AndroidViewComponent
   @Override
   public void $add(AndroidViewComponent component) {
     viewLayout.add(component);
-    components.add(component);
   }
 
   @Override
@@ -176,11 +168,6 @@ public class TableArrangement extends AndroidViewComponent
 
     ViewUtil.setChildHeightForTableLayout(component.getView(), height);
 
-  }
-
-  @Override
-  public Iterator<AndroidViewComponent> iterator() {
-    return components.iterator();
   }
 
   // AndroidViewComponent implementation

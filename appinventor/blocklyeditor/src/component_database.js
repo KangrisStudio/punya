@@ -273,20 +273,6 @@ Blockly.ComponentDatabase.prototype.getComponentUidNameMapByType = function(comp
 };
 
 /**
- * Obtain the uid for a given component name.
- *
- * @param {!string} instanceName The component instance's name.
- * @returns {string|boolean} The UUID of the component instance if it exists, otherwise false.
- */
-Blockly.ComponentDatabase.prototype.getUidForName = function(instanceName) {
-  if (instanceName in this.instanceNameUid_) {
-    return this.instanceNameUid_[instanceName];
-  }
-
-  return false;
-};
-
-/**
  * Obtain names of known components for presentation in dropdown fields.
  *
  * @param {!string} componentType The untranslated component type (e.g., button)
@@ -365,6 +351,7 @@ Blockly.ComponentDatabase.prototype.populateTypes = function(componentInfos) {
       info.properties[property.name] = property;
       if (typeof property['deprecated'] === 'string') {
         property['deprecated'] = JSON.parse(property['deprecated']);
+        if (property['deprecated']) continue;
       }
       if (property['rw'] == 'read-write') {
         property.mutability = Blockly.PROPERTY_READWRITEABLE;

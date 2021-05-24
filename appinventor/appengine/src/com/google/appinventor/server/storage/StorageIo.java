@@ -524,9 +524,6 @@ public interface StorageIo {
     final boolean forGallery,
     final boolean fatalError) throws IOException;
 
-  ProjectSourceZip exportProjectSourceScreenZip(String userId, long projectId,
-      @Nullable String zipName) throws IOException;
-
   /**
    * Find a user's id given their email address. Note that this query is case
    * sensitive!
@@ -653,7 +650,5 @@ public interface StorageIo {
    * @throws SecurityException if the user doesn't have access to the project
    */
   void assertUserHasProject(String userId, long projectId);
-
-  List<String> getTutorialsUrlAllowed();
 
 }

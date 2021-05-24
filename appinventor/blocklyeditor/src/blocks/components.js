@@ -198,19 +198,6 @@ Blockly.ComponentBlock.addGenericOption = function(block, options) {
 };
 
 /**
- * Marks the passed block as a badBlock() and disables it if the data associated
- * with the block is not defined, or the data is marked as deprecated.
- * @param {Blockly.BlockSvg} block The block to check for deprecation.
- * @param {EventDescriptor|MethodDescriptor|PropertyDescriptor} data The data
- *     associated with the block which is possibly deprecated.
- */
-Blockly.ComponentBlock.checkDeprecated = function(block, data) {
-  if (data && data.deprecated && block.workspace == Blockly.mainWorkspace) {
-    block.setDisabled(true);
-  }
-}
-
-/**
  * Create an event block of the given type for a component with the given
  * instance name. eventType is one of the "events" objects in a typeJsonString
  * passed to Blockly.Component.add.
@@ -314,10 +301,12 @@ Blockly.Blocks.component_event = {
       input.init();
     }
 
-    // Set as badBlock if it doesn't exist.
-    this.verify(); 
-    // Disable it if it does exist and is deprecated.
-    Blockly.ComponentBlock.checkDeprecated(this, eventType);
+    if (eventType && eventType.deprecated === "true" && this.workspace === Blockly.mainWorkspace) {
+      this.badBlock();
+      this.setDisabled(true);
+    }
+
+    this.verify(); // verify the block and mark it accordingly
 
     this.rendered = oldRendered;
   },
@@ -781,10 +770,15 @@ Blockly.Blocks.component_method = {
     this.errors = [{name:"checkIfUndefinedBlock"}, {name:"checkIsInDefinition"},
       {name:"checkComponentNotExistsError"}, {name: "checkGenericComponentSocket"}];
 
-    // Set as badBlock if it doesn't exist.
-    this.verify(); 
-    // Disable it if it does exist and is deprecated.
-    Blockly.ComponentBlock.checkDeprecated(this, this.getMethodTypeObject());
+    // mark the block bad if the method isn't defined or is marked deprecated
+    var method = this.getMethodTypeObject();
+    if ((!method || method.deprecated === true || method.deprecated === 'true') &&
+        this.workspace === Blockly.mainWorkspace) {
+      this.badBlock();
+      this.setDisabled(true);
+    }
+
+    this.verify(); // verify the block and mark it accordingly
 
     this.rendered = oldRendered;
   },
@@ -1035,9 +1029,9 @@ Blockly.Blocks.component_set_get = {
       this.setColour(Blockly.ComponentBlock.COLOUR_GET);
     }
     var tooltipDescription;
-    if (this.propertyName && this.propertyObject) {
-      tooltipDescription = componentDb.getInternationalizedPropertyDescription(
-        this.getTypeName(), this.propertyName, this.propertyObject.description);
+    if (this.propertyName) {
+      tooltipDescription = componentDb.getInternationalizedPropertyDescription(this.getTypeName(), this.propertyName,
+          this.propertyObject.description);
     } else {
       tooltipDescription = Blockly.Msg.UNDEFINED_BLOCK_TOOLTIP;
     }
@@ -1132,10 +1126,13 @@ Blockly.Blocks.component_set_get = {
       {name:"checkComponentNotExistsError"}, {name: 'checkGenericComponentSocket'},
       {name: 'checkEmptySetterSocket'}];
 
-    // Set as badBlock if it doesn't exist.
-    this.verify(); 
-    // Disable it if it does exist and is deprecated.
-    Blockly.ComponentBlock.checkDeprecated(this, this.propertyObject);
+    if (thisBlock.propertyObject && this.propertyObject.deprecated === "true" && this.workspace === Blockly.mainWorkspace) {
+      // [lyn, 2015/12/27] mark deprecated properties as bad
+      this.badBlock();
+      this.setDisabled(true);
+    }
+
+    this.verify();
 
     for (var i = 0, input; input = this.inputList[i]; i++) {
       input.init();
@@ -1447,8 +1444,6 @@ Blockly.ComponentBlock.HELPURLS = {
   "Navigation": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_NAVIGATION_HELPURL,
   "Polygon": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_POLYGON_HELPURL,
   "Rectangle": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_RECTANGLE_HELPURL,
-  "Chart": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
-  "ChartData2D": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
   "ContactPicker": Blockly.Msg.LANG_COMPONENT_BLOCK_CONTACTPICKER_HELPURL,
   "EmailPicker": Blockly.Msg.LANG_COMPONENT_BLOCK_EMAILPICKER_HELPURL,
   "CloudDB" : Blockly.Msg.LANG_COMPONENT_BLOCK_CLOUDDB_HELPURL,
@@ -1534,8 +1529,6 @@ Blockly.ComponentBlock.PROPERTIES_HELPURLS = {
   "Ball": Blockly.Msg.LANG_COMPONENT_BLOCK_BALL_PROPERTIES_HELPURL,
   "ImageSprite": Blockly.Msg.LANG_COMPONENT_BLOCK_IMAGESPRITE_PROPERTIES_HELPURL,
   "Map": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_HELPURL,
-  "Chart": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
-  "ChartData2D": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
   "Circle": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_CIRCLE_HELPURL,
   "FeatureCollection": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_FEATURECOLLECTION_HELPURL,
   "LineString": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_LINESTRING_HELPURL,
@@ -1628,8 +1621,6 @@ Blockly.ComponentBlock.EVENTS_HELPURLS = {
   "Ball": Blockly.Msg.LANG_COMPONENT_BLOCK_BALL_EVENTS_HELPURL,
   "ImageSprite": Blockly.Msg.LANG_COMPONENT_BLOCK_IMAGESPRITE_EVENTS_HELPURL,
   "Map": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_HELPURL,
-  "Chart": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
-  "ChartData2D": Blockly.Msg.LANG_COMPONENT_BLOCK_CHARTDATA2D_HELPURL,
   "Circle": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_CIRCLE_HELPURL,
   "FeatureCollection": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_FEATURECOLLECTION_HELPURL,
   "LineString": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_LINESTRING_HELPURL,
@@ -1712,8 +1703,6 @@ Blockly.ComponentBlock.METHODS_HELPURLS = {
   "Ball": Blockly.Msg.LANG_COMPONENT_BLOCK_BALL_METHODS_HELPURL,
   "ImageSprite": Blockly.Msg.LANG_COMPONENT_BLOCK_IMAGESPRITE_METHODS_HELPURL,
   "Map": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_HELPURL,
-  "Chart": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
-  "ChartData2D": Blockly.Msg.LANG_COMPONENT_BLOCK_CHART_HELPURL,
   "Circle": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_CIRCLE_HELPURL,
   "FeatureCollection": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_FEATURECOLLECTION_HELPURL,
   "LineString": Blockly.Msg.LANG_COMPONENT_BLOCK_MAPS_LINESTRING_HELPURL,

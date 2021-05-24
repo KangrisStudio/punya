@@ -86,12 +86,6 @@ public class ServerLayout {
    * for downloading a project's sources
    */
   public static final String DOWNLOAD_PROJECT_SOURCE = "project-source";
-  
-  /**
-   * Relative path within {@link com.google.appinventor.server.DownloadServlet}
-   * for downloading a project's sources for screen
-   */
-  public static final String DOWNLOAD_PROJECT_SOURCE_SCREEN = "project-source-screen";
 
   /**
    * Relative path within {@link com.google.appinventor.server.DownloadServlet}
@@ -138,11 +132,6 @@ public class ServerLayout {
 
   /**
    * Relative path within {@link com.google.appinventor.server.UploadServlet}
-   * for uploading a screen
-   */
-  public static final String UPLOAD_SCREEN = "screen";
-
-  /**
    * for uploading a component
    */
   public static final String UPLOAD_COMPONENT = "component";
@@ -187,11 +176,6 @@ public class ServerLayout {
    * Name of the form element to upload files.
    */
   public static final String UPLOAD_FILE_FORM_ELEMENT = "uploadFile";
-  
-  /**
-   * Name of the form element to upload screens.
-   */
-  public static final String UPLOAD_PROJECT_SCREEN_FORM_ELEMENT = "uploadProjectScreen";
 
   /**
    * Name of the form element to upload project archives.
@@ -207,12 +191,6 @@ public class ServerLayout {
    * Name of the form element to upload user files.
    */
   public static final String UPLOAD_USERFILE_FORM_ELEMENT = "uploadUserFile";
-
-  /**
-   * Relative path of the {@link com.google.appinventor.server.SemWebServiceImpl}
-   * within the ODE GWT module.
-   */
-  public static final String SEMWEB_SERVICE = "semweb";
 
   /**
    * Relative path of the

@@ -71,11 +71,6 @@ public interface UserInfoService extends RemoteService {
   void deleteUserFile(String fileName);
 
   /**
-  * Get the SHA1 fingerprint for the user's keystore
-  */
-  String getUserFingerprintSHA1();
-
-  /**
    * No-Op Do nothing, but will refresh the session cookie as a side-effect
    */
   void noop();

@@ -68,9 +68,8 @@ None
 ### Properties  {#Camera-Properties}
 
 {:.properties}
+None
 
-{:id="Camera.LocalStorageFolder" .text .ro .bo} *LocalStorageFolder*
-: Return the folder(directory) in which we store the photos locally
 
 ### Events  {#Camera-Events}
 
@@ -86,9 +85,6 @@ None
 
 {:id="Camera.TakePicture" class="method"} <i/> TakePicture()
 : Takes a picture, then raises the [`AfterPicture`](#Camera.AfterPicture) event.
-
-{:id="Camera.deleteImage" class="method"} <i/> deleteImage(*image*{:.text})
-: Delete local image
 
 ## ImagePicker  {#ImagePicker}
 

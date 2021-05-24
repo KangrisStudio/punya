@@ -43,7 +43,7 @@ public class Barometer extends SingleValueSensor {
   /**
    * Called when a change is detected in the air pressure (provided in hPa).
    *
-   * @param pressure the new air pressure in hPa (millibar)
+   * @param the new air pressure in hPa (millibar)
    */
   @SimpleEvent
   public void AirPressureChanged(float pressure) {

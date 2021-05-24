@@ -311,18 +311,6 @@ public final class YoungAndroidFormUpgrader {
       } else if (componentType.equals("Player")) {
         srcCompVersion = upgradePlayerProperties(componentProperties, srcCompVersion);
 
-      } else if (componentType.equals("LinkedData")) {
-        srcCompVersion = upgradeLinkedDataProperties(componentProperties, srcCompVersion);
-
-      } else if (componentType.equals("LinkedDataForm")) {
-        srcCompVersion = upgradeLinkedDataFormProperties(componentProperties, srcCompVersion);
-
-      } else if (componentType.equals("LinkedDataListPicker")) {
-        srcCompVersion = upgradeLinkedDataListProperties(componentProperties, srcCompVersion);
-
-      } else if (componentType.equals("SemanticWebListPicker")) {
-        srcCompVersion = upgradeSemanticWebListPickerProperties(componentProperties, srcCompVersion);
-
       } else if (componentType.equals("Sound")) {
         srcCompVersion = upgradeSoundProperties(componentProperties, srcCompVersion);
 
@@ -834,10 +822,7 @@ public final class YoungAndroidFormUpgrader {
       srcCompVersion = 2;
     }
     if (srcCompVersion < 3) {
-      // The ConceptURI property was renamed to ObjectType.
       // RequestFocus function was added (via TextBoxBase)
-      handlePropertyRename(componentProperties, "ConceptURI", "ObjectType");
-      // Properties related to this component have now been upgraded to version 3.
       srcCompVersion = 3;
     }
     return srcCompVersion;
@@ -1290,9 +1275,6 @@ public final class YoungAndroidFormUpgrader {
       srcCompVersion = 2;
     }
     if (srcCompVersion < 3) {
-      // The ConceptURI property was renamed to ObjectType.
-      handlePropertyRename(componentProperties, "ConceptURI", "ObjectType");
-      // Properties related to this component have now been upgraded to version 3.
       // Added RequestFocus Function (via TextBoxBase)
       srcCompVersion = 3;
     }
@@ -1369,56 +1351,6 @@ public final class YoungAndroidFormUpgrader {
         // Properties related to this component have now been upgraded to version  6.
         srcCompVersion = 6;
       }
-    return srcCompVersion;
-  }
-
-  private static int upgradeLinkedDataProperties(Map<String, JSONValue> componentProperties,
-      int srcCompVersion) {
-    if ( srcCompVersion < 3 ) {
-      // BaseURL is removed
-      componentProperties.remove("BaseURL");
-      srcCompVersion = 3;
-    }
-    return srcCompVersion;
-  }
-
-  private static int upgradeLinkedDataFormProperties(Map<String, JSONValue> componentProperties,
-      int srcCompVersion) {
-    if ( srcCompVersion < 2 ) {
-      // The BaseURI property was renamed to FormID.
-      handlePropertyRename(componentProperties, "BaseURI", "FormID");
-      // The ConceptURI property was renamed to ObjectType.
-      handlePropertyRename(componentProperties, "ConceptURI", "ObjectType");
-      // Properties related to this component have now been upgraded to version 2.
-      srcCompVersion = 2;
-    }
-
-    if (srcCompVersion < 3) {
-      // Renamed Semantic Form to Linked Data Form
-      srcCompVersion = 3;
-    }
-
-    return srcCompVersion;
-  }
-
-  private static int upgradeLinkedDataListProperties(Map<String, JSONValue> componentProperties,
-      int srcCompVersion) {
-
-    if (srcCompVersion < 3) {
-      srcCompVersion = 3;
-    }
-
-    return srcCompVersion;
-  }
-
-  private static int upgradeSemanticWebListPickerProperties(Map<String, JSONValue> componentProperties,
-      int srcCompVersion) {
-    if ( srcCompVersion < 2 ) {
-      // The ConceptURI property was renamed to ObjectType
-      handlePropertyRename(componentProperties, "ConceptURI", "ObjectType");
-      // Properties related to this component have now been upgraded to version 2.
-      srcCompVersion = 2;
-    }
     return srcCompVersion;
   }
 
@@ -1584,12 +1516,6 @@ public final class YoungAndroidFormUpgrader {
       // No properties need to be modified to upgrade to version 4.
       srcCompVersion = 4;
     }
-    if (srcCompVersion < 5) {
-      // - Added 'ImageUploaded' event to report when an image is uploaded to Twitter and the
-      //   associated URL for that image.
-      srcCompVersion = 5;
-    }
-
     return srcCompVersion;
   }
 
@@ -1643,19 +1569,12 @@ public final class YoungAndroidFormUpgrader {
       srcCompVersion = 4;
     }
     if (srcCompVersion < 5) {
-      // The LDComponent interface was added.
       // RequestFocus method was added
-      // No properties need to be modified to upgrade to version 5.
       srcCompVersion = 5;
     }
     if (srcCompVersion < 6) {
-      // The ConceptURI property was renamed to ObjectType.
-      handlePropertyRename(componentProperties, "ConceptURI", "ObjectType");
-      srcCompVersion = 6;
-    }
-    if (srcCompVersion < 7) {
       // ReadOnly property was added
-      srcCompVersion = 7;
+      srcCompVersion = 6;
     }
     return srcCompVersion;
   }

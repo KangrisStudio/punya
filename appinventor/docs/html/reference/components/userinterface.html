@@ -146,7 +146,6 @@
   <li><a href="#Switch">Switch</a></li>
   <li><a href="#TextBox">TextBox</a></li>
   <li><a href="#TimePicker">TimePicker</a></li>
-  <li><a href="#Timer">Timer</a></li>
   <li><a href="#WebViewer">WebViewer</a></li>
 </ul>
 
@@ -269,10 +268,6 @@
   <dt id="CheckBox.HeightPercent" class="number wo bo"><em>HeightPercent</em></dt>
   <dd>Specifies the <code class="highlighter-rouge">CheckBox</code>’s vertical height as a percentage
  of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
-  <dt id="CheckBox.PropertyURI" class="text"><em>PropertyURI</em></dt>
-  <dd>
-    <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-  </dd>
   <dt id="CheckBox.Text" class="text"><em>Text</em></dt>
   <dd>Specifies the text displayed by the <code class="highlighter-rouge">CheckBox</code>.</dd>
   <dt id="CheckBox.TextColor" class="color"><em>TextColor</em></dt>
@@ -663,8 +658,6 @@ Valid values for the month field are 1-12 and 1-31 for the day field.</dd>
  of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
   <dt id="ListView.Selection" class="text"><em>Selection</em></dt>
   <dd>Returns the text in the <code class="highlighter-rouge">ListView</code> at the position of <a href="#ListView.SelectionIndex"><code class="highlighter-rouge">SelectionIndex</code></a>.</dd>
-  <dt id="ListView.SelectionBinding" class="dictionary ro bo"><em>SelectionBinding</em></dt>
-  <dd>Returns the binding corresponding to the selection in the ListView.</dd>
   <dt id="ListView.SelectionColor" class="color"><em>SelectionColor</em></dt>
   <dd>The color of the item when it is selected.</dd>
   <dt id="ListView.SelectionIndex" class="number bo"><em>SelectionIndex</em></dt>
@@ -699,10 +692,7 @@ Valid values for the month field are 1-12 and 1-31 for the day field.</dd>
 
 <h3 id="ListView-Methods">Methods</h3>
 
-<dl class="methods">
-  <dt id="ListView.LoadFromBindings" class="method"><i></i> LoadFromBindings(<em class="list">bindings</em>,<em class="text">showVariable</em>)</dt>
-  <dd>Takes a set of query results, and displays values for the given variable name.”,</dd>
-</dl>
+<p class="methods">None</p>
 
 <h2 id="Notifier">Notifier</h2>
 
@@ -824,18 +814,8 @@ Valid values for the month field are 1-12 and 1-31 for the day field.</dd>
  of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
   <dt id="PasswordTextBox.Hint" class="text"><em>Hint</em></dt>
   <dd><code class="highlighter-rouge">PasswordTextBox</code> hint for the user.</dd>
-  <dt id="PasswordTextBox.ObjectType" class="text"><em>ObjectType</em></dt>
-  <dd>Concept URI property setter method.</dd>
   <dt id="PasswordTextBox.PasswordVisible" class="boolean bo"><em>PasswordVisible</em></dt>
   <dd>Specifies whether the password is hidden (default) or shown.</dd>
-  <dt id="PasswordTextBox.PropertyURI" class="text"><em>PropertyURI</em></dt>
-  <dd>
-    <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-  </dd>
-  <dt id="PasswordTextBox.SubjectIdentifier" class="boolean"><em>SubjectIdentifier</em></dt>
-  <dd>
-    <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
-  </dd>
   <dt id="PasswordTextBox.Text" class="text"><em>Text</em></dt>
   <dd>The text in the <code class="highlighter-rouge">PasswordTextBox</code>, which can be set by the programmer in the Designer or Blocks Editor,
  or it can be entered by the user (unless the <a href="#PasswordTextBox.Enabled"><code class="highlighter-rouge">Enabled</code></a> property is false).</dd>
@@ -1199,10 +1179,6 @@ having dark grey components.</li>
  of the <a href="userinterface.html#Screen.Height"><code class="highlighter-rouge">Screen</code>’s <code class="highlighter-rouge">Height</code></a>.</dd>
   <dt id="Switch.On" class="boolean"><em>On</em></dt>
   <dd>True if the switch is in the On state, false otherwise.</dd>
-  <dt id="Switch.PropertyURI" class="text"><em>PropertyURI</em></dt>
-  <dd>
-    <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-  </dd>
   <dt id="Switch.Text" class="text"><em>Text</em></dt>
   <dd>Specifies the text displayed by the <code class="highlighter-rouge">Switch</code>.</dd>
   <dt id="Switch.TextColor" class="color"><em>TextColor</em></dt>
@@ -1303,18 +1279,8 @@ having dark grey components.</li>
  decimal point and an optional leading minus sign. This applies to keyboard input only. Even
  if </code>NumbersOnly<code class="highlighter-rouge"> is true, you can set the text to anything at all using the
  [</code>Text`](#TextBox.Text) property.</dd>
-  <dt id="TextBox.ObjectType" class="text"><em>ObjectType</em></dt>
-  <dd>Concept URI property setter method.</dd>
-  <dt id="TextBox.PropertyURI" class="text"><em>PropertyURI</em></dt>
-  <dd>
-    <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-  </dd>
   <dt id="TextBox.ReadOnly" class="boolean"><em>ReadOnly</em></dt>
   <dd>Whether the TextBox is read-only. By default, this is <code class="logic block highlighter-rouge">true</code>.</dd>
-  <dt id="TextBox.SubjectIdentifier" class="boolean"><em>SubjectIdentifier</em></dt>
-  <dd>
-    <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
-  </dd>
   <dt id="TextBox.Text" class="text"><em>Text</em></dt>
   <dd>The text in the <code class="highlighter-rouge">TextBox</code>, which can be set by the programmer in the Designer or Blocks Editor,
  or it can be entered by the user (unless the <a href="#TextBox.Enabled"><code class="highlighter-rouge">Enabled</code></a> property is false).</dd>
@@ -1455,63 +1421,6 @@ having dark grey components.</li>
   <dd>Allows the instant to set the hour and minute to be displayed when the <code class="highlighter-rouge">TimePicker</code> opens.
  Instants are used in <a href="sensors.html#Clock"><code class="highlighter-rouge">Clock</code></a>, <a href="#DatePicker"><code class="highlighter-rouge">DatePicker</code></a>, and <a href="#TimePicker"><code class="highlighter-rouge">TimePicker</code></a>
  components.</dd>
-</dl>
-
-<h2 id="Timer">Timer</h2>
-
-<p>Timer provides a timer to schedule actions. Everything is represented in
- milliseconds.</p>
-
-<h3 id="Timer-Properties">Properties</h3>
-
-<dl class="properties">
-  <dt id="Timer.GetTimerTimezone" class="text ro bo"><em>GetTimerTimezone</em></dt>
-  <dd>Get string representation of a timer’s timezone.</dd>
-  <dt id="Timer.NextTimeTriggered" class="number ro bo"><em>NextTimeTriggered</em></dt>
-  <dd>NextTimeTriggered property getter method.</dd>
-  <dt id="Timer.Repeating" class="boolean"><em>Repeating</em></dt>
-  <dd>Repeating property setter method: instructs when to set the Alarm in
- Repeating mode</dd>
-  <dt id="Timer.TimeLeftBeforeTriggered" class="number ro bo"><em>TimeLeftBeforeTriggered</em></dt>
-  <dd>timeleftBeforeTriggered property getter method.</dd>
-  <dt id="Timer.TimerEnabled" class="boolean ro bo"><em>TimerEnabled</em></dt>
-  <dd>Enabled property getter method.</dd>
-  <dt id="Timer.TimerInterval" class="number"><em>TimerInterval</em></dt>
-  <dd>Interval property setter method: resets the interval between repeating timer
- events.</dd>
-  <dt id="Timer.WakeUp" class="boolean"><em>WakeUp</em></dt>
-  <dd>WakeUp property setter method: instructs when to wake up the device if
- sleeping</dd>
-</dl>
-
-<h3 id="Timer-Events">Events</h3>
-
-<dl class="events">
-  <dt id="Timer.TimerTriggered">TimerTriggered()</dt>
-  <dd>Indicates that we receive the timer trigger</dd>
-</dl>
-
-<h3 id="Timer-Methods">Methods</h3>
-
-<dl class="methods">
-  <dt id="Timer.CreateNotification" class="method"><i></i> CreateNotification(<em class="text">title</em>,<em class="text">text</em>,<em class="boolean">enabledSound</em>,<em class="boolean">enabledVibrate</em>,<em class="text">packageName</em>,<em class="text">className</em>,<em class="text">extraKey</em>,<em class="text">extraVal</em>)</dt>
-  <dd>Create a notication with message to wake up another activity when tap on the notification</dd>
-  <dt id="Timer.FinishForm" class="method"><i></i> FinishForm()</dt>
-  <dd>Try to kill myself, force the From.onDestroyed() gets called</dd>
-  <dt id="Timer.NextDateTimeTriggered" class="method returns text"><i></i> NextDateTimeTriggered()</dt>
-  <dd>NexttimeTriggered property getter (in human-readable) form</dd>
-  <dt id="Timer.ResetTimer" class="method"><i></i> ResetTimer()</dt>
-  <dd>Reset the configuration of the timer to default interval=30, repeating = false, wakeup = true</dd>
-  <dt id="Timer.SetRepeatedDailyTimer" class="method"><i></i> SetRepeatedDailyTimer(<em class="number">hour</em>,<em class="number">minute</em>)</dt>
-  <dd>Set the Timer to be triggered at specified hour and minute and repeat daily</dd>
-  <dt id="Timer.SetRepeatedWeeklyTimer" class="method"><i></i> SetRepeatedWeeklyTimer(<em class="number">weekday</em>,<em class="number">hour</em>,<em class="number">minute</em>)</dt>
-  <dd>Set the Timer to be triggered at the specified weekday, hour and time, and repeat weekly. e.g Sunday = 1 and Monday =2.</dd>
-  <dt id="Timer.SetTimerTimezone" class="method"><i></i> SetTimerTimezone(<em class="text">timezoneId</em>)</dt>
-  <dd>Set timer’s timezone.</dd>
-  <dt id="Timer.TimerEnabled" class="method"><i></i> TimerEnabled(<em class="boolean">enabled</em>)</dt>
-  <dd>Enabled property setter method: starts or stops the timer.</dd>
-  <dt id="Timer.setTimer" class="method"><i></i> setTimer(<em class="number">year</em>,<em class="number">month</em>,<em class="number">date</em>,<em class="number">hourOfDay</em>,<em class="number">minute</em>)</dt>
-  <dd>Set to be triggered at a specific weekday in the future. e.g. for Jan 30 2012 23:55, year=2012, month=1, date=30, hourOfDay=23, minute=55.</dd>
 </dl>
 
 <h2 id="WebViewer">WebViewer</h2>

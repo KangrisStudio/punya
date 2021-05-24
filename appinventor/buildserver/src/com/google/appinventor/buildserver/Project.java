@@ -88,7 +88,6 @@ public final class Project {
   private static final String ASSETSTAG = "assets";
   private static final String BUILDTAG = "build";
   private static final String USESLOCATIONTAG = "useslocation";
-  private static final String MAPKEY = "mapskey";
   private static final String ANAMETAG = "aname";
   private static final String ANDROID_MIN_SDK_TAG = "androidminsdk";
   private static final String ACTIONBAR_TAG = "actionbar";
@@ -403,13 +402,5 @@ public final class Project {
       }
     }
     return sources;
-  }
-  
-  public String getMapsKey() {
-    return properties.getProperty(MAPKEY);
-  }
-  
-  public void setMapsKey(String maps) {
-    properties.setProperty(MAPKEY, maps);
   }
 }

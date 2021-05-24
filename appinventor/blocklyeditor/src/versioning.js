@@ -1249,13 +1249,9 @@ Blockly.Versioning.AllUpgradeMaps =
     // No blocks need to be modified to upgrade to version 5.
     5: "noUpgrade",
 
-    // The BluetoothClient.PollingRate property was added.
-    // No blocks need to be modified to upgrade to version 6.
-    6: "noUpgrade",
-
     // The BluetoothClient.DisconnectOnError property was added.
-    // No blocks need to be modified to upgrade to version 7.
-    7: "noUpgrade"
+    // No blocks need to be modified to upgrade to version 5.
+    6: "noUpgrade"
 
   }, // End BluetoothClient upgraders
 
@@ -1402,14 +1398,6 @@ Blockly.Versioning.AllUpgradeMaps =
 
   }, // End Canvas upgraders
 
-  "Chart": {
-
-  }, // End Chart upgraders
-
-  "ChartData2D": {
-
-  }, // End ChartData2D upgraders
-
   "CheckBox": {
 
     // AI2: The Value property was renamed to Checked.
@@ -1476,10 +1464,6 @@ Blockly.Versioning.AllUpgradeMaps =
     6: "noUpgrade"
 
   }, // End ContactPicker upgraders
-
-  "DataFile": {
-
-  }, // End DataFile upgraders
 
 
   "DatePicker": {
@@ -2467,11 +2451,8 @@ Blockly.Versioning.AllUpgradeMaps =
     // AI2: Added RequestFocus method
     5: "noUpgrade",
 
-    // AI2: Added ReadOnly property
-    6: "noUpgrade",
-
-    // PUNYA: Add ObjectType and PropertyURI properties
-    7: "noUpgrade"
+    // AI3: Added ReadOnly property
+    6: "noUpgrade"
 
   }, // End TextBox upgraders
 
@@ -2589,11 +2570,7 @@ Blockly.Versioning.AllUpgradeMaps =
     // AI2: - Modified 'TweetWithImage' to upload images to Twitter directly because of the shutdown of
     //   TwitPic. The TwitPic_API_Key property is now deprecated and hidden.
     // *** This really should involve markBadBlock or something similar ***
-    4: "noUpgrade",
-
-    // AI2: - Added 'ImageUploaded' event to report when an image is uploaded to Twitter and the
-    //   associated URL for that image.
-    5: "noUpgrade"
+    4: "noUpgrade"
 
   }, // End Twitter upgraders
 
@@ -2734,12 +2711,6 @@ Blockly.Versioning.AllUpgradeMaps =
     // AI2: ApiKey property added
     2: "noUpgrade"
 
-  }, // End YandexTranslate upgraders
-
-  "LinkedDataListPicker" : {
-    1: "noUpgrade",
-    2: "noUpgrade",
-    3: "noUpgrade"
-  }
+  } // End YandexTranslate upgraders
 
 };

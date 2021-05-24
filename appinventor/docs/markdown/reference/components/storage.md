@@ -9,9 +9,7 @@ title: Storage
 Table of Contents:
 
 * [CloudDB](#CloudDB)
-* [DataFile](#DataFile)
 * [File](#File)
-* [SensorDB](#SensorDB)
 * [TinyDB](#TinyDB)
 * [TinyWebDB](#TinyWebDB)
 
@@ -103,56 +101,6 @@ The `CloudDB` component is a Non-visible component that allows you to store data
 : Asks `CloudDB` to store the given `value`{:.variable.block} under the given
  `tag`{:.text.block}.
 
-## DataFile  {#DataFile}
-
-Component for DataFile
-
-
-
-### Properties  {#DataFile-Properties}
-
-{:.properties}
-
-{:id="DataFile.ColumnNames" .list .ro .bo} *ColumnNames*
-: Retrieve the column names of the currently loaded Source file.
- For CSV files, this will return a List of entries in the first row.
- For JSON files, this will return a List of keys in the JSON object.
-
-{:id="DataFile.Columns" .list .ro .bo} *Columns*
-: Retrieve a List of columns of the currently loaded Source file.
-
-{:id="DataFile.LegacyMode" .boolean} *LegacyMode*
-: Allows app to access files from the root of the external storage directory (legacy mode).
- Starting with Android 11, this will no longer be allowed and the behavior is strongly
- discouraged on Android 10. Starting with Android 10, App Inventor by default will attempt to
- store files relative to the app-specific private directory on external storage in accordance
- with this security change.
-
-   **Note:** Apps that enable this property will likely stop working after upgrading to
- Android 11, which strongly enforces that apps only write to app-private directories.
-
-{:id="DataFile.Rows" .list .ro .bo} *Rows*
-: Retrieve a List of rows of the currently loaded Source file.
-
-{:id="DataFile.SourceFile" .text .wo .do} *SourceFile*
-: Sets the source file to parse data from, and then parses the
- file asynchronously. The results are stored in the [`Columns`](#DataFile.Columns),
- [`Rows`](#DataFile.Rows) and [`ColumnNames`](#DataFile.ColumnNames) properties.
- The expected formatting of the file is either the CSV or JSON format.
-
-### Events  {#DataFile-Events}
-
-{:.events}
-None
-
-
-### Methods  {#DataFile-Methods}
-
-{:.methods}
-
-{:id="DataFile.ReadFile" class="method"} <i/> ReadFile(*source*{:.text})
-: Indicates source file to load data from.The expected format of the contents of the file are either CSV or JSON.Prefix the filename with / to read from a specific file on the SD card. for instance /myFile.txt will read the file /sdcard/myFile.txt. To read assets packaged with an application (also works for the Companion) start the filename with // (two slashes). If a filename does not start with a slash, it will be read from the applications private storage (for packaged apps) and from /sdcard/AppInventor/data for the Companion.The results of the reading are stored in the Rows, Columns and ColumnNames properties of the component.
-
 ## File  {#File}
 
 Non-visible component for storing and retrieving files. Use this component to write or read files
@@ -176,9 +124,6 @@ Non-visible component for storing and retrieving files. Use this component to wr
 
    **Note:** Apps that enable this property will likely stop working after upgrading to
  Android 11, which strongly enforces that apps only write to app-private directories.
-
-{:id="File.getSDCardPath" .text .ro .bo} *getSDCardPath*
-: Property for getSDCardPath
 
 ### Events  {#File-Events}
 
@@ -224,98 +169,6 @@ Non-visible component for storing and retrieving files. Use this component to wr
 
    Note that this block will overwrite a file if it already exists. If you want to add content
  to an existing file use the [`AppendToFile`](#File.AppendToFile) method.
-
-## SensorDB  {#SensorDB}
-
-Component for SensorDB
-
-
-
-### Properties  {#SensorDB-Properties}
-
-{:.properties}
-
-{:id="SensorDB.ArchivePeriold" .number .ro .bo} *ArchivePeriold*
-: Current period of the schedule archive task
-
-{:id="SensorDB.CurrentActiveSensors" .list .ro .bo} *CurrentActiveSensors*
-: Returns the active sensors.
-
-{:id="SensorDB.DBName" .text .ro .bo} *DBName*
-: Property for DBName
-
-{:id="SensorDB.ExportFolderPath" .text .ro .bo} *ExportFolderPath*
-: Property for ExportFolderPath
-
-{:id="SensorDB.ExportFormat" .text .ro .bo} *ExportFormat*
-: Property for ExportFormat
-
-{:id="SensorDB.ScheduleArchiveEnabled" .boolean .ro .bo} *ScheduleArchiveEnabled*
-: Indicates whether the schedule archive task is currentenabled.
-
-{:id="SensorDB.ScheduleClearBackupEnabled" .boolean .ro .bo} *ScheduleClearBackupEnabled*
-: Indicates whether the schedule clear db bacup task is currently enabled
-
-{:id="SensorDB.ScheduleClearBackupPeriod" .number .ro .bo} *ScheduleClearBackupPeriod*
-: Current period of the schedule clear backup task
-
-{:id="SensorDB.ScheduleExpoertPeriod" .number .ro .bo} *ScheduleExpoertPeriod*
-: Current period of the schedule export task
-
-{:id="SensorDB.ScheduleExportEnabled" .boolean .ro .bo} *ScheduleExportEnabled*
-: Indicates whether the scheduled export task is currentenabled.
-
-### Events  {#SensorDB-Events}
-
-{:.events}
-
-{:id="SensorDB.FinishedInitServiceValues"} FinishedInitServiceValues()
-: Indicates that SensorDB is bound to SensorDBPipeline and re-initialize values from the pipeline
- e.g. archive_period, export_period, clearbackup_period, ..etc.
- App Inventor's user should use this event to update UI that needs values from the background service
-
-### Methods  {#SensorDB-Methods}
-
-{:.methods}
-
-{:id="SensorDB.AddSensorCollection" class="method"} <i/> AddSensorCollection(*sensorName*{:.text},*period*{:.number})
-: Add sensor colleciton task for a specific sensor with specified period (in seconds)
-
-{:id="SensorDB.Export" class="method"} <i/> Export(*format*{:.text})
-: Export the Sensor Database (SensorData as the name for the sqlite db on Android) as
- csv file(s) or JSON file(s). Each type of sensor data in the database
- will be export it as one file.
- The export path is under SDcard/packageName/export/
-
-{:id="SensorDB.ForceKill" class="method"} <i/> ForceKill()
-: (Testing) force Stop funfManager
-
-{:id="SensorDB.RemoveSensorCollection" class="method"} <i/> RemoveSensorCollection(*sensorName*{:.text})
-: Remove data colleciton task of a specific sensor
-
-{:id="SensorDB.ScheduleArchive" class="method"} <i/> ScheduleArchive(*period*{:.number})
-: Enable archive schedule task with specified period in seconds
-
-{:id="SensorDB.ScheduleClearBackup" class="method"} <i/> ScheduleClearBackup(*period*{:.number})
-: Enable clear db backup schedule task with sepcified period in seconds
-
-{:id="SensorDB.ScheduleExport" class="method"} <i/> ScheduleExport(*period*{:.number})
-: Enable export db schedule task with specified period in seconds
-
-{:id="SensorDB.StopClearDbBackup" class="method"} <i/> StopClearDbBackup()
-: Disable clear backup task
-
-{:id="SensorDB.StopScheduleArchive" class="method"} <i/> StopScheduleArchive()
-: Discable archive scheduled task
-
-{:id="SensorDB.StopScheduleExport" class="method"} <i/> StopScheduleExport()
-: Discable export scheduled task
-
-{:id="SensorDB.UpdateSensorCollection" class="method"} <i/> UpdateSensorCollection(*sensorName*{:.text},*period*{:.number})
-: Update the period of sensor colleciton task of a specific sensor
-
-{:id="SensorDB.getAvailableSensors" class="method returns list"} <i/> getAvailableSensors()
-: Return available names of the avaiable sesnors for data collection
 
 ## TinyDB  {#TinyDB}
 

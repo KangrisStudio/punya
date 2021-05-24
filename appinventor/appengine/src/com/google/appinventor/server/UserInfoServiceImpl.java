@@ -6,18 +6,6 @@
 
 package com.google.appinventor.server;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.Key;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-import java.security.cert.Certificate;
 import com.google.appinventor.server.flags.Flag;
 import com.google.appinventor.server.storage.StorageIo;
 import com.google.appinventor.server.storage.StorageIoInstanceHolder;
@@ -25,9 +13,6 @@ import com.google.appinventor.shared.rpc.user.Config;
 import com.google.appinventor.shared.rpc.user.User;
 import com.google.appinventor.shared.rpc.user.UserInfoService;
 import com.google.appinventor.shared.storage.StorageUtil;
-
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Implementation of the user information service.
@@ -88,11 +73,6 @@ public class UserInfoServiceImpl extends OdeRemoteServiceServlet implements User
 
     // Check to see if we need to upgrade this user's project to GCS
     storageIo.checkUpgrade(userInfoProvider.getUserId());
-
-    // Fetch list of allowed tutorial prefixes from the data store
-    List<String> urls = storageIo.getTutorialsUrlAllowed();
-    config.setTutorialUrlAllowed(urls);
-
     return config;
   }
 
@@ -175,80 +155,6 @@ public class UserInfoServiceImpl extends OdeRemoteServiceServlet implements User
   public void deleteUserFile(String fileName) {
     storageIo.deleteUserFile(userInfoProvider.getUserId(), fileName);
   }
- 
-    /**
-     * Get the SHA1 fingerprint for the user's keystore
-     */
-    @Override
-    public String getUserFingerprintSHA1() {
-        final String userId = userInfoProvider.getUserId();
-        byte[] keystoreBytes = storageIo.downloadRawUserFile(userId,
-                StorageUtil.ANDROID_KEYSTORE_FILENAME);
-        BufferedReader br = null;
-        try {
-            ByteArrayInputStream bais = new ByteArrayInputStream(keystoreBytes);
-            KeyStore store = KeyStore.getInstance("jks");
-            char[] pass = "android".toCharArray();
-            store.load(bais, pass);
-            Certificate cert = store.getCertificateChain("androidkey")[0];
-            MessageDigest md = MessageDigest.getInstance("SHA1");
-            String unprocessed = new BigInteger(1, md.digest(cert.getEncoded()))
-                    .toString(16).toUpperCase();
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < unprocessed.length(); i++) {
-                sb.append(unprocessed.charAt(i));
-                if (i % 2 == 1 && i != unprocessed.length() - 1) {
-                    sb.append(":");
-                }
-            }
-            return sb.toString();
-            // String[] keytoolCommandline = {
-            // System.getProperty("java.home") + "/bin/keytool",
-            // "-v", "-list",
-            // "-keystore", keystoreFile.getAbsolutePath(),
-            // "-alias", "AndroidKey",
-            // "-storepass", "android",
-            // "-keypass", "android"
-            // };
-            // ProcessBuilder processBuilder = new
-            // ProcessBuilder(keytoolCommandline);
-            // Process process = processBuilder.start();
-            // process.waitFor();
-            // keystoreFile.delete();
-            // BufferedInputStream bis = new
-            // BufferedInputStream(process.getInputStream());
-            // br = new BufferedReader(new InputStreamReader(bis));
-            // String line = null;
-            // while((line = br.readLine()) != null) {
-            // if(line.contains("SHA1")) {
-            // String[] bits = line.split(": ");
-            // System.err.println("Keystore fingerprint: "+bits[1]);
-            // return bits[1];
-            // }
-            // }
-            // return "";
-        } catch (IOException e) {
-
-        } catch (KeyStoreException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-
-                }
-            }
-        }
-        return null;
-    }
 
   /**
    * No-Op (No Operation). However because we are going through

@@ -25,9 +25,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * This component keeps count of steps using the accelerometer.
  *
@@ -42,8 +39,7 @@ import java.util.Set;
   iconName = "images/pedometer.png")
 @SimpleObject
 public class Pedometer extends AndroidNonvisibleComponent
-    implements Component, SensorEventListener, Deleteable,
-    RealTimeDataSource<String, Float> {
+    implements Component, SensorEventListener, Deleteable {
   private static final String TAG = "Pedometer";
   private static final String PREFS_NAME = "PedometerPrefs";
 
@@ -73,10 +69,6 @@ public class Pedometer extends AndroidNonvisibleComponent
 
   private float[] avgWindow = new float[10];
   private int avgPos = 0;
-
-  // Set of observers
-  private final Set<DataSink<ObservableDataSource<String, Float>>> dataSourceObservers
-      = new HashSet<>();
 
   /** Constructor. */
   public Pedometer(ComponentContainer container) {
@@ -200,10 +192,6 @@ public class Pedometer extends AndroidNonvisibleComponent
    */
   @SimpleEvent(description = "This event is run when a raw step is detected.")
   public void SimpleStep(int simpleSteps, float distance) {
-    // Notify Data Observers with changed SimpleSteps and Distance values
-    notifyDataObservers("SimpleSteps", simpleSteps);
-    notifyDataObservers("Distance", distance);
-
     EventDispatcher.dispatchEvent(this, "SimpleStep", simpleSteps, distance);
   }
 
@@ -218,10 +206,6 @@ public class Pedometer extends AndroidNonvisibleComponent
   @SimpleEvent(description = "This event is run when a walking step is detected. " +
     "A walking step is a step that appears to be involved in forward motion.")
   public void WalkStep(int walkSteps, float distance) {
-    // Notify Data Observers with changed WalkSteps and Distance values
-    notifyDataObservers("WalkSteps", walkSteps);
-    notifyDataObservers("Distance", distance);
-
     EventDispatcher.dispatchEvent(this, "WalkStep", walkSteps, distance);
   }
 
@@ -518,47 +502,4 @@ public class Pedometer extends AndroidNonvisibleComponent
     return false;
   }
 
-  @Override
-  public void addDataObserver(DataSink<ObservableDataSource<String, Float>> dataComponent) {
-    dataSourceObservers.add(dataComponent);
-  }
-
-  @Override
-  public void removeDataObserver(DataSink<ObservableDataSource<String, Float>> dataComponent) {
-    dataSourceObservers.remove(dataComponent);
-  }
-
-  @Override
-  public void notifyDataObservers(String key, Object value) {
-    // Notify each Chart Data observer component of the Data value change
-    for (DataSink<ObservableDataSource<String, Float>> dataComponent : dataSourceObservers) {
-      dataComponent.onReceiveValue(this, key, value);
-    }
-  }
-
-  /**
-   * Returns a data value corresponding to the provided key:
-   * SimpleSteps - SimpleSteps value
-   * WalkSteps   - WalkSteps value
-   * Distance    - Distance value
-   *
-   * @param key identifier of the value
-   * @return    Value corresponding to the key, or 0 if key is undefined.
-   */
-  @Override
-  public Float getDataValue(String key) {
-    switch (key) {
-      case "SimpleSteps":
-        return (float) numStepsRaw;
-
-      case "WalkSteps":
-        return (float) numStepsWithFilter;
-
-      case "Distance":
-        return totalDistance;
-
-      default:
-        return 0f;
-    }
-  }
 }

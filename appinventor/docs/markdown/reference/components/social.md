@@ -10,12 +10,9 @@ Table of Contents:
 
 * [ContactPicker](#ContactPicker)
 * [EmailPicker](#EmailPicker)
-* [GoogleCloudMessaging](#GoogleCloudMessaging)
-* [PebbleSmartWatch](#PebbleSmartWatch)
 * [PhoneCall](#PhoneCall)
 * [PhoneNumberPicker](#PhoneNumberPicker)
 * [Sharing](#Sharing)
-* [Survey](#Survey)
 * [Texting](#Texting)
 * [Twitter](#Twitter)
 
@@ -229,15 +226,6 @@ An `EmailPicker` is a kind of text box. If the user begins entering the name or 
 {:id="EmailPicker.Hint" .text} *Hint*
 : `EmailPicker` hint for the user.
 
-{:id="EmailPicker.ObjectType" .text} *ObjectType*
-: Concept URI property setter method.
-
-{:id="EmailPicker.PropertyURI" .text} *PropertyURI*
-: <p>Property URI specifies the relationship between a Linked Data Form containing a TextBox, Password, etc. and the component. Common properties include the name properties in the Friend-of-a-Friend ontology (e.g. foaf:name, foaf:givenName, foaf:surname), label properties (e.g. rdfs:label, skos:prefLabel), or descriptions (e.g. rdfs:comment, dc:description).</p>
-
-{:id="EmailPicker.SubjectIdentifier" .boolean} *SubjectIdentifier*
-: <p>If the text box is contained in a Linked Data Form and Subject Identifier is checked, then the value of the text box will be used to construct a new Uniform Resource Identifier (URI) when the form is submitted.</p>
-
 {:id="EmailPicker.Text" .text} *Text*
 : The text in the `EmailPicker`, which can be set by the programmer in the Designer or Blocks Editor,
  or it can be entered by the user (unless the [`Enabled`](#EmailPicker.Enabled) property is false).
@@ -281,97 +269,6 @@ An `EmailPicker` is a kind of text box. If the user begins entering the name or 
 
 {:id="EmailPicker.RequestFocus" class="method"} <i/> RequestFocus()
 : Request focus to current `EmailPicker`.
-
-## GoogleCloudMessaging  {#GoogleCloudMessaging}
-
-Component for GoogleCloudMessaging
-
-
-
-### Properties  {#GoogleCloudMessaging-Properties}
-
-{:.properties}
-
-{:id="GoogleCloudMessaging.PhoneNumber" .text .wo} *PhoneNumber*
-: Property for PhoneNumber
-
-{:id="GoogleCloudMessaging.RegId" .text .ro .bo} *RegId*
-: Property for RegId
-
-{:id="GoogleCloudMessaging.ReturnMessage" .text .ro .bo} *ReturnMessage*
-: Property for ReturnMessage
-
-{:id="GoogleCloudMessaging.SenderID" .text} *SenderID*
-: Property for SenderID
-
-{:id="GoogleCloudMessaging.ServerURL" .text} *ServerURL*
-: Property for ServerURL
-
-{:id="GoogleCloudMessaging.phoneNumber" .text .ro .bo} *phoneNumber*
-: Property for phoneNumber
-
-### Events  {#GoogleCloudMessaging-Events}
-
-{:.events}
-
-{:id="GoogleCloudMessaging.GCMInfoReceived"} GCMInfoReceived()
-: Indicates that the GCM info has been received.
-
-{:id="GoogleCloudMessaging.GotResponseFromServer"} GotResponseFromServer(*url*{:.text},*responseCode*{:.number},*responseType*{:.text},*responseContent*{:.text})
-: Event indicating that a SendMessageToServer call has finished.
-
-{:id="GoogleCloudMessaging.RegInfoReceived"} RegInfoReceived()
-: Indicates when the server registration has been successful.
-
-### Methods  {#GoogleCloudMessaging-Methods}
-
-{:.methods}
-
-{:id="GoogleCloudMessaging.CreateNotification" class="method"} <i/> CreateNotification(*title*{:.text},*text*{:.text},*enabledSound*{:.boolean},*enabledVibrate*{:.boolean},*packageName*{:.text},*className*{:.text},*extraKey*{:.text},*extraVal*{:.text})
-: Create a notication with message to wake up another activity when tap on the notification
-
-{:id="GoogleCloudMessaging.Enabled" class="method"} <i/> Enabled(*enable*{:.boolean})
-: Enable Google Cloud Messaging to receive push notification
-
-{:id="GoogleCloudMessaging.Register" class="method"} <i/> Register()
-: Authenticate to Google Cloud Messaging
-
-{:id="GoogleCloudMessaging.SendMessageToServer" class="method"} <i/> SendMessageToServer(*text*{:.text})
-: Performs an HTTP POST request using the GCM Server url property and the specified text.
-
-{:id="GoogleCloudMessaging.UnRegister" class="method"} <i/> UnRegister()
-: Remove authentication for this app instance
-
-{:id="GoogleCloudMessaging.isRegistered" class="method returns boolean"} <i/> isRegistered()
-: Method for isRegistered
-
-{:id="GoogleCloudMessaging.isServiceReady" class="method returns boolean"} <i/> isServiceReady()
-: Method for isServiceReady
-
-## PebbleSmartWatch  {#PebbleSmartWatch}
-
-Component for PebbleSmartWatch
-
-
-
-### Properties  {#PebbleSmartWatch-Properties}
-
-{:.properties}
-None
-
-
-### Events  {#PebbleSmartWatch-Events}
-
-{:.events}
-None
-
-
-### Methods  {#PebbleSmartWatch-Methods}
-
-{:.methods}
-
-{:id="PebbleSmartWatch.SendMessageToPebble" class="method"} <i/> SendMessageToPebble(*iconId*{:.number},*vibrate*{:.boolean},*message*{:.text})
-: Send a text message to the pebble.
 
 ## PhoneCall  {#PhoneCall}
 
@@ -629,75 +526,6 @@ None
 {:id="Sharing.ShareMessage" class="method"} <i/> ShareMessage(*message*{:.text})
 : Shares a message through any capable application installed on the phone by displaying a list of the available apps and allowing the user to choose one from the list. The selected app will open with the message inserted on it.
 
-## Survey  {#Survey}
-
-Component for displaying surveys
- This component makes use of Android WebView to display survey question. AI Developer could
- customize survey question and survey types. After the questions are answered, 
- they will be saved into local database and upload to remote server (Trust Framework).
- For simplicity, there's only one question in one survey component
-
-
-
-### Properties  {#Survey-Properties}
-
-{:.properties}
-
-{:id="Survey.DBName" .text .ro .bo} *DBName*
-: Property for DBName
-
-{:id="Survey.ExportFolderPath" .text .ro .bo} *ExportFolderPath*
-: Get the export path for survey results
-
-{:id="Survey.Height" .number .bo} *Height*
-: Specifies the `Survey`'s vertical height, measured in pixels.
-
-{:id="Survey.HeightPercent" .number .wo .bo} *HeightPercent*
-: Specifies the `Survey`'s vertical height as a percentage
- of the [`Screen`'s `Height`](userinterface.html#Screen.Height).
-
-{:id="Survey.SetQuestion" .text .wo .bo} *SetQuestion*
-: Property for SetQuestion
-
-{:id="Survey.SetStyle" .number .wo} *SetStyle*
-: Sets the style of the survey
-
-{:id="Survey.SetSurveyGroup" .text .wo .bo} *SetSurveyGroup*
-: Property for SetSurveyGroup
-
-{:id="Survey.Visible" .boolean} *Visible*
-: Specifies whether the `Survey` should be visible on the screen.  Value is `true`{:.logic.block}
- if the `Survey` is showing and `false`{:.logic.block} if hidden.
-
-{:id="Survey.Width" .number .bo} *Width*
-: Specifies the horizontal width of the `Survey`, measured in pixels.
-
-{:id="Survey.WidthPercent" .number .wo .bo} *WidthPercent*
-: Specifies the horizontal width of the `Survey` as a percentage
- of the [`Screen`'s `Width`](userinterface.html#Screen.Width).
-
-### Events  {#Survey-Events}
-
-{:.events}
-None
-
-
-### Methods  {#Survey-Methods}
-
-{:.methods}
-
-{:id="Survey.DeleteSurveyDB" class="method"} <i/> DeleteSurveyDB()
-: This will clean up the survey database on the smartphone
-
-{:id="Survey.Export" class="method"} <i/> Export(*format*{:.text})
-: Export Survey results database as CSV files or JSON files.Input "csv" or "json" for exporting format.
-
-{:id="Survey.LoadSurvey" class="method"} <i/> LoadSurvey()
-: Set survey style, set question beforecall LoadSurvey
-
-{:id="Survey.SetOptions" class="method"} <i/> SetOptions(*options*{:.list})
-: For survey style MultipleChoice, ChooseList, CheckBox and ScalePassuse this to pass in options for survey answers. Note for Scale, only three options should be passed in and in the order of "min", "max", "default" value of the scale
-
 ## Texting  {#Texting}
 
 ![Texting component icon](images/texting.png)
@@ -905,9 +733,6 @@ A non-visible component that enables communication with [Twitter](https://twitte
  property will contain a list of lists, where each sub-list contains a status update of the
  form (username message).
 
-{:id="Twitter.ImageUploaded"} ImageUploaded(*url*{:.text})
-: Get the image URL back after TweetwithImage uploads it to TwitPic.
-
 {:id="Twitter.IsAuthorized"} IsAuthorized()
 : This event is raised after the program calls [`Authorize`](#Twitter.Authorize) if the authorization was
  successful. It is also called after a call to [`CheckAuthorized`](#Twitter.CheckAuthorized) if we already have a
@@ -987,8 +812,7 @@ A non-visible component that enables communication with [Twitter](https://twitte
  been raised, indicating that the user has successfully logged in to Twitter.
 
 {:id="Twitter.TweetWithImage" class="method"} <i/> TweetWithImage(*status*{:.text},*imagePath*{:.text})
-: Tweet with Image, Uploaded to Twitter
- This sends a tweet as the logged-in user with the specified Text and a path to the image to be
+: This sends a tweet as the logged-in user with the specified Text and a path to the image to be
  uploaded, which will be trimmed if it exceeds 160 characters. If an image is not found or
  invalid, the update will not be sent.
 

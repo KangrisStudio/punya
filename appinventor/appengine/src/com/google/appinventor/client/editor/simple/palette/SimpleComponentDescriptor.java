@@ -12,14 +12,8 @@ import com.google.appinventor.client.editor.simple.SimpleComponentDatabase;
 import com.google.appinventor.client.editor.simple.SimpleEditor;
 import com.google.appinventor.client.editor.simple.components.MockBall;
 import com.google.appinventor.client.editor.simple.components.MockButton;
-import com.google.appinventor.client.editor.simple.components.MockChartData2D;
-import com.google.appinventor.client.editor.simple.components.MockDataFile;
 import com.google.appinventor.client.editor.simple.components.MockCanvas;
 import com.google.appinventor.client.editor.simple.components.MockCheckBox;
-import com.google.appinventor.client.editor.simple.components.MockGoogleMap;
-import com.google.appinventor.client.editor.simple.components.MockLinkedDataForm;
-import com.google.appinventor.client.editor.simple.components.MockLinkedDataListPicker;
-import com.google.appinventor.client.editor.simple.components.MockSurvey;
 import com.google.appinventor.client.editor.simple.components.MockSwitch;
 import com.google.appinventor.client.editor.simple.components.MockCircle;
 import com.google.appinventor.client.editor.simple.components.MockCloudDB;
@@ -30,8 +24,6 @@ import com.google.appinventor.client.editor.simple.components.MockEmailPicker;
 import com.google.appinventor.client.editor.simple.components.MockFeatureCollection;
 import com.google.appinventor.client.editor.simple.components.MockFirebaseDB;
 import com.google.appinventor.client.editor.simple.components.MockFusionTablesControl;
-import com.google.appinventor.client.editor.simple.components.MockGraph;
-import com.google.appinventor.client.editor.simple.components.MockGraphQL;
 import com.google.appinventor.client.editor.simple.components.MockHorizontalArrangement;
 import com.google.appinventor.client.editor.simple.components.MockImage;
 import com.google.appinventor.client.editor.simple.components.MockImagePicker;
@@ -58,7 +50,6 @@ import com.google.appinventor.client.editor.simple.components.MockTimePicker;
 import com.google.appinventor.client.editor.simple.components.MockVerticalArrangement;
 import com.google.appinventor.client.editor.simple.components.MockVideoPlayer;
 import com.google.appinventor.client.editor.simple.components.MockWebViewer;
-import com.google.appinventor.client.editor.simple.components.MockChart;
 
 import com.google.appinventor.shared.storage.StorageUtil;
 
@@ -149,22 +140,6 @@ public final class SimpleComponentDescriptor {
     bundledImages.put("images/phoneip.png", images.phonestatusComponent());
     bundledImages.put("images/phoneCall.png", images.phonecall());
     bundledImages.put("images/player.png", images.player());
-    bundledImages.put("images/proximity.png", images.proximitysensor());
-    bundledImages.put("images/socialProximitysensor.png", images.socialProximitysensor());
-    bundledImages.put("images/timer.png", images.timer());
-    bundledImages.put("images/wifiProbe.png", images.wifiSensor());
-    bundledImages.put("images/locationProbe.png", images.locationProbeSensor());
-    bundledImages.put("images/cellTowerProbe.png", images.cellTowerProbeSensor());
-    bundledImages.put("images/activityProbe.png", images.activityProbeSensor());
-    bundledImages.put("images/runningAppsProbe.png", images.runningApps());
-    bundledImages.put("images/screenProbe.png", images.screenStatus());    
-    bundledImages.put("images/lightsensorProbe.png", images.lightSensor());
-    bundledImages.put("images/calllogProbe.png", images.calllogHistory());
-    bundledImages.put("images/smsProbe.png", images.smsHistory());
-    bundledImages.put("images/batterySensor.png", images.batterySensor());
-    bundledImages.put("images/pedometerSensor.png", images.pedometerSensor());
-    bundledImages.put("images/survey.png", images.survey());
-    bundledImages.put("images/info.png", images.telephonyInfo());
     bundledImages.put("images/soundEffect.png", images.soundeffect());
     bundledImages.put("images/soundRecorder.png", images.soundRecorder());
     bundledImages.put("images/speechRecognizer.png", images.speechRecognizer());
@@ -176,17 +151,9 @@ public final class SimpleComponentDescriptor {
     bundledImages.put("images/file.png", images.file());
     bundledImages.put("images/tinyWebDB.png", images.tinyWebDB());
     bundledImages.put("images/firebaseDB.png", images.firebaseDB());
-    bundledImages.put("images/graphQL.png", images.graphQL());
     bundledImages.put("images/twitter.png", images.twitterComponent());
-    bundledImages.put("images/googleCloudMessaging.png", images.googleCloudMessaging()); 
     bundledImages.put("images/voting.png", images.voting());
-    bundledImages.put("images/gmap.png", images.googlemap());
     bundledImages.put("images/web.png", images.web());
-    bundledImages.put("images/dropbox.png", images.dropbox());
-    bundledImages.put("images/googledrive.png", images.googledrive());
-    bundledImages.put("images/semanticWeb.png", images.semanticWeb());
-    bundledImages.put("images/contactInfo.png", images.contactInfo());
-    bundledImages.put("images/pebble.png", images.pebbleSmartWatch());
     bundledImages.put("images/mediastore.png", images.mediastore());
     bundledImages.put("images/sharing.png", images.sharingComponent());
     bundledImages.put("images/spinner.png", images.spinner());
@@ -204,11 +171,6 @@ public final class SimpleComponentDescriptor {
     bundledImages.put("images/navigation.png", images.navigationComponent());
     bundledImages.put("images/arduino.png", images.arduino());
     bundledImages.put("images/magneticSensor.png", images.magneticSensor());
-    bundledImages.put("images/reasoner.png", images.reasoner());
-    bundledImages.put("images/ldpcoapclient.png", images.ldpCoapClient());
-    bundledImages.put("images/chart.png", images.chart());
-    bundledImages.put("images/chartData.png", images.chartData2D());
-    bundledImages.put("images/dataFile.png", images.dataFile());
 
     imagesInitialized = true;
   }
@@ -439,11 +401,11 @@ public final class SimpleComponentDescriptor {
    */
   public static MockComponent createMockComponent(String name, String type, SimpleEditor editor) {
     if (SimpleComponentDatabase.getInstance(editor.getProjectId()).getNonVisible(name)) {
-      if (name.equals(MockFirebaseDB.TYPE)) {
+      if(name.equals(MockFirebaseDB.TYPE)) {
         return new MockFirebaseDB(editor, name,
-            getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
-                null, editor.getProjectId()));
-      } else if (name.equals(MockCloudDB.TYPE)) {
+          getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
+            null, editor.getProjectId()));
+      } else if(name.equals(MockCloudDB.TYPE)) {
         return new MockCloudDB(editor, name,
           getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
             null, editor.getProjectId()));
@@ -451,19 +413,11 @@ public final class SimpleComponentDescriptor {
         return new MockFusionTablesControl(editor, name,
           getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
             null, editor.getProjectId()));
-      } else if (name.equals(MockDataFile.TYPE)) {
-        return new MockDataFile(editor, name,
-            getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
-                null, editor.getProjectId()));
-      } else if (name.equals(MockGraphQL.TYPE)) {
-        return new MockGraphQL(editor, name,
-            getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
-                null, editor.getProjectId()));
       } else {
         String pkgName = type.contains(".") ? type.substring(0, type.lastIndexOf('.')) : null;
         return new MockNonVisibleComponent(editor, name,
-            getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
-                pkgName, editor.getProjectId()));
+          getImageFromPath(SimpleComponentDatabase.getInstance(editor.getProjectId()).getIconName(name),
+            pkgName, editor.getProjectId()));
       }
     } else if (name.equals(MockButton.TYPE)) {
       return new MockButton(editor);
@@ -480,7 +434,7 @@ public final class SimpleComponentDescriptor {
     } else if (name.equals(MockListView.TYPE)) {
       return new MockListView(editor);
     } else if (name.equals(MockSlider.TYPE)) {
-      return new MockSlider(editor);
+        return new MockSlider(editor);
     } else if (name.equals(MockPasswordTextBox.TYPE)) {
       return new MockPasswordTextBox(editor);
     } else if (name.equals(MockRadioButton.TYPE)) {
@@ -519,18 +473,6 @@ public final class SimpleComponentDescriptor {
       return new MockVideoPlayer(editor);
     } else if (name.equals(MockWebViewer.TYPE)) {
       return new MockWebViewer(editor);
-    } else if (name.equals(MockSurvey.TYPE)){
-        return new MockSurvey(editor);  
-    } else if (name.equals(MockGoogleMap.TYPE)){
-      return new MockGoogleMap(editor);
-    } else if (name.equals(MockGraph.TYPE)){
-      return new MockGraph(editor);
-    } else if (name.equals(MockLinkedDataForm.TYPE)) {
-      return new MockLinkedDataForm(editor);
-    } else if (name.equals(MockLinkedDataListPicker.TYPE)) {
-      return new MockLinkedDataListPicker(editor);
-    } else if (name.equals(MockGoogleMap.TYPE)){
-      return new MockGoogleMap(editor);
     } else if (name.equals(MockSpinner.TYPE)) {
       return new MockSpinner(editor);
     } else if (name.equals(MockMap.TYPE)) {
@@ -547,10 +489,6 @@ public final class SimpleComponentDescriptor {
       return new MockRectangle(editor);
     } else if (name.equals(MockFeatureCollection.TYPE)) {
       return new MockFeatureCollection(editor);
-    } else if (name.equals(MockChart.TYPE)) {
-      return new MockChart(editor);
-    } else if (name.equals(MockChartData2D.TYPE)) {
-      return new MockChartData2D(editor);
     } else {
       // TODO(user): add 3rd party mock component proxy here
       throw new UnsupportedOperationException("unknown component: " + name);

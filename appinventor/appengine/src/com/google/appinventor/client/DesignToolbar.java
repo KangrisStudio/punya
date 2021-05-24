@@ -6,19 +6,15 @@
 
 package com.google.appinventor.client;
 
-
-import com.google.appinventor.client.editor.SettingsEditor;
 import com.google.appinventor.client.editor.FileEditor;
 import com.google.appinventor.client.editor.ProjectEditor;
-import com.google.appinventor.client.editor.SettingsEditor;
 import com.google.appinventor.client.editor.youngandroid.BlocklyPanel;
 import com.google.appinventor.client.editor.youngandroid.YaBlocksEditor;
 
 import com.google.appinventor.client.explorer.commands.AddFormCommand;
-import com.google.appinventor.client.explorer.commands.CopyFormCommand;
 import com.google.appinventor.client.explorer.commands.ChainableCommand;
 import com.google.appinventor.client.explorer.commands.DeleteFileCommand;
-import com.google.appinventor.client.explorer.commands.GenerateLDFormCommand;
+
 import com.google.appinventor.client.output.OdeLog;
 
 import com.google.appinventor.client.tracking.Tracking;
@@ -32,7 +28,7 @@ import com.google.appinventor.common.version.AppInventorFeatures;
 import com.google.appinventor.shared.rpc.RpcResult;
 import com.google.appinventor.shared.rpc.project.ProjectRootNode;
 import com.google.appinventor.shared.rpc.project.youngandroid.YoungAndroidSourceNode;
-import com.google.appinventor.client.explorer.project.Project;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -124,14 +120,11 @@ public class DesignToolbar extends Toolbar {
 
   private static final String WIDGET_NAME_TUTORIAL_TOGGLE = "TutorialToggle";
   private static final String WIDGET_NAME_ADDFORM = "AddForm";
-  private static final String WIDGET_NAME_COPYFORM = "CopyForm";
   private static final String WIDGET_NAME_REMOVEFORM = "RemoveForm";
   private static final String WIDGET_NAME_SCREENS_DROPDOWN = "ScreensDropdown";
   private static final String WIDGET_NAME_SWITCH_TO_BLOCKS_EDITOR = "SwitchToBlocksEditor";
   private static final String WIDGET_NAME_SWITCH_TO_FORM_EDITOR = "SwitchToFormEditor";
   private static final String WIDGET_NAME_SENDTOGALLERY = "SendToGallery";
-  private static final String WIDGET_NAME_SETTINGS = "Settings";
-  private static final String WIDGET_NAME_GENERATE_LD_FORM = "GenerateLDForm";
 
   // Switch language
   private static final String WIDGET_NAME_SWITCH_LANGUAGE = "Language";
@@ -196,14 +189,8 @@ public class DesignToolbar extends Toolbar {
     if (AppInventorFeatures.allowMultiScreenApplications() && !isReadOnly) {
       addButton(new ToolbarItem(WIDGET_NAME_ADDFORM, MESSAGES.addFormButton(),
           new AddFormAction()));
-      addButton(new ToolbarItem(WIDGET_NAME_COPYFORM, MESSAGES.copyFormButton(),
-          new CopyFormAction()));
       addButton(new ToolbarItem(WIDGET_NAME_REMOVEFORM, MESSAGES.removeFormButton(),
           new RemoveFormAction()));
-      addButton(new ToolbarItem(WIDGET_NAME_SETTINGS, MESSAGES.changeSettingsButton(),
-          new ChangeSettingsAction()));
-      addButton(new ToolbarItem(WIDGET_NAME_GENERATE_LD_FORM, MESSAGES.generateLDForm(),
-          new GenerateLDFormAction()));
     }
     if (galleryEnabled && !Ode.getInstance().getGalleryReadOnly()) {
       addButton(new ToolbarItem(WIDGET_NAME_SENDTOGALLERY,
@@ -255,36 +242,6 @@ public class DesignToolbar extends Toolbar {
         } else {
           doSwitch.run();
         }
-      }
-    }
-  }
-  
-  private class CopyFormAction implements Command {
-    @Override
-    public void execute() {
-      Ode ode = Ode.getInstance();
-      if (ode.screensLocked()) {
-        return;                 // Don't permit this if we are locked out (saving files)
-      }
-      ProjectRootNode projectRootNode = ode.getCurrentYoungAndroidProjectRootNode();
-      if (projectRootNode != null) {
-        ChainableCommand cmd = new CopyFormCommand();
-        cmd.startExecuteChain(Tracking.PROJECT_ACTION_COPYFORM_YA, projectRootNode);
-      }
-    }
-  }
-  
-  private class GenerateLDFormAction implements Command {
-    @Override
-    public void execute() {
-      Ode ode = Ode.getInstance();
-      if (ode.screensLocked()) {
-        return;                 // Don't permit this if we are locked out (saving files)
-      }
-      ProjectRootNode projectRootNode = ode.getCurrentYoungAndroidProjectRootNode();
-      if (projectRootNode != null) {
-        ChainableCommand cmd = new GenerateLDFormCommand();
-        cmd.startExecuteChain(Tracking.PROJECT_ACTION_GENERATELDFORM_YA, projectRootNode);
       }
     }
   }
@@ -623,15 +580,6 @@ public class DesignToolbar extends Toolbar {
 
   public DesignProject getCurrentProject() {
     return currentProject;
-  }
-
-  private class ChangeSettingsAction implements Command {
-    @Override
-    public void execute() {
-    ProjectRootNode projectRootNode = Ode.getInstance().getCurrentYoungAndroidProjectRootNode();
-    Project p = Ode.getInstance().getProjectManager().getProject(projectRootNode);
-    new SettingsEditor(p).show();
-    }
   }
 
   public View getCurrentView() {

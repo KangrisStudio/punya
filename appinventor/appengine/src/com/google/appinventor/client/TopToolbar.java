@@ -28,7 +28,6 @@ import com.google.appinventor.client.widgets.DropDownButton.DropDownItem;
 import com.google.appinventor.client.wizards.DownloadUserSourceWizard;
 import com.google.appinventor.client.wizards.KeystoreUploadWizard;
 import com.google.appinventor.client.wizards.ProjectUploadWizard;
-import com.google.appinventor.client.wizards.ScreenUploadWizard;
 import com.google.appinventor.client.wizards.TemplateUploadWizard;
 import com.google.appinventor.client.wizards.ComponentImportWizard;
 import com.google.appinventor.client.wizards.ComponentUploadWizard;
@@ -106,12 +105,10 @@ public class TopToolbar extends Composite {
   private static final String WIDGET_NAME_FEEDBACK = "ReportIssue";
   private static final String WIDGET_NAME_COMPANIONINFO = "CompanionInformation";
   private static final String WIDGET_NAME_COMPANIONUPDATE = "CompanionUpdate";
-  private static final String WIDGET_NAME_IMPORTSCREEN = "ImportScreen";
   private static final String WIDGET_NAME_IMPORTPROJECT = "ImportProject";
   private static final String WIDGET_NAME_IMPORTTEMPLATE = "ImportTemplate";
   private static final String WIDGET_NAME_EXPORTALLPROJECTS = "ExportAllProjects";
   private static final String WIDGET_NAME_EXPORTPROJECT = "ExportProject";
-  private static final String WIDGET_NAME_EXPORTPROJECTSCREEN = "ExportProjectScreen";
 
   private static final String WIDGET_NAME_ADMIN = "Admin";
   private static final String WIDGET_NAME_USER_ADMIN = "UserAdmin";
@@ -230,12 +227,9 @@ public class TopToolbar extends Composite {
     fileItems.add(new DropDownItem(WIDGET_NAME_MY_PROJECTS, MESSAGES.projectMenuItem(),
         new SwitchToProjectAction()));
     fileItems.add(null);
-
     if (!isReadOnly) {
       fileItems.add(new DropDownItem(WIDGET_NAME_NEW, MESSAGES.newProjectMenuItem(),
           new NewAction()));
-      fileItems.add(new DropDownItem(WIDGET_NAME_IMPORTSCREEN, MESSAGES.importScreenMenuItem(),
-          new ImportScreenAction()));
       fileItems.add(new DropDownItem(WIDGET_NAME_IMPORTPROJECT, MESSAGES.importProjectMenuItem(),
           new ImportProjectAction()));
       fileItems.add(new DropDownItem(WIDGET_NAME_IMPORTTEMPLATE, MESSAGES.importTemplateButton(),
@@ -253,9 +247,6 @@ public class TopToolbar extends Composite {
           new CheckpointAction()));
       fileItems.add(null);
     }
-
-    fileItems.add(new DropDownItem(WIDGET_NAME_EXPORTPROJECTSCREEN, MESSAGES.exportScreenMenuItem(),
-        new ExportProjectScreenAction()));
     fileItems.add(new DropDownItem(WIDGET_NAME_EXPORTPROJECT, MESSAGES.exportProjectMenuItem(),
         new ExportProjectAction()));
     fileItems.add(new DropDownItem(WIDGET_NAME_EXPORTALLPROJECTS, MESSAGES.exportAllProjectsMenuItem(),
@@ -623,22 +614,6 @@ public class TopToolbar extends Composite {
     }
   }
 
-  private static class ExportProjectScreenAction implements Command {
-    @Override
-    public void execute() {
-      List<Project> selectedProjects =
-          ProjectListBox.getProjectListBox().getProjectList().getSelectedProjects();
-      if (Ode.getInstance().getCurrentView() != Ode.PROJECTS) {
-        //If we are in the designer view.
-        Downloader.getInstance().download(ServerLayout.DOWNLOAD_SERVLET_BASE + 
-        		ServerLayout.DOWNLOAD_PROJECT_SOURCE_SCREEN + 
-        		"/" + Ode.getInstance().getCurrentYoungAndroidProjectId() + 
-        		"/" + Ode.getInstance().getCurrentYoungAndroidProjectRootNode().getName()+ 
-        		"/" + Ode.getInstance().getCurrentYoungAndroidSourceNode().getFormName());
-      }
-    }
-  }
-
   private static class ExportAllProjectsAction implements Command {
     @Override
     public void execute() {
@@ -654,13 +629,6 @@ public class TopToolbar extends Composite {
     }
   }
 
-  private static class ImportScreenAction implements Command {
-    @Override
-    public void execute() {
-      new ScreenUploadWizard().center();
-    }
-  }
-  
   private static class ImportProjectAction implements Command {
     @Override
     public void execute() {
@@ -865,7 +833,7 @@ public class TopToolbar extends Composite {
     @Override
     public void execute() {
       final DialogBox db = new DialogBox(false, true);
-      db.setText("About Punya Framework");
+      db.setText("About MIT App Inventor");
       db.setStyleName("ode-DialogBox");
       db.setHeight("200px");
       db.setWidth("400px");
@@ -918,11 +886,8 @@ public class TopToolbar extends Composite {
       db.center();
 
       String downloadinfo = "";
-      String url = YaVersion.COMPANION_UPDATE_URL1;
-      if (!url.equals("")) {
-        if (!(url.contains("http://") || url.contains("https://"))) {
-        	url = "http://" + Window.Location.getHost() + YaVersion.COMPANION_UPDATE_URL1;        	
-        }
+      if (!YaVersion.COMPANION_UPDATE_URL1.equals("")) {
+        String url = "http://" + Window.Location.getHost() + YaVersion.COMPANION_UPDATE_URL1;
         downloadinfo = "<br/>\n<a href=" + url + ">Download URL: " + url + "</a><br/>\n";
         downloadinfo += BlocklyPanel.getQRCode(url);
       }
@@ -1106,8 +1071,6 @@ public class TopToolbar extends Composite {
       fileDropDown.setItemEnabled(MESSAGES.exportAllProjectsMenuItem(),
       ProjectListBox.getProjectListBox().getProjectList().getMyProjectsCount() > 0);
       fileDropDown.setItemEnabledById(WIDGET_NAME_EXPORTPROJECT, false);
-      fileDropDown.setItemEnabled(MESSAGES.importScreenMenuItem(), false);
-      fileDropDown.setItemEnabled(MESSAGES.exportScreenMenuItem(), false);
       fileDropDown.setItemEnabled(MESSAGES.saveMenuItem(), false);
       fileDropDown.setItemEnabled(MESSAGES.saveAsMenuItem(), false);
       fileDropDown.setItemEnabled(MESSAGES.checkpointMenuItem(), false);
@@ -1123,8 +1086,6 @@ public class TopToolbar extends Composite {
       fileDropDown.setItemEnabled(MESSAGES.exportAllProjectsMenuItem(),
       ProjectListBox.getProjectListBox().getProjectList().getMyProjectsCount() > 0);
       fileDropDown.setItemEnabledById(WIDGET_NAME_EXPORTPROJECT, true);
-      fileDropDown.setItemEnabled(MESSAGES.importScreenMenuItem(), true);
-      fileDropDown.setItemEnabled(MESSAGES.exportScreenMenuItem(), true);
       fileDropDown.setItemEnabled(MESSAGES.saveMenuItem(), true);
       fileDropDown.setItemEnabled(MESSAGES.saveAsMenuItem(), true);
       fileDropDown.setItemEnabled(MESSAGES.checkpointMenuItem(), true);

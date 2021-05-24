@@ -196,21 +196,6 @@ public interface ProjectService extends RemoteService {
   String load(long projectId, String fileId);
 
   /**
-   * Loads the file information associated with a node in the project tree. After
-   * loading the file, the contents of it are parsed.
-   *
-   * Expected format is either JSON or CSV. If the first character of the
-   * file's contents is a left curly bracket ( { ), then JSON parsing is
-   * attempted. Otherwise, CSV parsing is done.
-   *
-   * @param projectId  project ID
-   * @param fileId  project node whose source should be loaded
-   *
-   * @return  List of parsed columns (each column is a List of Strings)
-   */
-  List<List<String>> loadDataFile(long projectId, String fileId);
-
-  /**
    * Loads the file information associated with a node in the project tree. The
    * actual return value depends on the file kind. Source (text) files should
    * typically return their contents. Image files will be more likely to return
@@ -353,24 +338,6 @@ public interface ProjectService extends RemoteService {
    * @return modification date for project
    */
   long addFile(long projectId, String fileId);
-  
-  /**
-   * Copies an existing screen in the project.
-   *
-   * @param projectId  project id
-   * @param fileId  id of file to add
-   * @return modification date for project
-   */
-  long copyScreen(long projectId, String targetFormFileId, String fileId);
-  
-  /**
-   * add a LD form to the existing screen in the project.
-   *
-   * @param projectId  project id
-   * @param fileId  id of file to add
-   * @return modification date for project
-   */
-  long addLDForm(long projectId, String targetFormFileId, List<String> uriCollection, String conceptURI);
 
   /**
    * Imports a media file from a URL and returns the contents.

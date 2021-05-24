@@ -56,7 +56,7 @@ public abstract class OdeAsyncCallback<T> implements AsyncCallback<T> {
   @Override
   public void onFailure(Throwable caught) {
     if (caught instanceof IncompatibleRemoteServiceException) {
-      ErrorReporter.reportError("Punya Framework has just been upgraded, you will need to press the reload button in your browser window");
+      ErrorReporter.reportError("App Inventor has just been upgraded, you will need to press the reload button in your browser window");
       return;
     }
     if (caught instanceof InvalidSessionException) {

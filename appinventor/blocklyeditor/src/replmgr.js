@@ -229,8 +229,7 @@ Blockly.ReplMgr.buildYail = function(workspace, opt_force) {
         if (block.blockType != "event" &&
             block.type != "global_declaration" &&
             block.type != "procedures_defnoreturn" &&
-            block.type != "procedures_defreturn" &&
-            block.type != "logic_namespace_decl")
+            block.type != "procedures_defreturn")
             continue;
         if (block.type == 'component_event') {
             willEmitEvent(block);
@@ -314,12 +313,6 @@ Blockly.ReplMgr.putYail = (function() {
     var webrtcforcestop = false;
     var webrtcdata;
     var seennonce = {};
-    var fixchrome89 = function(desc) {
-        var sdp = desc.sdp;
-        sdp = sdp.replace("a=extmap-allow-mixed\r\n", "")
-        desc.sdp = sdp;
-        return desc;
-    };
     var engine = {
         // Enqueue form for the phone
         'putYail' : function(code, block, success, failure) {
@@ -514,7 +507,7 @@ Blockly.ReplMgr.putYail = (function() {
                 webrtcrunning = false;
             };
             webrtcpeer.createOffer().then(function(desc) {
-                offer = fixchrome89(desc);
+                offer = desc;
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', top.ReplState.rendezvous2, true);
                 xhr.send(JSON.stringify({'key' : key + '-s',

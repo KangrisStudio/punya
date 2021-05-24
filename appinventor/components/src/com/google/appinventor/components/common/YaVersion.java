@@ -159,7 +159,7 @@ public class YaVersion {
   // For YOUNG_ANDROID_VERSION 50:
   // - TEXTBOX_COMPONENT_VERSION was incremented to 4:
   // For YOUNG_ANDROID_VERSION 51:
-  // - CANVAS_VERSION was incremented to 5.
+  // - CANVAS_COMPONENT_VERSION was incremented to 5.
   // - BLOCKS_LANGUAGE_VERSION was incremented to 16.
   // For YOUNG_ANDROID_VERSION 52:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 17.
@@ -229,7 +229,7 @@ public class YaVersion {
   // For YOUNG_ANDROID_VERSION 78:
   // - NEARFIELD_COMPONENT_VERSION was incremented to 1
   // For YOUNG_ANDROID_VERSION 79:
-  // - GOOGLECLOUDMESSAGING_COMPONENT_VERSION was incremented to 1
+  // - FORM_COMPONENT_VERSION was incremented to 11.
   // For YOUNG_ANDROID_VERSION 80:
   // - LISTPICKER_COMPONENT_VERSION was incremented to 7.
   // For YOUNG_ANDROID_VERSION 81:
@@ -238,244 +238,174 @@ public class YaVersion {
   // - ACCELEROMETERSENSOR_COMPONENT_VERSION was incremented to 3.
   // For YOUNG_ANDROID_VERSION 83:
   // - LISTPICKER_COMPONENT_VERSION was incremented to 8.
-  // - FORM_COMPONENT_VERSION was incremented to 11.
-  // For YOUNG_ANDROID_VERSION 84;
-  // - The Google Map component was added
-  // For YOUNG_ANDROID_VERSION 85;
-  // - The Wifi Sensor component was added
-  // For YOUNG_ANDROID_VERSION 86;
-  // - The proximity sensor component was added
-  // For YOUNG_ANDROID_VERSION 87;
-  // - The social proximity sensor component was added
-  // For YOUNG_ANDROID_VERSION 88;
-  // - The activity probe sensor component was added
-  // For YOUNG_ANDROID_VERSION 89;
-  // - The batter probe sensor component was added
-  // For YOUNG_ANDROID_VERSION 90;
-  // - The calllog probe component was added
-  // For YOUNG_ANDROID_VERSION 91;
-  // - The celltower probe component was added
-  // FOR YOUNG_ANDROID_VERSION 91;
-  // - The light sensor component was added
-  // FOR YOUNG_ANDROID_VERSION 93;
-  // - The location probe sensor component was added
-  // FOR YOUNG_ANDROID_VERSION 94;
-  // - THe pedometer sensor component was added
-  // FOR YOUNG_ANDROID_VERSION 95;
-  // - The Running application probe component was added
-  // FOR YOUNG_ANDROID_VERSION 96;
-  // - The Screen probe component was added
-  // FOR YOUNG_ANDROID_VRESION 97;
-  // - The SMS log probe component was added
-  // FOR YOUNG_ANDROID_VERSION 98
-  // - The Telephony probe component was added
-  // FOR YOUNG_ANDROID_VERSION 99
-  // - The Timer component was added
-  // FOR YOUNG_ANDROID_VERSION 100
-  // - The Dropbox component was added
-  // FOR YOUNG_ANDROID_VERSION 101
-  // - The SensorDB component was added
-  // FOR YOUNG_ANDROID_VERSION 102
-  // - The Survey component was added
-  // FOR YOUNG_ANDROID_VERSION 103
-  // - The Google Drive component was added
-  // FOR YOUNG_ANDROID_VERSION 104
-  // - The Contact info component was added
-  // For YOUNG_ANDROID_VERSION 105:
-  // - SEMANTIC_FORM_COMPONENT_VERSION was added.
-  // - SEMANTIC_WEB_LISTPICKER_COMPONENT_VERSION was added.
-  // - TEXTBOX_COMPONENT_VERSION was incremented to 5.
-  // For YOUNG_ANDROID_VERSION 106:
-  // - EMAILPICKER_COMPONENT_VERSION was incremented to 3.
-  // - PASSWORDTEXTBOX_COMPONENT_VERSION was incremented to 3.
-  // - SEMANTIC_FORM_COMPONENT_VERSION was incremented to 2.
-  // - TEXTBOX_COMPONENT_VERSION was incremented to 6.
-  // For YOUNG_ANDROID_VERSION 107:
-  // - SemanticForm Component is renamed to LinkedDataForm Component
-  // - SEMANTIC_FORM_COMPONENT_VERSION is renamed to LINKED_DATA_FORM_COMPONENT_VERSION
-  // - SemanticWeb Component is renamed to LinkedData Component
-  // - SEMANTIC_WEB_COMPONENT_VERSION is renamed to LINKED_DATA_COMPONENT_VERSION
-  // - SemanticListPicker Component is renamed to LinkedDataListPicker Component
-  // - SEMANTIC_LISTPICKER_COMPONENT_VERSION is renamed to LINKED_DATA_LISTPICKER_COMPONENT_VERSION
-  // - The pebbleSmartWatch component was added.
-  // For YOUNG_ANDROID_VERSION 108:
-  // - LINKED_DATA_LISTPICKER_COMPONENT_VERSION was incremented to 3.
-  // For YOUNG_ANDROID_VERSION 109:
-  // - LINKED_DATA_COMPONENT_VERSION was incremented to 3.  
-  // For YOUNG_ANDROID_VERSION 110:
+  // For YOUNG_ANDROID_VERSION 84:
   // - FORM_COMPONENT_VERSION was incremented to 12.
-  // For YOUNG_ANDROID_VERSION 111:
+  // For YOUNG_ANDROID_VERSION 85:
   // - CAMERA_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 112:
+  // For YOUNG_ANDROID_VERSION 86:
   // - VIDEOPLAYER_COMPONENT_VERSION was incremented to 5.
   // - The Sharing Component was added
-  // For YOUNG_ANDROID_VERSION 113:
-  // - WEBVIEWER_COMPONENT_VERSION was incremented to 4.
-  // For YOUNG_ANDROID_VERSION 114:
+  // For YOUNG_ANDROID_VERSION 87:
+  // - WEBVIEWER_COMPONENT_VERSION was incremented to 4
+  // For YOUNG_ANDROID_VERSION 88:
   // - SPINNER_COMPONENT_VERSION was incremented to 1
-  // For YOUNG_ANDROID_VERSION 115:
+  // For YOUNG_ANDROID_VERSION 89:
   // - LISTVIEW_COMPONENT_VERSION was incremented to 1.
-  // For YOUNG_ANDROID_VERSION 116:
+  // For YOUNG_ANDROID_VERSION 90:
   // - TEXTTOSPEECH_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 117:
+  // For YOUNG_ANDROID_VERSION 91:
   // - DATEPICKER_COMPONENT_VERSION was incremented to 1.
-  // For YOUNG_ANDROID_VERSION 118:
+  // For YOUNG_ANDROID_VERSION 92:
   // - TIMEPICKER_COMPONENT_VERSION was incremented to 1
-  // For YOUNG_ANDROID_VERSION 119:
+  // For YOUNG_ANDROID_VERSION 93:
   // - FILE_COMPONENT_VERSION was incremented to 1.
-  // For YOUNG_ANDROID_VERSION 120:
+  // For YOUNG_ANDROID_VERSION 94:
   // - YANDEX_COMPONENT_VERSION was incremented to 1.
-  // For YOUNG_ANDROID_VERSION 121:
+  // For YOUNG_ANDROID_VERSION 95:
   // - BUTTON_COMPONENT_VERSION was incremented to 6.
-  // For YOUNG_ANDROID_VERSION 122:
-  // - LinkedDataStreamingClient was added.
-  // For YOUNG_ANDROID_VERSION 123:
-  // - Update Twitter uploadImage (removed the twitpick).
-  // For YOUNG_ANDROID_VERSION 124 (mit-cml/master YaVersion 96):
+  // For YOUNG_ANDROID_VERSION 96:
   // - TIMEPICKER_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 125 (mit-cml/master YaVersion 97):
+  // For YOUNG_ANDROID_VERSION 97:
   // - PLAYER_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 126 (mit-cml/master YaVersion 98):
+  // For YOUNG_ANDROID_VERSION 98:
   // - PHONECALL_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 127 (mit-cml/master YaVersion 99):
+  // For YOUNG_ANDROID_VERSION 99:
   // - CONTACTPICKER_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 128 (mit-cml/master YaVersion 100):
+  // For YOUNG_ANDROID_VERSION 100:
   // - DATEPICKER_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 129 (mit-cml/master YaVersion 101):
+  // For YOUNG_ANDROID_VERSION 101:
   // - FORM_COMPONENT_VERSION was incremented to 13.
-  // For YOUNG_ANDROID_VERSION 130 (mit-cml/master YaVersion 102):
+  // For YOUNG_ANDROID_VERSION 102:
   // - FUSIONTABLESCONTROL_COMPONENT_VERSION was incremented to 3.
-  // For YOUNG_ANDROID_VERSION 131 (mit-cml/master YaVersion 103):
+  // For YOUNG_ANDROID_VERSION 103:
   // - LISTVIEW_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 132 (mit-cml/master YaVersion 104):
+  // For YOUNG_ANDROID_VERSION 104:
   // - TWITTER_COMPONENT_VERSION was incremented to 4.
-  // For YOUNG_ANDROID_VERSION 133 (mit-cml/master YaVersion 105):
+  // For YOUNG_ANDROID_VERSION 105:
   // - WEB_COMPONENT_VERSION was incremented to 4.
-  // For YOUNG_ANDROID_VERSION 134:
-  // - TWITTER_COMPONENT_VERSION was incremented to 5.
-  // For YOUNG_ANDROID_VERSION 135 (mit-cml/master YaVersion 106):
+  // For YOUNG_ANDROID_VERSION 106:
   // - LISTVIEW_COMPONENT_VERSION was incremented to 3.
-  // For YOUNG_ANDROID_VERSION 136 (mit-cml/master YaVersion 107):
+  // For YOUNG_ANDROID_VERSION 107:
   // - WEBVIEWER_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 137 (mit-cml/master YaVersion 108):
+  // For YOUNG_ANDROID_VERSION 108:
   // - New Obsfucate Text Block was added and BLOCKS_LANGUAGE_VERSION incremented to 18
-  // For YOUNG_ANDROID_VERION 138 (mit-cml/master YaVersion 109):
+  // For YOUNG_ANDROID_VERION 109:
   // - Added PROXIMITYSENSOR_COMPONENT_VERSION
-  // For YOUNG_ANDROID_VERSION 139 (mit-cml/master YaVersion 110):
+  // For YOUNG_ANDROID_VERSION 110:
   // - LABEL_COMPONENT_VERSION was incremented to 3.
-  // For YOUNG_ANDROID_VERSION 140 (mit-cml/master YaVersion 111):
+  // For YOUNG_ANDROID_VERSION 111:
   // - BARCODESCANNER_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 141 (mit-cml/master YaVersion 112):
+  // For YOUNG_ANDROID_VERSION 112:
   // First test of new upgrading architecture: Dave Wolber's Canvas name changes
-  // For YOUNG_ANDROID_VERSION 142 (mit-cml/master YaVersion 113):
+  // For YOUNG_ANDROID_VERSION 113:
   // Second test of new upgrading architecture: Evan Thomas's fillCircle argument for Canvas.DrawCircle
   // - CANVAS_COMPONENT_VERSION was incremented to 9.
-  // For YOUNG_ANDROID_VERSION 143 (mit-cml/master YaVersion 114):
+  // For YOUNG_ANDROID_VERSION 114:
   // - FORM_COMPONENT_VERSION was incremented to 14.
-  // For YOUNG_ANDROID_VERSION 144 (mit-cml/master YaVersion 115):
+  // For YOUNG_ANDROID_VERSION 115:
   // - CANVAS_COMPONENT_VERSION was incremented to 10.
-  // For YOUNG_ANDROID_VERSION 145 (mit-cml/master YaVersion 116):
+  // For YOUNG_ANDROID_VERSION 116:
   // - LISTPICKER_COMPONENT_VERSION was incremented to 9.
-  // For YOUNG_ANDROID_VERSION 146 (mit-cml/master YaVersion 117):
+  // For YOUNG_ANDROID_VERSION 117:
   // - LISTVIEW_COMPONENT_VERSION was incremented to 4.
-  // For YOUNG_ANDROID_VERSION 147 (mit-cml/master YaVersion 118):
+  // For YOUNG_ANDROID_VERSION 118:
   // - SOUND_RECORDER_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 148 (mit-cml/master YaVersion 119):
+  // For YOUNG_ANDROID_VERSION 119:
   // - TEXTBOX_COMPONENT_VERSION was incremented to 5
   // - WEBVIEWER_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 149 (mit-cml/master YaVersion 120):
+  // For YOUNG_ANDROID_VERSION 120:
   // - SLIDER_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 150 (mit-cml/master YaVersion 121):
+  // For YOUNG_ANDROID_VERSION 121:
   // - NOTIFIER_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 151 (mit-cml/master YaVersion 122):
+  // For YOUNG_ANDROID_VERSION 122:
   // - EMAILPICKER_COMPONENT_VERSION was incremented to 3
   // - PASSWORDTEXTBOX_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 152 (mit-cml/master YaVersion 123):
+  // For YOUNG_ANDROID_VERSION 123:
   // - TEXTTOSPEECH_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 153 (mit-cml/master YaVersion 124):
+  // For YOUNG_ANDROID_VERSION 124:
   // - FORM_COMPONENT_VERSION was incremented to 15.
-  // For YOUNG_ANDROID_VERSION 154 (mit-cml/master YaVersion 125):
+  // For YOUNG_ANDROID_VERSION 125:
   // - LISTVIEW_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 155 (mit-cml/master YaVersion 126):
+  // For YOUNG_ANDROID_VERSION 126:
   // - ACTIVITYSTARTER_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 156 (mit-cml/master YaVersion 127):
+  // For YOUNG_ANDROID_VERSION 127:
   // - FORM_COMPONENT_VERSION was incremented to 16.
-  // For YOUNG_ANDROID_VERSION 157 (mit-cml/master YaVersion 128):
+  // For YOUNG_ANDROID_VERSION 128:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 19
-  // For YOUNG_ANDROID_VERSION 158 (mit-cml/master YaVersion 129):
+  // For YOUNG_ANDROID_VERSION 129:
   // - CLOCK_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 159 (mit-cml/master YaVersion 130):
+  // For YOUNG_ANDROID_VERSION 130:
   // - TEXTTOSPEECH_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 160 (mit-cml/master YaVersion 131):
+  // For YOUNG_ANDROID_VERSION 131:
   // - CONTACTPICKER_COMPONENT_VERSION was incremented to 6.
-  // For YOUNG_ANDROID_VERSION 161 (mit-cml/master YaVersion 132):
+  // For YOUNG_ANDROID_VERSION 132:
   // - TEXTTOSPEECH_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 162 (mit-cml/master YaVersion 133):
+  // For YOUNG_ANDROID_VERSION 133:
   // - FILE_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 163 (mit-cml/master YaVersion 134):
+  // For YOUNG_ANDROID_VERSION 134:
   // - DATEPICKER_COMPONENT_VERSION was incremented to 3
   // - TIMEPICKER_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 164 (mit-cml/master YaVersion 135):
+  // For YOUNG_ANDROID_VERSION 135:
   // - ACTIVITYSTARTER_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 165 (mit-cml/master YaVersion 136):
+  // For YOUNG_ANDROID_VERSION 136:
   // - FORM_COMPONENT_VERSION was incremented to 17.
-  // For YOUNG_ANDROID_VERSION 166 (mit-cml/master YaVersion 137):
+  // For YOUNG_ANDROID_VERSION 137:
   // - FORM_COMPONENT_VERSION was incremented to 18.
-  // For YOUNG_ANDROID_VERSION 167 (mit-cml/master YaVersion 138):
+  // For YOUNG_ANDROID_VERSION 138:
   // - MEDIASTORE_COMPONENT_VERSION was incremented to 1
-  // For YOUNG_ANDROID_VERSION 168 (mit-cml/master YaVersion 139):
+  // For YOUNG_ANDROID_VERSION 139:
   // - Reserved for FIRST Tech Challenge.
-  // For YOUNG_ANDROID_VERSION 169 (mit-cml/master YaVersion 140):
+  // For YOUNG_ANDROID_VERSION 140:
   // - HORIZONTALARRANGEMENT_COMPONENT_VERSION was incremented to 3.
   // - VERTICALARRANGEMENT_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 170 (mit-cml/master YaVersion 141):
+  // For YOUNG_ANDROID_VERSION 141:
   // - Reserved for FIRST Tech Challenge.
-  // For YOUNG_ANDROID_VERSION 171 (mit-cml/master YaVersion 142):
+  // For YOUNG_ANDROID_VERSION 142:
   // - FORM_COMPONENT_VERSION was incremented to 19.
-  // For YOUNG_ANDROID_VERSION 172 (mit-cml/master YaVersion 143):
+  // For YOUNG_ANDROID_VERSION 143:
   // - GyroscopeSensor component was added
-  // For YOUNG_ANDROID_VERSION 173 (mit-cml/master YaVersion 144):
+  // For YOUNG_ANDROID_VERSION 144:
   // - Reserved for FIRST Tech Challenge.
-  // For YOUNG_ANDROID_VERSION 174 (mit-cml/master YaVersion 145):
+  // For YOUNG_ANDROID_VERSION 145:
   // - Spelling of "obsfucate" was corrected to obfuscate and BLOCKS_LANGUAGE_VERSION incremented to 20
-  // For YOUNG_ANDROID_VERSION 175 (mit-cml/master YaVersion 146):
+  // For YOUNG_ANDROID_VERSION 146:
   // - CAMERA_COMPONENT_VERSION was incremented to 3.
-  // For YOUNG_ANDROID_VERSION 176 (mit-cml/master YaVersion 147):
+  // For YOUNG_ANDROID_VERSION 147:
   // - IMAGE_COMPONENT_VERSION was incremented to 2.
-  // For YOUNG_ANDROID_VERSION 177 (mit-cml/master YaVersion 148):
+  // For YOUNG_ANDROID_VERSION 148:
   // - FIREBASE_COMPONENT_VERSION was incremented to 1
-  // For YOUNG_ANDROID_VERSION 178 (mit-cml/master YaVersion 149):
+  // For YOUNG_ANDROID_VERSION 149:
   // - CLOCK_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 179 (mit-cml/master YaVersion 150):
+  // For YOUNG_ANDROID_VERSION 150:
   // - IMAGE_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 180 (mit-cml/master YaVersion 151):
+  // For YOUNG_ANDROID_VERSION 151:
   // - LOCATIONSENSOR_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 181 (mit-cml/master YaVersion 152):
+  // For YOUNG_ANDROID_VERSION 152:
   // - FIREBASE_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 182 (mit-cml/master YaVersion 153):
+  // For YOUNG_ANDROID_VERSION 153:
   // - The components Ev3Motors, Ev3{Color,Gyro,Touch,Ultrasonic}
   //   Sensor Ev3UI, Ev3Commands were added for EV3 support
-  // For YOUNG_ANDROID_VERSION 183 (mit-cml/master YaVersion 154):
+  // For YOUNG_ANDROID_VERSION 154:
   // - PEDOMETER_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 184 (mit-cml/master YaVersion 155):
+  // For YOUNG_ANDROID_VERSION 155:
   // - Extensions Support (non-visible only) added
-  // For YOUNG_ANDROID_VERSION 185 (mit-cml/master YaVersion 156):
+  // For YOUNG_ANDROID_VERSION 156:
   // - FIREBASE_COMPONENT_VERSION was incremented to 3
-  // For YOUNG_ANDROID_VERSION 186 (mit-cml/master YaVersion 157):
+  // For YOUNG_ANDROID_VERSION 157:
   // - LABEL_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 187 (mit-cml/master YaVersion 158):
-  // - Added HorizontalScrollArrangement and VerticalScrollArrangement
-  // For YOUNG_ANDROID_VERSION 188 (mit-cml/master YaVersion 159):
+  // For YOUNG_ANDROID_VERSION 158:
+  // Added HorizontalScrollArrangement and VerticalScrollArrangement
+  // For YOUNG_ANDROID_VERSION 159:
   // - FORM_COMPONENT_VERSION was incremented to 20
-  // For YOUNG_ANDROID_VERSION 189 (mit-cml/master YaVersion 160):
+  // For YOUNG_ANDROID_VERSION 160:
   // - FORM_COMPONENT_VERSION was incremented to 21
-  // For YOUNG_ANDROID_VERSION 190 (mit-cml/master YaVersion 161):
+  // For YOUNG_ANDROID_VERSION 161:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 21
-  // For YOUNG_ANDROID_VERSION 191 (mit-cml/master YaVersion 162):
+  // For YOUNG_ANDROID_VERSION 162:
   // - ACCELEROMETERSENSOR_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 192 (mit-cml/master YaVersion 163):
-  // - Added CloudDB
-  // For YOUNG_ANDROID_VERSION 193 (mit-cml/master YaVersion 164):
+  // For YOUNG_ANDROID_VERSION 163:
+  // Added CloudDB
+  // For YOUNG_ANDROID_VERSION 164:
   // - Added Map
   // - Added Marker
   // - Added FeatureCollection
@@ -483,115 +413,109 @@ public class YaVersion {
   // - Added LineString
   // - Added Polygon
   // - Added Rectangle
-  // For YOUNG_ANDROID_VERSION 194 (mit-cml/master YaVersion 165):
+  // For YOUNG_ANDROID_VERSION 165:
   // - MAP_COMPONENT_VERSION was incremented to 2
   // - MARKER_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 195 (mit-cml/master YaVersion 166):
+  // For YOUNG_ANDROID_VERSION 166:
   // - MAP_COMPONENT_VERSION was incremented to 3
   // - FEATURE_COLLECTION_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 196 (mit-cml/master YaVersion 167):
+  // For YOUNG_ANDROID_VERSION 167:
   // - FORM_COMPONENT_VERSION was incremented to 23
-  // For YOUNG_ANDROID_VERSION 197 (mit-cml/master YaVersion 168):
+  // For YOUNG_ANDROID_VERSION 168:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 22
-  // For YOUNG_ANDROID_VERSION 198 (mit-cml/master YaVersion 169):
+  // For YOUNG_ANDROID_VERSION 169:
   // - NOTIFIER_COMPONENT_VERSION was incremented to 5
-  // For YOUNG_ANDROID_VERSION 199 (mit-cml/master YaVersion 170):
+  // For YOUNG_ANDROID_VERSION 170:
   // - MAP_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 200 (mit-cml/master YaVersion 171):
+  // For YOUNG_ANDROID_VERSION 171:
   // - FUSIONTABLESCONTROL_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 201 (mit-cml/master YaVersion 172):
+  // For YOUNG_ANDROID_VERSION 172:
   // - WEBVIEWER_COMPONENT_VERSION was incremented to 7
-  // For YOUNG_ANDROID_VERSION 202 (mit-cml/master YaVersion 173):
+  // For YOUNG_ANDROID_VERSION 173:
   // - FORM_COMPONENT_VERSION was incremented to 24
-  // For YOUNG_ANDROID_VERSION 203 (mit-cml/master YaVersion 174):
+  // For YOUNG_ANDROID_VERSION 174:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 23
-  // For YOUNG_ANDROID_VERSION 204 (mit-cml/master YaVersion 175):
+  // For YOUNG_ANDROID_VERSION 175:
   // - MAP_COMPONENT_VERSION was incremented 5
-  // For YOUNG_ANDROID_VERSION 205 (mit-cml/master YaVersion 176):
+  // For YOUNG_ANDROID_VERSION 176:
   // - PHONECALL_COMPONENT_VERSION was incremented to 3
   // - TEXTING_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 206 (mit-cml/master YaVersion 177):
+  // For YOUNG_ANDROID_VERSION 177:
   // - NOTIFIER_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 207 (mit-cml/master YaVersion 178):
+  // For YOUNG_ANDROID_VERSION 178:
   // - CLOCK_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 208 (mit-cml/master YaVersion 179):
+  // For YOUNG_ANDROID_VERSION 179:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 24
-  // For YOUNG_ANDROID_VERSION 209 (mit-cml/master YaVersion 180):
+  // For YOUNG_ANDROID_VERSION 180:
   // - VIDEOPLAYER_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 210 (mit-cml/master YaVersion 181):
+  // For YOUNG_ANDROID_VERSION 181:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 25
-  // For YOUNG_ANDROID_VERSION 211 (mit-cml/master YaVersion 182):
+  // For YOUNG_ANDROID_VERSION 182:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 26
-  // For YOUNG_ANDROID_VERSION 212 (mit-cml/master YaVersion 183):
+  // For YOUNG_ANDROID_VERSION 183:
   // - CANVAS_COMPONENT_VERSION was incremented to 11
-  // For YOUNG_ANDROID_VERESION 213 (mit-cml/master YaVersion 184):
+  // For YOUNG_ANDROID_VERESION 184:
   // - Added Switch
-  // For YOUNG_ANDROiD_VERSION 214 (mit-cml/master YaVersion 185):
+  // For YOUNG_ANDROiD_VERSION 185:
   // - SPEECHRECOGNIZER_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 215 (mit-cml/master YaVersion 186):
+  // For YOUNG_ANDROID_VERSION 186:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 27
-  // For YOUNG_ANDROID_VERSION 216 (mit-cml/master YaVersion 187):
+  // For YOUNG_ANDROID_VERSION 187:
   // - BAROMETER_COMPONENT_VERSION was initialized to 1
   // - HYGROMETER_COMPONENT_VERSION was initialized to 1
   // - LIGHTSENSOR_COMPONENT_VERSION was initialized to 1
   // - THERMOMETER_COMPONENT_VERSION was initialized to 1
-  // For YOUNG_ANDROID_VERSION 217 (mit-cml/master YaVersion 188):
+  // For YOUNG_ANDROID_VERSION 188:
   // - Label component version incremented to 5
-  // For YOUNG_ANDROID_VERSION 218 (mit-cml/master YaVersion 189):
+  // For YOUNG_ANDROID_VERSION 189:
   // - FORM_COMPONENT_VERSION was incremented to 25
-  // For YOUNG_ANDROID_VERSION 219 (mit-cml/master YaVersion 190):
+  // For YOUNG_ANDROID_VERSION 190:
   // - WEB_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 220 (mit-cml/master YaVersion 191):
+  // For YOUNG_ANDROID_VERSION 191:
   // - CANVAS_COMPONENT_VERSION was incremented to 12
-  // For YOUNG_ANDROID_VERSION 221 (mit-cml/master YaVersion 192):
+  // For YOUNG_ANDROID_VERSION 192:
   // - BALL_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 222 (mit-cml/master YaVersion 193):
+  // For YOUNG_ANDROID_VERSION 193:
   // - FORM_COMPONENT_VERSION was incremented to 26
-  // For YOUNG_ANDROID_VERSION 223 (mit-cml/master YaVersion 194):
+  // For YOUNG_ANDROID_VERSION 194:
   // - CIRCLE_COMPONENT_VERSION was incremented to 2
   // - LINESTRING_COMPONENT_VERSION was incremented to 2
   // - MARKER_COMPONENT_VERSION was incremented to 3
   // - POLYGON_COMPONENT_VERSION was incremented to 2
   // - RECTANGLE_COMPONENT_VERSION was incremented to 2
   // - TEXTBOX_COMPONENT_VERSION was incremented to 6
-  // For YOUNG_ANDROID_VERSION 224 (mit-cml/master YaVersion 195):
+  // For YOUNG_ANDROID_VERSION 195:
   // - PEDOMETER_COMPONENT_VERSION was incremented to 2
-  // For YOUNG_ANDROID_VERSION 225 (mit-cml/master YaVersion 196):
+  // For YOUNG_ANDROID_VERSION 196:
   // - WEBVIEWER_COMPONENT_VERSION was incremented to 8
-  // For YOUNG_ANDROID_VERSION 226 (mit-cml/master YaVersion 197):
+  // For YOUNG_ANDROID_VERSION 197:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 28
   // - WEB_COMPONENT_VERSION was incremented to 7
-  // For YOUNG_ANDROID_VERSION 227 (mit-cml/master YaVersion 198):
+  // For YOUNG_ANDROID_VERSION 198:
   // - IMAGE_COMPONENT_VERSION was incremented to 4
-  // For YOUNG_ANDROID_VERSION 228 (mit-cml/master YaVersion 199):
+  // For YOUNG_ANDROID_VERSION 199:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 29
-  // For YOUNG_ANDROID_VERSION 229 (mit-cml/master YaVersion 200):
+  // For YOUNG_ANDROID_VERSION 200:
   // - FORM_COMPONENT_VERSION was incremented to 27.
-  // For YOUNG_ANDROID_VERSION 230 (mit-cml/master YaVersion 201):
+  // For YOUNG_ANDROID_VERSION 201:
   // - CANVAS_COMPONENT_VERSION was incremented to 13
-  // For YOUNG_ANDROID_VERSION 231 (mit-cml/master YaVersion 202):
+  // For YOUNG_ANDROID_VERSION 202:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 30
-  // For YOUNG_ANDROID_VERSION 232 (mit-cml/master YaVersion 203):
+  // For YOUNG_ANDROID_VERSION 203:
   // - WEBVIEWER_COMPONENT_VERSION was incremented to 9
-  // For YOUNG_ANDROID_VERSION 233 (mit-cml/master YaVersion 204):
+  // For YOUNG_ANDROID_VERSION 204:
   // - NAVIGATION_COMPONENT_VERSION was initialized to 1
   // - SERIAL_COMPONENT_VERSION was initialized to 1
-  // For YOUNG_ANDROID_VERSION 234 (mit-cml/master YaVersion 205):
+  // For YOUNG_ANDROID_VERSION 205:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 31
-  // For YOUNG_ANDROID_VERSION 235 (mit-cml/master YaVersion 206):
+  // For YOUNG_ANDROID_VERSION 206:
   // - YANDEX_COMPONENT_VERSION was incremented to 2.
   // For YOUNG_ANDROID_VERSION 207:
   // - BLOCKS_LANGUAGE_VERSION was incremented to 32
   // For YOUNG_ANDROID_VERSION 208:
   // - FILE_COMPONENT_VERSION was incremented to 3
   // - BLOCKS_LANGUAGE_VERSION was incremented to 33
-  // For YOUNG_ANDROID_VERSION 236 (mit-cml/master YaVersion 208):
-  // - LDPCOAP_CLIENT_COMPONENT_VERSION was initialized to 1
-  // For YOUNG_ANDROID_VERSION 237 (mit-cml/master YaVersion 209):
-  // - BLUETOOTH_CLIENT_COMPONENT_VERSION was incremented to 7
-  // For YOUNG_ANDROID_VERSION 238
-  // - GRAPHQL_COMPONENT_VERSION was added.
-  public static final int YOUNG_ANDROID_VERSION = 238;
+  public static final int YOUNG_ANDROID_VERSION = 208;
 
   // ............................... Blocks Language Version Number ...............................
 
@@ -746,7 +670,7 @@ public class YaVersion {
 
   // For BALL_COMPONENT_VERSION 2:
   // - The PointTowards method was added (for all sprites)
-  // - The heading property was changed from int to double (for all sprites
+  // - The heading property was changed from int to double (for all sprites)
   // For BALL_COMPONENT_VERSION 3:
   // - The Z property was added (also for ImageSprite)
   // For BALL_COMPONENT_VERSION 4:
@@ -771,9 +695,7 @@ public class YaVersion {
   // - The BluetoothClient.Secure property was added.
   // For BLUETOOTHCLIENT_COMPONENT_VERSION 6:
   // - The BluetoothClient.DisconnectOnError property was added.
-  // For BLUETOOTH_CLIENT_COMPONENT_VERSION 7:
-  // - The BluuetoothClient.PollingRate property was added.
-  public static final int BLUETOOTHCLIENT_COMPONENT_VERSION = 7;
+  public static final int BLUETOOTHCLIENT_COMPONENT_VERSION = 6;
 
   // For BLUETOOTHSERVER_COMPONENT_VERSION 2:
   // - The BluetoothServer.Enabled property was added.
@@ -791,14 +713,13 @@ public class YaVersion {
   // - The LongClick event was added.
   // For BUTTON_COMPONENT_VERSION 4:
   // - The Shape property was added.
- 
   // For BUTTON_COMPONENT_VERSION 5:
   // - The ShowFeedback property was added.
   // For BUTTON_COMPONENT_VERSION 6:
   // - Added TouchUp and TouchDown events
   // - FontSize, FontBold, FontItalic properties made visible in block editor
   public static final int BUTTON_COMPONENT_VERSION = 6;
- 
+
   public static final int CAMCORDER_COMPONENT_VERSION = 1;
 
   // For CAMERA_COMPONENT_VERSION 2:
@@ -839,10 +760,6 @@ public class YaVersion {
   // - BackgroundImageinBase64 was added
   public static final int CANVAS_COMPONENT_VERSION = 13;
 
-  public static final int CHART_COMPONENT_VERSION = 1;
-
-  public static final int CHART_DATA_2D_COMPONENT_VERSION = 1;
-
   // For CHECKBOX_COMPONENT_VERSION 2:
   // - The Value property was renamed to Checked.
   public static final int CHECKBOX_COMPONENT_VERSION = 2;
@@ -862,8 +779,6 @@ public class YaVersion {
   // - MakeTime, MakeDate, MakeInstantFromParts methods were added
   public static final int CLOCK_COMPONENT_VERSION = 4;
 
-  public static final int CONTACTINFO_COMPONENT_VERSION = 1;
-
   // For CONTACTPICKER_COMPONENT_VERSION 2:
   // - The Alignment property was renamed to TextAlignment.
   // For CONTACTPICKER_COMPONENT_VERSION 3:
@@ -877,10 +792,6 @@ public class YaVersion {
   // - The ContactUri property was added
   public static final int CONTACTPICKER_COMPONENT_VERSION = 6;
 
-  public static final int DATA_VIS_COMPONENT_VERSION = 2;
-  
-  public static final int DATA_FILE_COMPONENT_VERSION = 1;
-
   // For DATEPICKER_COMPONENT_VERSION 2:
   // The datepicker dialog was updated to show the current date
   // instead of the last set date by default.
@@ -890,8 +801,6 @@ public class YaVersion {
   // For DATEPICKER_COMPONENT_VERSION 3:
   // - SetDateToDisplayFromInstant, and Instant property are added.
   public static final int DATEPICKER_COMPONENT_VERSION = 3;
- 
-  public static final int DROPBOX_COMPONENT_VERSION = 1;
 
   // For EMAILPICKER_COMPONENT_VERSION 2:
   // - The Alignment property was renamed to TextAlignment.
@@ -977,7 +886,6 @@ public class YaVersion {
   // - Added the Platform and PlatformVersion read-only blocks
   public static final int FORM_COMPONENT_VERSION = 27;
 
-
   // For FUSIONTABLESCONTROL_COMPONENT_VERSION 2:
   // - The Fusiontables API was migrated from SQL to V1
   // For FUSIONTABLESCONTROL_COMPONENT_VERSION 3:
@@ -990,16 +898,6 @@ public class YaVersion {
   public static final int FUSIONTABLESCONTROL_COMPONENT_VERSION = 4;
 
   public static final int GAMECLIENT_COMPONENT_VERSION = 1;
-
-  // For GOOGLECLOUDMESSAGING_COMPONENT_VERSION 1:
-  // - Initial version.
-  public static final int GOOGLECLOUDMESSAGING_COMPONENT_VERSION = 1;
-
-  public static final int GOOGLE_DRIVE_COMPONENT_VERSION = 1;
-
-  // For GOOGLEMAP_COMPONENT_VERSION 1:
-  // - Initial version.
-  public static final int GOOGLE_MAP_COMPONENT_VERSION = 1;
 
   public static final int GYROSCOPESENSOR_COMPONENT_VERSION = 1;
 
@@ -1054,41 +952,14 @@ public class YaVersion {
   // - The HTML format is defined.
   // For LABEL_COMPONENT_VERSION 5:
   // - The HTMLContent property is defined.
+
   public static final int LABEL_COMPONENT_VERSION = 5;
-
-  public static final int LD_COMPONENT_VERSION = 1;
-
-  public static final int LDPCOAP_CLIENT_COMPONENT_VERSION = 1;
 
   // For LINESTRING_COMPONENT_VERSION 1:
   // - Initial LineString implementation for Maps
   // For LINESTRING_COMPONENT_VERSION 2:
   // - Added fill and stroke opacity properties
   public static final int LINESTRING_COMPONENT_VERSION = 2;
-
-  // For LINKED_DATA_COMPONENT_VERSION_2:
-  // - Renamed SemanticWeb component to LinkedData component
-  // For LINKED_DATA_COMPONENT_VERSION 3:
-  // - Removed BaseURL property eclipsed by FormID on Linked Data Form
-  public static final int LINKED_DATA_COMPONENT_VERSION = 3;
-
-  // For SEMANTIC_FORM_COMPONENT_VERSION 1:
-  // - Initial version.
-  // For SEMANTIC_FORM_COMPONENT_VERSION 2:
-  // - Renamed BaseURI to Form ID
-  // - Renamed ConceptURI to Object Type
-  // For LINKED_DATA_FORM_COMPONENT_VERSION 3:
-  // - Renamed Semantic Form to Linked Data Form
-  public static final int LINKED_DATA_FORM_COMPONENT_VERSION = 3;
-  
-  // For LINKED_DATA_LISTPICKER_COMPONENT_VERSION_2:
-  // - Renamed SemanticWebListPicker to LinkedDataListPicker
-  // For LINKED_DATA_LISTPICKER_COMPONENT_VERSION_3:
-  // - Added RelationToObject property
-  public static final int LINKED_DATA_LISTPICKER_COMPONENT_VERSION = 3;
-
-  // For LINKEDDATASTREAMING_COMPONENT_VERSION 1:
-  public static final int LINKEDDATASTREAMING_COMPONENT_VERSION = 1;
 
   // For LISTPICKER_COMPONENT_VERSION 2:
   // - The Alignment property was renamed to TextAlignment.
@@ -1205,41 +1076,15 @@ public class YaVersion {
   // - The Yaw property was renamed to Azimuth.
   // - The yaw parameter to OrientationChanged was renamed to azimuth.
   public static final int ORIENTATIONSENSOR_COMPONENT_VERSION = 2;
-  
-  public static final int SOCIALPROXIMITYSENSOR_COMPONENT_VERSION = 1;
-  
-  public static final int WIFISENSOR_COMPONENT_VERSION = 1;
-  
-  public static final int LOCATIONPROBESENSOR_COMPONENT_VERSION = 1;
-  
-  public static final int CELLTOWERPROBESENSOR_COMPONENT_VERSION = 1;
-  
-  public static final int ACTIVITYPROBESENSOR_COMPONENT_VERSION = 1;
-  
-  public static final int RUNNINGAPPLICATIONS_COMPONENT_VERSION = 1;
-  
-  public static final int SCREENSTATUS_COMPONENT_VERSION = 1;
-  
-  public static final int CALLLOGHISTORY_COMPONENT_VERSION = 1;
-  
-  public static final int TIMER_COMPONENT_VERSION = 1;
-  
-  public static final int BATTERYSENSOR_COMPONENT_VERSION = 1;
-  public static final int PEDOMETERSENSOR_COMPONENT_VERSION = 1;
-  public static final int SURVEY_COMPONENT_VERSION = 1;
-  public static final int TELEPHONY_COMPONENT_VERSION = 1;
 
   // For PASSWORDTEXTBOX_COMPONENT_VERSION 2:
   // - The Alignment property was renamed to TextAlignment.
-  // For PASSWORDTEXTBOX_COMPONENT_VERSION 3
-  // - The ConceptURI property was renamed to ObjectType.
+  // For PASSWORDTEXTBOX_COMPONENT_VERSION 3:
   // - Added RequestFocus Function (via TextBoxBase)
   // For PASSWORDTEXTBOX_COMPONENT_VERSION 4:
   // - Added PasswordVisible property
   public static final int PASSWORDTEXTBOX_COMPONENT_VERSION = 4;
 
-  public static final int PEBBLESMARTWATCH_COMPONENT_VERSION = 1;	
-  
   // For PEDOMETER_COMPONENT_VERSION 2:
   // - The step sensing algorithm was updated to be more accurate.
   // - The GPS related functionality was removed.
@@ -1295,8 +1140,6 @@ public class YaVersion {
   // - Added fill and stroke opacity properties
   public static final int RECTANGLE_COMPONENT_VERSION = 2;
 
-  public static final int SENSORDB_COMPONENT_VERSION = 1;
-    
   public static final int SHARING_COMPONENT_VERSION = 1;
 
   // For SLIDER_COMPONENT_VERSION 1:
@@ -1304,10 +1147,6 @@ public class YaVersion {
   // For SLIDER_COMPONENT_VERSION 2:
   // - Added the property to allow for the removal of the Thumb Slider
   public static final int SLIDER_COMPONENT_VERSION = 2;
-
-  // For SMSLOGHISTORY_COMPONENT_VERSION 1:
-  // - Initial version.
-  public static final int SMSLOGHISTORY_COMPONENT_VERSION = 1;
 
   // For SPINNER_COMPONENT_VERSION 1:
   public static final int SPINNER_COMPONENT_VERSION = 1;
@@ -1342,13 +1181,10 @@ public class YaVersion {
   // - The HideKeyboard method was added.
   // - The MultiLine property was added.
   // For TEXTBOX_COMPONENT_VERSION 5:
-  // - Implementation of LDComponent was added.
-  // For TEXTBOX_COMPONENT_VERSION 6:
-  // - The ConceptURI property was renamed to ObjectType.
   // - RequestFocus method was added
-  // For TEXTBOX_COMPONENT_VERSION 7:
+  // For TEXTBOX_COMPONENT_VERSION 6:
   // - ReadOnly property was added
-  public static final int TEXTBOX_COMPONENT_VERSION = 7;
+  public static final int TEXTBOX_COMPONENT_VERSION = 6;
 
   // For TEXTING_COMPONENT_VERSION 2:
   // Texting over Wifi was implemented using Google Voice
@@ -1410,10 +1246,6 @@ public class YaVersion {
   // - CloudDB component introduced
   public static final int CLOUDDB_COMPONENT_VERSION = 1;
 
-  // For GRAPHQL_COMPONENT_VERSION 1:
-  // - GraphQL component introduced.
-  public static final int GRAPHQL_COMPONENT_VERSION = 1;
-
   // For TWITTER_COMPONENT_VERSION 2:
   // - The Authorize method and IsAuthorized event handler were added to support
   //   OAuth authentication (now requred by Twitter). These
@@ -1440,10 +1272,7 @@ public class YaVersion {
   // For TWITTER_COMPONENT_VERSION 4:
   // - Modified 'TweetWithImage' to upload images to Twitter directly because of the shutdown of
   //   TwitPic. The TwitPic_API_Key property is now deprecated and hidden.
-  // For TWITTER_COMPONENT_VERSION 5:
-  // - Added 'ImageUploaded' event to report when an image is uploaded to Twitter and the
-  //   associated URL for that image.
-  public static final int TWITTER_COMPONENT_VERSION = 5;
+  public static final int TWITTER_COMPONENT_VERSION = 4;
 
   // For VERTICALARRANGEMENT_COMPONENT_VERSION 2:
   // - The AlignHorizontal property was added
@@ -1571,13 +1400,13 @@ public class YaVersion {
   // default value here is for the MIT App Inventor service run
   // by MIT
 
-  public static final String ACCEPTABLE_COMPANION_PACKAGE = "edu.mit.appinventor.punya.aicompanion3";
+  public static final String ACCEPTABLE_COMPANION_PACKAGE = "edu.mit.appinventor.aicompanion3";
 
-  public static final String PREFERRED_COMPANION = "2.60punya1";
+  public static final String PREFERRED_COMPANION = "2.60";
   public static final String COMPANION_UPDATE_URL = "";
   public static final String COMPANION_UPDATE_URL1 = "";
   public static final String COMPANION_UPDATE_EMULATOR_URL = "";
-  public static final String [] ACCEPTABLE_COMPANIONS = { "2.60punya1", "2.60punya1u" };
+  public static final String [] ACCEPTABLE_COMPANIONS = { "2.60", "2.60u" };
 
   // Splash Screen Values
   public static final int SPLASH_SURVEY = 1;

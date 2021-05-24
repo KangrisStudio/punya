@@ -11,7 +11,6 @@ Table of Contents:
 * [ActivityStarter](#ActivityStarter)
 * [BluetoothClient](#BluetoothClient)
 * [BluetoothServer](#BluetoothServer)
-* [LdpCoapClient](#LdpCoapClient)
 * [Serial](#Serial)
 * [Web](#Web)
 
@@ -154,9 +153,6 @@ Use `BluetoothClient` to connect your device to other devices using Bluetooth. T
 
 {:id="BluetoothClient.IsConnected" .boolean .ro .bo} *IsConnected*
 : Returns `frue`{:.logic.block} if a connection to a Bluetooth device has been made.
-
-{:id="BluetoothClient.PollingRate" .number} *PollingRate*
-: Returns the configured polling rate value of the Bluetooth Client.
 
 {:id="BluetoothClient.Secure" .boolean} *Secure*
 : Specifies whether a secure connection should be used.
@@ -395,178 +391,6 @@ Use the `BluetoothServer` component to turn your device into a server that recei
 
 {:id="BluetoothServer.StopAccepting" class="method"} <i/> StopAccepting()
 : Stop accepting an incoming connection.
-
-## LdpCoapClient  {#LdpCoapClient}
-
-![LdpCoapClient](images/ldpCoap.png)
-
- LdpCoapClient to make ldp coap request
-
-
-
-### Properties  {#LdpCoapClient-Properties}
-
-{:.properties}
-
-{:id="LdpCoapClient.ApplicationAtomXml" .number .ro .bo} *ApplicationAtomXml*
-: application/atom+xml code
-
-{:id="LdpCoapClient.ApplicationBson" .number .ro .bo} *ApplicationBson*
-: application/bson code
-
-{:id="LdpCoapClient.ApplicationBzip2" .number .ro .bo} *ApplicationBzip2*
-: application/bz2 code
-
-{:id="LdpCoapClient.ApplicationExi" .number .ro .bo} *ApplicationExi*
-: application/exi code
-
-{:id="LdpCoapClient.ApplicationFastinfoset" .number .ro .bo} *ApplicationFastinfoset*
-: application/fastinfoset code
-
-{:id="LdpCoapClient.ApplicationGzip" .number .ro .bo} *ApplicationGzip*
-: application/gzip code
-
-{:id="LdpCoapClient.ApplicationJson" .number .ro .bo} *ApplicationJson*
-: application/json code
-
-{:id="LdpCoapClient.ApplicationLdJson" .number .ro .bo} *ApplicationLdJson*
-: application/ld+json code
-
-{:id="LdpCoapClient.ApplicationLinkFormat" .number .ro .bo} *ApplicationLinkFormat*
-: application/link-format code
-
-{:id="LdpCoapClient.ApplicationMsgpack" .number .ro .bo} *ApplicationMsgpack*
-: application/msgpack code
-
-{:id="LdpCoapClient.ApplicationOctetStream" .number .ro .bo} *ApplicationOctetStream*
-: application/octet-stream code
-
-{:id="LdpCoapClient.ApplicationRdfPatch" .number .ro .bo} *ApplicationRdfPatch*
-: application/rdf-patch code
-
-{:id="LdpCoapClient.ApplicationRdfXml" .number .ro .bo} *ApplicationRdfXml*
-: application/rdf+xml code
-
-{:id="LdpCoapClient.ApplicationSoapFastinfoset" .number .ro .bo} *ApplicationSoapFastinfoset*
-: application/soap+fastinfoset code
-
-{:id="LdpCoapClient.ApplicationSoapXml" .number .ro .bo} *ApplicationSoapXml*
-: application/soap+xml code
-
-{:id="LdpCoapClient.ApplicationUbjson" .number .ro .bo} *ApplicationUbjson*
-: application/ubjson code
-
-{:id="LdpCoapClient.ApplicationXml" .number .ro .bo} *ApplicationXml*
-: application/xml code
-
-{:id="LdpCoapClient.ApplicationXmppXml" .number .ro .bo} *ApplicationXmppXml*
-: application/xmpp+xml code
-
-{:id="LdpCoapClient.ApplicationXobixBinary" .number .ro .bo} *ApplicationXobixBinary*
-: application/x-obix-binary code
-
-{:id="LdpCoapClient.BASE_URI" .text .bo} *BASE_URI*
-: Get BASE URI
-
-{:id="LdpCoapClient.ContainerType" .text} *ContainerType*
-: Property for ContainerType
-
-{:id="LdpCoapClient.ImageGif" .number .ro .bo} *ImageGif*
-: image/gif code
-
-{:id="LdpCoapClient.ImageJpeg" .number .ro .bo} *ImageJpeg*
-: image/jpeg code
-
-{:id="LdpCoapClient.ImagePng" .number .ro .bo} *ImagePng*
-: image/png code
-
-{:id="LdpCoapClient.ImageTiff" .number .ro .bo} *ImageTiff*
-: image/tiff code
-
-{:id="LdpCoapClient.TextCsv" .number .ro .bo} *TextCsv*
-: text/csv code
-
-{:id="LdpCoapClient.TextHtml" .number .ro .bo} *TextHtml*
-: text/html code
-
-{:id="LdpCoapClient.TextPlain" .number .ro .bo} *TextPlain*
-: text/plain code
-
-{:id="LdpCoapClient.TextTurtle" .number .ro .bo} *TextTurtle*
-: text/turtle code
-
-### Events  {#LdpCoapClient-Events}
-
-{:.events}
-None
-
-
-### Methods  {#LdpCoapClient-Methods}
-
-{:.methods}
-
-{:id="LdpCoapClient.Delete" class="method"} <i/> Delete(*resource*{:.text})
-: CoAP Delete resource
-
-{:id="LdpCoapClient.DiscoverResourcesRdfPatch" class="method"} <i/> DiscoverResourcesRdfPatch()
-: LDiscover resources in application/rdf-patch format
-
-{:id="LdpCoapClient.DiscoverResourcesTextPlain" class="method"} <i/> DiscoverResourcesTextPlain()
-: Discover resources in text/plain format
-
-{:id="LdpCoapClient.DiscoverResourcesTextTurtle" class="method"} <i/> DiscoverResourcesTextTurtle()
-: Discover resources in text/turtle format
-
-{:id="LdpCoapClient.DiscoverTypeResourcesRdfPatch" class="method"} <i/> DiscoverTypeResourcesRdfPatch(*type*{:.text})
-: Discover resources of a specific type in application/rdf-patch format
-
-{:id="LdpCoapClient.DiscoverTypeResourcesTextPlain" class="method"} <i/> DiscoverTypeResourcesTextPlain(*type*{:.text})
-: Discover resources of a specific type in text/plain format
-
-{:id="LdpCoapClient.DiscoverTypeResourcesTextTurtle" class="method"} <i/> DiscoverTypeResourcesTextTurtle(*type*{:.text})
-: Discover resources of a specific type in text/turtle format
-
-{:id="LdpCoapClient.Get" class="method"} <i/> Get(*resource*{:.text},*type*{:.number})
-: LDP-CoAP Get method
-
-{:id="LdpCoapClient.GetETag" class="method returns text"} <i/> GetETag()
-: Get ETag
-
-{:id="LdpCoapClient.Head" class="method"} <i/> Head(*resource*{:.text})
-: HEAD Request
-
-{:id="LdpCoapClient.Options" class="method"} <i/> Options(*resource*{:.text})
-: OPTIONS Request
-
-{:id="LdpCoapClient.Patch" class="method"} <i/> Patch(*resource*{:.text},*type*{:.number},*data*{:.text})
-: PATCH Request
-
-{:id="LdpCoapClient.PatchEtagInput" class="method"} <i/> PatchEtagInput(*resource*{:.text},*type*{:.number},*data*{:.text},*etag*{:.text})
-: PATCH Request
-
-{:id="LdpCoapClient.Post" class="method"} <i/> Post(*resource*{:.text},*type*{:.number},*data*{:.text},*title*{:.text})
-: POST Request
-
-{:id="LdpCoapClient.Put" class="method"} <i/> Put(*resource*{:.text},*type*{:.number},*data*{:.text})
-: PUT Request
-
-{:id="LdpCoapClient.PutEtagInput" class="method"} <i/> PutEtagInput(*resource*{:.text},*type*{:.number},*data*{:.text},*etag*{:.text})
-: PUT Request
-
-{:id="LdpCoapClient.getContentFormat" class="method returns text"} <i/> getContentFormat()
-: Get Content-Format (ct)
-
-{:id="LdpCoapClient.getLocationPath" class="method returns text"} <i/> getLocationPath()
-: Get Location Path
-
-{:id="LdpCoapClient.getRequestStatus" class="method returns text"} <i/> getRequestStatus()
-: get request Status
-
-{:id="LdpCoapClient.getResponseCode" class="method returns text"} <i/> getResponseCode()
-: Get response code
-
-{:id="LdpCoapClient.getResponseText" class="method returns text"} <i/> getResponseText()
-: Get Response Text
 
 ## Serial  {#Serial}
 

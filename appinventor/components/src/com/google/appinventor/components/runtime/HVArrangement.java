@@ -6,10 +6,6 @@
 
 package com.google.appinventor.components.runtime;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import android.app.Activity;
 
 import android.graphics.drawable.Drawable;
@@ -49,13 +45,12 @@ import java.io.IOException;
  */
 
 @SimpleObject
-public class HVArrangement extends AndroidViewComponent implements Component, ComponentContainer<AndroidViewComponent> {
+public class HVArrangement extends AndroidViewComponent implements Component, ComponentContainer {
   private final Activity context;
 
   // Layout
   private final int orientation;
   private final LinearLayout viewLayout;
-  private final List<AndroidViewComponent> components;
   private ViewGroup frameContainer;
   private boolean scrollable = false;
   // translates App Inventor alignment codes to Android gravity
@@ -95,7 +90,7 @@ public class HVArrangement extends AndroidViewComponent implements Component, Co
     viewLayout = new LinearLayout(context, orientation,
         ComponentConstants.EMPTY_HV_ARRANGEMENT_WIDTH,
         ComponentConstants.EMPTY_HV_ARRANGEMENT_HEIGHT);
-    components = new ArrayList<AndroidViewComponent>();
+
     viewLayout.setBaselineAligned(false);
     alignmentSetter = new AlignmentUtil(viewLayout);
     horizontalAlignment = ComponentConstants.HORIZONTAL_ALIGNMENT_DEFAULT;
@@ -149,7 +144,6 @@ public class HVArrangement extends AndroidViewComponent implements Component, Co
   @Override
   public void $add(AndroidViewComponent component) {
     viewLayout.add(component);
-    components.add(component);
   }
 
   @Override
@@ -289,11 +283,6 @@ public class HVArrangement extends AndroidViewComponent implements Component, Co
       container.$form().dispatchErrorOccurredEvent(this, "VerticalAlignment",
           ErrorMessages.ERROR_BAD_VALUE_FOR_VERTICAL_ALIGNMENT, alignment);
     }
-  }
-
-  @Override
-  public Iterator<AndroidViewComponent> iterator() {
-    return components.iterator();
   }
 
     /**

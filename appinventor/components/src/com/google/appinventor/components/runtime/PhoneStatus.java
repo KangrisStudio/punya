@@ -65,7 +65,9 @@ import java.util.Formatter;
                    iconName = "images/phoneip.png")
 @SimpleObject
 @UsesLibraries(libraries = "webrtc.jar," +
-    "google-http-client-beta.jar")
+    "google-http-client-beta.jar," +
+    "google-http-client-android2-beta.jar," +
+    "google-http-client-android3-beta.jar")
 @UsesNativeLibraries(v7aLibraries = "libjingle_peerconnection_so.so",
   v8aLibraries = "libjingle_peerconnection_so.so",
   x86_64Libraries = "libjingle_peerconnection_so.so")
@@ -334,7 +336,7 @@ public class PhoneStatus extends AndroidNonvisibleComponent implements Component
   @SimpleFunction(description = "Return the app that installed us")
   public String GetInstaller() {
     if (SdkLevel.getLevel() >= SdkLevel.LEVEL_ECLAIR) {
-      String installer = EclairUtil.getInstallerPackageName(YaVersion.ACCEPTABLE_COMPANION_PACKAGE, form);
+      String installer = EclairUtil.getInstallerPackageName("edu.mit.appinventor.aicompanion3", form);
       if (installer == null) {
         return "sideloaded";
       } else {

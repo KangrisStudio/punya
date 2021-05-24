@@ -6,7 +6,7 @@
 
 package com.google.appinventor.server;
 
-import com.google.appinventor.server.storage.ObjectifyStorageIo;
+import com.google.common.base.Strings;
 import com.google.appinventor.server.storage.StorageIo;
 import com.google.appinventor.server.storage.StorageIoInstanceHolder;
 import com.google.appinventor.shared.rpc.project.ProjectSourceZip;
@@ -70,18 +70,6 @@ public final class FileExporterImpl implements FileExporter {
     return storageIo.exportProjectSourceZip(userId, projectId,
       includeProjectHistory, includeAndroidKeystore, zipName, includeYail, includeScreenShots, forGallery, fatalError);
   }
-
-  @Override
-  public ProjectSourceZip exportProjectSourceScreenZip(String userId, long projectId,
-                                                 @Nullable String zipName) throws IOException {
-    // Download project source files as a zip.
-    if (storageIo instanceof ObjectifyStorageIo) {
-      return ((ObjectifyStorageIo)storageIo).exportProjectSourceScreenZip(userId, projectId,
-          zipName);
-    } else {
-      throw new IllegalArgumentException("Objectify only");
-    }
-  }  
 
   @Override
   public ProjectSourceZip exportSelectedProjectsSourceZip(String userId,

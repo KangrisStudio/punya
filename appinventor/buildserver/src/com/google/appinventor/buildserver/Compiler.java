@@ -93,18 +93,12 @@ public final class Compiler {
   // Kawa and DX processes can use a lot of memory. We only launch one Kawa or DX process at a time.
   private static final Object SYNC_KAWA_OR_DX = new Object();
 
-  private static final String SWLIST_ACTIVITY_CLASS =
-      "com.google.appinventor.components.runtime.SWListActivity";
-
-  // TODO(sharon): temporary until we add support for new activities
-  private static final String LIST_ACTIVITY_CLASS =
-      "com.google.appinventor.components.runtime.ListPickerActivity";
   private static final String SLASH = File.separator;
-  private static final String SLASHREGEX = File.separatorChar == '\\' ? "\\\\" : "/";
   private static final String COLON = File.pathSeparator;
   private static final String ZIPSLASH = "/";
 
   public static final String RUNTIME_FILES_DIR = "/" + "files" + "/";
+
 
   // Native library directory names
   private static final String LIBS_DIR_NAME = "libs";
@@ -120,23 +114,8 @@ public final class Compiler {
   private static final String DEFAULT_ICON = RUNTIME_FILES_DIR + "ya.png";
   private static final String DEFAULT_VERSION_CODE = "1";
   private static final String DEFAULT_VERSION_NAME = "1.0";
-
-  //The API key is initialized here to prevent crashing. 
-  // The Google Maps API Key is from the QCRI gmail account
-  private static final String DEFAULT_GOOGLE_MAPS_API_KEY = "AIzaSyCmOh64wdlLf5Ay4hXo_1M-vDWerizaUrk";
-
-
-  private static final String COMPONENT_PERMISSIONS =
-          RUNTIME_FILES_DIR + "simple_components_permissions.json";
-
-  private static final String COMPONENT_TEMPLATES =
-          RUNTIME_FILES_DIR + "simple_components_templates.json";
-
   private static final String DEFAULT_MIN_SDK = "7";
   private static final String DEFAULT_THEME = "AppTheme.Light.DarkActionBar";
-
-  private static final String COMPONENT_BUILD_INFO =
-      RUNTIME_FILES_DIR + "simple_components_build_info.json";
 
   /*
    * Resource paths to yail runtime, runtime library files and sdk tools.
@@ -301,12 +280,6 @@ public final class Compiler {
   private final ConcurrentMap<String, Set<String>> componentBroadcastReceiver =
       new ConcurrentHashMap<String, Set<String>>();
 
-  private final ConcurrentMap<String, Set<String>> componentAssets =
-    new ConcurrentHashMap<String, Set<String>>();
-  
-  private final ConcurrentMap<String, Set<String>> componentTemplates = 
-    new ConcurrentHashMap<String, Set<String>>();
-
   /**
    * Map used to hold the names and paths of resources that we've written out
    * as temp files.
@@ -390,8 +363,6 @@ public final class Compiler {
   private Map<String, String> extTypePathCache = new HashMap<String, String>();
 
   private static final Logger LOG = Logger.getLogger(Compiler.class.getName());
-  private final ConcurrentMap<String, Set<String>> componentPermissions =
-      new ConcurrentHashMap<String, Set<String>>();
 
   private BuildServer.ProgressReporter reporter; // Used to report progress of the build
 
@@ -1043,11 +1014,8 @@ public final class Compiler {
       vName += "u";
     }
     String aName = (project.getAName() == null) ? DEFAULT_APP_NAME : cleanName(project.getAName());
-    String gMapsAPIKey = (project.getMapsKey() == null) ? DEFAULT_GOOGLE_MAPS_API_KEY : project.getMapsKey();
-    String minSDK = DEFAULT_MIN_SDK;
     LOG.log(Level.INFO, "VCode: " + project.getVCode());
     LOG.log(Level.INFO, "VName: " + project.getVName());
-    LOG.log(Level.INFO, "MapsKey: " + gMapsAPIKey);
 
     // TODO(user): Use com.google.common.xml.XmlWriter
     try {
@@ -1128,24 +1096,6 @@ public final class Compiler {
                   permission
                     .replace("%packageName%", packageName) // replace %packageName% with the actual packageName
                   + "\" />\n");
-      }
-
-      // Google Cloud Messaging
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleCloudMessaging")
-          || simpleCompTypes.contains("com.google.appinventor.components.runtime.PctMessaging")) {
-        out.write("<permission android:name=\"com.google.appinventor.aiphoneapp.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />\n");
-        out.write("<uses-permission android:name=\"com.google.appinventor.aiphoneapp.permission.C2D_MESSAGE\" />\n");
-        out.write("<permission android:name=\"" + packageName + ".permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />\n");
-        out.write("<uses-permission android:name=\"" + packageName + ".permission.C2D_MESSAGE\" />\n");
-      }
-      // add permission, and uses-permission, uses-feature specifically for Google Map
-      // as stated here https://developers.google.com/maps/documentation/android/start
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleMap")) {
-        out.write(" <permission ");
-        out.write(" android:name=\"" + packageName +".permission.MAPS_RECEIVE\" ");
-        out.write(" android:protectionLevel=\"signature\" /> \n");
-        out.write(" <uses-permission android:name=\"" + packageName + ".permission.MAPS_RECEIVE\" />\n");
-        out.write(" <uses-feature android:glEsVersion=\"0x00020000\" android:required=\"true\" />\n");
       }
 
       if (isForCompanion) {      // This is so ACRA can do a logcat on phones older then Jelly Bean
@@ -1283,99 +1233,6 @@ public final class Compiler {
         }
       }
 
-      // Add the Google Cloud Messaging service
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleCloudMessaging")
-          || simpleCompTypes.contains("com.google.appinventor.components.runtime.PctMessaging")) {
-        // Declare and use a custom permission so only this application can receive GCM messages:
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.GCMIntentService\"></service>\n");    
-        out.write("<receiver android:name=\"com.google.appinventor.components.runtime.GCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\" >\n");
-        out.write("    <intent-filter>");
-        out.write("        <action android:name=\"com.google.android.c2dm.intent.RECEIVE\" />\n");
-        out.write("        <action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" />\n");
-        out.write("        <category android:name=\""+packageName+"\" />\n"); 
-        out.write("    </intent-filter>");
-        out.write("</receiver>");
-      }
-      
-      //add UploadServices and DataBaseService
-      out.write("<service android:name=\"edu.mit.media.funf.storage.NameValueDatabaseService\"></service> \n");
-      out.write("<service android:name=\"com.google.appinventor.components.runtime.util.HttpsUploadService\"></service> \n");
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.Dropbox")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.DropboxUploadService\"></service> \n");	    
-      }
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleDrive")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.GoogleDriveUploadService\"></service> \n");
-      }
-	  
-      // try the same thing here for TimerManager (Disabled for now)
-      // BroadcastReceiver for TimerManager
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.Timer")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.util.TimerManager\" android:enabled=\"true\" android:exported=\"false\">\n");
-        out.write(" </service>\n");  
-        out.write("<receiver android:name=\"com.google.appinventor.components.runtime.util.TimerLauncher\" android:enabled=\"true\">\n");
-        out.write("    <intent-filter>\n");
-        out.write("        <action android:name=\"android.intent.action.BATTERY_CHANGED\" />\n");
-        out.write("        <action android:name=\"android.intent.action.BOOT_COMPLETED\" />\n");
-        out.write("        <action android:name=\"android.intent.action.DOCK_EVENT\" />\n");
-        out.write("        <action android:name=\"android.intent.action.ACTION_SCREEN_ON\" />\n");
-        out.write("        <action android:name=\"android.intent.action.USER_PRESENT\" />\n");
-        out.write("    </intent-filter>\n");
-        out.write("</receiver>");
-      }
-      
-      // Add the FUNF probe services
-      // out.write("<service android:name=\"edu.mit.media.funf.probe.builtin.BatteryProbe\"></service>\n");
-      // out.write("<service android:name=\"edu.mit.media.funf.probe.builtin.MagneticFieldSensorProbe\"></service>\n");
-      // out.write("<service android:name=\"edu.mit.media.funf.probe.builtin.ProximitySensorProbe\"></service>\n");
-      // out.write("<service android:name=\"edu.mit.media.funf.probe.builtin.BluetoothProbe\"></service>\n");
-
-      // new version of configurations to include in the manifest.xml. Now need not include each probe individually, 
-      // but just include the FunfManager service
-      // Broadcast receiver for all funf related component
-      for (String type : simpleCompTypes) {
-        Set<String> libraries = libsNeeded.get(type);
-        if (libraries != null && libraries.contains("funf.jar")) {
-          out.write("<service android:name=\"edu.mit.media.funf.FunfManager\" android:enabled=\"true\" android:exported=\"false\">\n");
-          out.write(" </service>\n");
-          out.write("<receiver android:name=\"edu.mit.media.funf.Launcher\" android:enabled=\"true\">\n");
-          out.write("    <intent-filter>\n");
-          out.write("        <action android:name=\"android.intent.action.BATTERY_CHANGED\" />\n");
-          out.write("        <action android:name=\"android.intent.action.BOOT_COMPLETED\" />\n");
-          out.write("        <action android:name=\"android.intent.action.DOCK_EVENT\" />\n");
-          out.write("        <action android:name=\"android.intent.action.ACTION_SCREEN_ON\" />\n");
-          out.write("        <action android:name=\"android.intent.action.USER_PRESENT\" />\n");
-          out.write("    </intent-filter>\n");
-          out.write("</receiver>\n");
-          //add UploadServices and DataBaseService
-          out.write("<service android:name=\"edu.mit.media.funf.storage.NameValueDatabaseService\"></service> \n");
-          out.write("<service android:name=\"com.google.appinventor.components.runtime.util.HttpsUploadService\"></service> \n");
-          break;
-        }
-      }
-
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.Dropbox")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.DropboxUploadService\"></service> \n");	    
-      }
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleDrive")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.GoogleDriveUploadService\"></service> \n");
-      }
-	  
-      // try the same thing here for TimerManager (Disabled for now)
-      // BroadcastReceiver for TimerManager
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.Timer")) {
-        out.write("<service android:name=\"com.google.appinventor.components.runtime.util.TimerManager\" android:enabled=\"true\" android:exported=\"false\">\n");
-        out.write(" </service>\n");  
-        out.write("<receiver android:name=\"com.google.appinventor.components.runtime.util.TimerLauncher\" android:enabled=\"true\">\n");
-        out.write("    <intent-filter>\n");
-        out.write("        <action android:name=\"android.intent.action.BATTERY_CHANGED\" />\n");
-        out.write("        <action android:name=\"android.intent.action.BOOT_COMPLETED\" />\n");
-        out.write("        <action android:name=\"android.intent.action.DOCK_EVENT\" />\n");
-        out.write("        <action android:name=\"android.intent.action.ACTION_SCREEN_ON\" />\n");
-        out.write("        <action android:name=\"android.intent.action.USER_PRESENT\" />\n");
-        out.write("    </intent-filter>\n");
-        out.write("</receiver>");
-      }
-
       // Collect any additional <application> subelements into a single set.
       Set<Map.Entry<String, Set<String>>> subelements = Sets.newHashSet();
       subelements.addAll(activitiesNeeded.entrySet());
@@ -1447,12 +1304,6 @@ public final class Compiler {
         }
         out.write("</receiver> \n");
       }
-      // adds the google maps v2 api key
-      if (simpleCompTypes.contains("com.google.appinventor.components.runtime.GoogleMap")) {
-        System.out.println("Android Manifest: including Google Maps key:" + gMapsAPIKey);
-        out.write("<meta-data android:name=\"com.google.android.maps.v2.API_KEY\" ");
-        out.write("android:value=\"" + gMapsAPIKey + "\"/>");
-      }
 
       // Add the FileProvider because in Sdk >=24 we cannot pass file:
       // URLs in intents (and in other contexts)
@@ -1467,7 +1318,6 @@ public final class Compiler {
       out.write("            android:resource=\"@xml/provider_paths\"/>\n");
       out.write("      </provider>\n");
 
-      // Close the application tag
       out.write("  </application>\n");
       out.write("</manifest>\n");
       out.close();
@@ -1514,13 +1364,6 @@ public final class Compiler {
     }
 
     compiler.generateAssets();
-    
-    // TODO: code for copying all neededTemplates from AppEngine's /WEBINF/template to Android asset folder
-    // Move needed templates files to project's asset folder
-     
-//    compiler.generateTemplateNames(); //after this we have all templateNames used by the components in templatesNeeded
-/*    compiler.copyTemplatesToAssets();*/
-
     compiler.generateActivities();
     compiler.generateMetadata();
     compiler.generateActivityMetadata();
@@ -1570,13 +1413,6 @@ public final class Compiler {
     out.println("________Creating animation xml");
     File animDir = createDir(resDir, "anim");
     if (!compiler.createAnimationXml(animDir)) {
-      return false;
-    }
-    
-    // Create fragment directory and fragment xml files
-    out.println("________Creating fragment xml");
-    File fragmentDir = createDir(resDir, "layout");
-    if (!compiler.createFragmentXml(fragmentDir)) {
       return false;
     }
 
@@ -1758,44 +1594,7 @@ public final class Compiler {
 
     return true;
   }
-  
-  /*
-   * Create asset files and copy all needed templates used by the components in this project
-   */
 
-/*  private boolean copyTemplatesToAssets(){
-	// checkout implementation in IdMap.java and Whiltelist.java
-	// 
-	  
-	LOG.info("The asset dir: " + project.getAssetsDirectory());
- 
-	createDirectory(project.getAssetsDirectory()); //make sure we have asset folder created
-
-	try {
-
-	  File assetFolder = project.getAssetsDirectory();
-	  
-	  for (String templateName : templatesNeeded) {
-		String target = assetFolder.getAbsolutePath() + "/" + templateName;
-		String source = TEMPLATE_DIR + templateName;
-		
-		out.println("(DEBUG) Copying " + source + 
-				" to " + assetFolder.getAbsolutePath() + "/" + templateName);
-	    Files.copy(Resources.newInputStreamSupplier(Compiler.class.getResource(source)),
-	    		  new File(target));
-
-	  }
-
-	  
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    return false;
-	}
-
-	return true;
-
-  }*/
-  
   /*
    * Creates all the animation xml files.
    */
@@ -1828,24 +1627,6 @@ public final class Compiler {
     }
     return true;
   }
-  
-  /*
-   * Create all the fragment xml files.
-   */
-  private boolean createFragmentXml(File fragDir) {
-    Map<String, String> files = new HashMap<String, String>();
-    //just for testing....now will create AnimantionXmlConstants later
-    files.put("basic_map.xml", AnimationXmlConstants.BASIC_MAP_XML);
-    
-    
-    for (String filename : files.keySet()) {
-      File file = new File(fragDir, filename);
-      if (!writeXmlFile(file, files.get(filename))) {
-        return false;
-      }
-    }
-    return true;
-  }
 
   /*
    * Writes the given string input to the provided file.
@@ -1861,7 +1642,7 @@ public final class Compiler {
     }
     return true;
   }
-  
+
   /*
    * Runs ApkBuilder by using the API instead of calling its main method because the main method
    * can call System.exit(1), which will bring down our server.
@@ -1881,8 +1662,6 @@ public final class Compiler {
       if (nativeLibsNeeded.size() != 0) { // Need to add native libraries...
         apkBuilder.addNativeLibraries(libsDir);
       }
-      // TODO(ewpatton): Generalize this
-      apkBuilder.addResourcesFromJar(new File(getResource(RUNTIME_FILES_DIR + "jena-reasoner.jar")));
       apkBuilder.sealApk();
       return true;
     } catch (Exception e) {
@@ -2540,7 +2319,7 @@ public final class Compiler {
       aaptPackageCommandLineArgs.add("--output-text-symbols");
       aaptPackageCommandLineArgs.add(symbolOutputDir.getAbsolutePath());
       aaptPackageCommandLineArgs.add("--no-version-vectors");
-      appRJava = new File(sourceOutputDir, packageName.replaceAll("\\.", SLASHREGEX) + SLASH + "R.java");
+      appRJava = new File(sourceOutputDir, packageName.replaceAll("\\.", SLASH) + SLASH + "R.java");
       appRTxt = new File(symbolOutputDir, "R.txt");
     }
     String[] aaptPackageCommandLine = aaptPackageCommandLineArgs.toArray(new String[aaptPackageCommandLineArgs.size()]);
@@ -2915,7 +2694,7 @@ public final class Compiler {
         }
         file = File.createTempFile(prefix, suffix);
         file.setExecutable(true);
-//        file.deleteOnExit();
+        file.deleteOnExit();
         file.getParentFile().mkdirs();
         Files.copy(Resources.newInputStreamSupplier(Compiler.class.getResource(resourcePath)),
             file);
@@ -2943,45 +2722,6 @@ public final class Compiler {
     }
   }
 
-  private void loadComponentPermissions() throws IOException, JSONException {
-    synchronized (componentPermissions) {
-      if (componentPermissions.isEmpty()) {
-        String permissionsJson = Resources.toString(
-            Compiler.class.getResource(COMPONENT_PERMISSIONS), Charsets.UTF_8);
-
-        JSONArray componentsArray = new JSONArray(permissionsJson);
-        int componentslength = componentsArray.length();
-        for (int componentsIndex = 0; componentsIndex < componentslength; componentsIndex++) {
-          JSONObject componentObject = componentsArray.getJSONObject(componentsIndex);
-          String name = componentObject.getString("name");
-
-          Set<String> permissionsForThisComponent = Sets.newHashSet();
-
-          JSONArray permissionsArray = componentObject.getJSONArray("permissions");
-          int permissionsLength = permissionsArray.length();
-          for (int permissionsIndex = 0; permissionsIndex < permissionsLength; permissionsIndex++) {
-            String permission = permissionsArray.getString(permissionsIndex);
-            permissionsForThisComponent.add(permission);
-          }
-
-          componentPermissions.put(name, permissionsForThisComponent);
-        }
-      }
-      if (project != null) {    // Only do this if we have a project (testing doesn't provide one :-( ).
-        LOG.log(Level.INFO, "usesLocation = " + project.getUsesLocation());
-        if (project.getUsesLocation().equals("True")) { // Add location permissions if any WebViewer requests it
-          Set<String> locationPermissions = Sets.newHashSet(); // via a Property.
-          // See ProjectEditor.recordLocationSettings()
-          locationPermissions.add("android.permission.ACCESS_FINE_LOCATION");
-          locationPermissions.add("android.permission.ACCESS_COARSE_LOCATION");
-          locationPermissions.add("android.permission.ACCESS_MOCK_LOCATION");
-          componentPermissions.put("WebViewer", locationPermissions);
-        }
-      }
-    }
-  }
-
-  
   /*
    * This code extracts platform specific dynamic libraries needed by the build tools. These
    * libraries cannot be extracted using the usual mechanism as that assigns a random suffix,
@@ -3088,40 +2828,6 @@ public final class Compiler {
       }
     }
   }
-  
-  /**
-   * Loads the names of template files for each component and stores them in
-   * componentTemplates.
-   *
-   * @throws IOException
-   * @throws JSONException
-   */
-/*  private void loadComponentTemplateNames() throws IOException, JSONException {
-    synchronized (componentTemplates) {
-      if (componentTemplates.isEmpty()) {
-        String templatesJson = Resources.toString(
-            Compiler.class.getResource(COMPONENT_TEMPLATES), Charsets.UTF_8);
-
-        JSONArray componentsArray = new JSONArray(templatesJson);
-        int componentslength = componentsArray.length();
-        for (int componentsIndex = 0; componentsIndex < componentslength; componentsIndex++) {
-          JSONObject componentObject = componentsArray.getJSONObject(componentsIndex);
-          String name = componentObject.getString("name");
-
-          Set<String> templatesForThisComponent = Sets.newHashSet();
-
-          JSONArray templatesArray = componentObject.getJSONArray("templates");
-          int templatesLength = templatesArray.length();
-          for (int templatesIndex = 0; templatesIndex < templatesLength; templatesIndex++) {
-            String templateName = templatesArray.getString(templatesIndex);
-            templatesForThisComponent.add(templateName);
-          }
-          componentTemplates.put(name, templatesForThisComponent);
-        }
-      }
-    }
-  }*/
-
 
   /**
    * Copy one file to another. If destination file does not exist, it is created.
